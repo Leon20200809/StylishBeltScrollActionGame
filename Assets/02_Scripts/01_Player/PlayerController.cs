@@ -11,8 +11,8 @@ public class PlayerController : MonoBehaviour
     [Header("回転速度")]
     public float rotateSpeed;
 
-    //[Header("移動範囲")]
-    //public MoveLimit moveLimit;
+    [Header("アクション中フラグ")]
+    public bool inAction;
 
     private Rigidbody rb;
     private Animator anim;
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
         float z = Input.GetAxisRaw(VERTICAL);
 
         // 移動
-        Move(x, z);
+        if (inAction == false) Move(x, z);
     }
 
     /// <summary>
@@ -139,6 +139,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
+            inAction = true;
             anim.SetTrigger("L-Attack");
         }
     }
@@ -158,6 +159,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire2"))
         {
+            inAction = true;
             anim.SetTrigger("H-Attack");
         }
     }
@@ -178,6 +180,7 @@ public class PlayerController : MonoBehaviour
         //
         if (Input.GetButtonDown("Fire3"))
         {
+            inAction = true;
             anim.SetTrigger("Parry");
         }
 
@@ -199,22 +202,24 @@ public class PlayerController : MonoBehaviour
         //キー入力に応じてアニメーションを変更する
         if (Input.GetButtonDown("Jump") && Input.GetKey(KeyCode.A) || Input.GetButtonDown("Jump") && Input.GetKey(KeyCode.D))
         {
+            inAction = true;
             anim.SetTrigger("F-Dash");
         }
         else if (Input.GetButtonDown("Jump") && Input.GetKey(KeyCode.W))
         {
+            inAction = true;
             anim.SetTrigger("U-Dash");
         }
         else if (Input.GetButtonDown("Jump") && Input.GetKey(KeyCode.S))
         {
+            inAction = true;
             anim.SetTrigger("D-Dash");
         }
         else if (Input.GetButtonDown("Jump"))
         {
+            inAction = true;
             anim.SetTrigger("B-Dash");
         }
-
-
     }
 
     /// <summary>
@@ -223,6 +228,25 @@ public class PlayerController : MonoBehaviour
     void DashAction()
     {
         //アニメーションイベントに埋め込む　無敵時間とモーションによる移動
+    }
+
+    /// <summary>
+    /// フラグリセット（アイドルモーション開始時に埋め込む）
+    /// </summary>
+    public void Resetflag()
+    {
+        inAction = false;
+        anim.ResetTrigger("L-Attack");
+        anim.ResetTrigger("H-Attack");
+        anim.ResetTrigger("Parry");
+        anim.ResetTrigger("F-Dash");
+        anim.ResetTrigger("U-Dash");
+        anim.ResetTrigger("D-Dash");
+        anim.ResetTrigger("B-Dash");
+        //食らいモーショントリガーオフ
+        //コライダー全部オフ
+        //トレイルオフ
+
     }
 
 
