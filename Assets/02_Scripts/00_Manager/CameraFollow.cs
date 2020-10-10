@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public GameObject follwPlayer;
+    public GameObject followPlayer;
     Vector3 playerPos;
 
     void Start()
     {
-        follwPlayer = GameObject.Find("Player");
-        playerPos = follwPlayer.transform.position;
+        followPlayer = GameObject.Find("Player");
+        playerPos = followPlayer.transform.position;
     }
 
     void LateUpdate()
     {
         // 追従カメラ
-        transform.position += follwPlayer.transform.position - playerPos;
-        playerPos = follwPlayer.transform.position;
+        transform.position += followPlayer.transform.position - playerPos;
+        playerPos = followPlayer.transform.position;
 
     }
 }

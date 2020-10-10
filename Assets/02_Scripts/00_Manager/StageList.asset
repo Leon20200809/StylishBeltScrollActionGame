@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: StageList
   m_EditorClassIdentifier: 
   stageDatas:
-  - stageNo: 1
+  - stageNo: 0
     areaDatas:
-    - areaNo: 1
+    - areaNo: 0
       areaMoveLimit:
         horizontalLimit:
           left: -5
           right: 5
         depthLimit:
-          forword: -2
-          back: 3
+          forword: 3
+          back: -3
       appearNum: 010000000200000003000000

@@ -48,8 +48,8 @@ public class PlayerController : MonoBehaviour
         transform.position = new Vector3(posX, transform.position.y, posZ);
 
         // キー入力
-        float x = Input.GetAxis(HORIZONTAL);
-        float z = Input.GetAxis(VERTICAL);
+        float x = Input.GetAxisRaw(HORIZONTAL);
+        float z = Input.GetAxisRaw(VERTICAL);
 
         // 移動
         Move(x, z);
@@ -73,6 +73,10 @@ public class PlayerController : MonoBehaviour
 
         // 移動に合わせて向きを変える
         LookDirection(moveDir);
+
+        Debug.Log(x);
+        Debug.Log(z);
+
     }
 
     /// <summary>
@@ -124,6 +128,7 @@ public class PlayerController : MonoBehaviour
         HeavyAttack();
         Dash();
         Parry();
+
 
     }
 
@@ -192,10 +197,23 @@ public class PlayerController : MonoBehaviour
     void Dash()
     {
         //キー入力に応じてアニメーションを変更する
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && Input.GetKey(KeyCode.A) || Input.GetButtonDown("Jump") && Input.GetKey(KeyCode.D))
         {
-            anim.SetTrigger("Dash");
+            anim.SetTrigger("F-Dash");
         }
+        else if (Input.GetButtonDown("Jump") && Input.GetKey(KeyCode.W))
+        {
+            anim.SetTrigger("U-Dash");
+        }
+        else if (Input.GetButtonDown("Jump") && Input.GetKey(KeyCode.S))
+        {
+            anim.SetTrigger("D-Dash");
+        }
+        else if (Input.GetButtonDown("Jump"))
+        {
+            anim.SetTrigger("B-Dash");
+        }
+
 
     }
 
