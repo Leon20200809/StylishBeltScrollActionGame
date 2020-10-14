@@ -18,6 +18,24 @@ MonoBehaviour:
     - areaNo: 0
       areaMoveLimit:
         horizontalLimit:
+          left: -10
+          right: 10
+        depthLimit:
+          forword: 3
+          back: -3
+      appearNum: 000000000000000000000000
+    - areaNo: 0
+      areaMoveLimit:
+        horizontalLimit:
+          left: -5
+          right: 5
+        depthLimit:
+          forword: 3
+          back: -3
+      appearNum: 010000000200000003000000
+    - areaNo: 0
+      areaMoveLimit:
+        horizontalLimit:
           left: -5
           right: 5
         depthLimit:

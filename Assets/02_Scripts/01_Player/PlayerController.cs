@@ -11,13 +11,16 @@ public class PlayerController : MonoBehaviour
     [Header("回転速度")]
     public float rotateSpeed;
 
-    [Header("アクション中フラグ")]
+    [Header("アクションフラグ")]
     public bool inAction;
+    public bool isKumiuchi;
+    public bool isOiuchi;
+
+    public TrailRenderer weapontrail;
+    public Transform playerKatanaPos;
 
     private Rigidbody rb;
     private Animator anim;
-
-    public TrailRenderer weapontrail;
 
     private const string HORIZONTAL = "Horizontal";
     private const string VERTICAL = "Vertical";
@@ -73,9 +76,6 @@ public class PlayerController : MonoBehaviour
 
         // 移動に合わせて向きを変える
         LookDirection(moveDir);
-
-        Debug.Log(x);
-        Debug.Log(z);
 
     }
 
@@ -137,10 +137,22 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void LightAttack()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && isKumiuchi == false && isOiuchi == false)
         {
             inAction = true;
             anim.SetTrigger("L-Attack");
+        }
+
+        else if (Input.GetButtonDown("Fire1") && isKumiuchi == true)
+        {
+            inAction = true;
+            anim.SetTrigger("Kumiuchi");
+        }
+
+        else if (Input.GetButtonDown("Fire1") && isOiuchi == true)
+        {
+            inAction = true;
+            anim.SetTrigger("Oiuchi");
         }
     }
 
@@ -150,6 +162,8 @@ public class PlayerController : MonoBehaviour
     void LightAttackStart()
     {
         //アニメーションイベントに埋め込む
+        transform.DOLocalMove(transform.forward * 0.1f, 0.2f).SetRelative();
+
     }
 
     /// <summary>
@@ -170,6 +184,9 @@ public class PlayerController : MonoBehaviour
     void HeavyAttackStart()
     {
         //アニメーションイベントに埋め込む
+        //rb.velocity = Vector3.zero;
+        transform.DOLocalMove(transform.forward * 0.1f, 0.2f).SetRelative();
+        //rb.velocity = Vector3.zero;
     }
 
     /// <summary>
@@ -204,21 +221,48 @@ public class PlayerController : MonoBehaviour
         {
             inAction = true;
             anim.SetTrigger("F-Dash");
+            transform.DOLocalMove(transform.forward * 1.5f, 3f).SetRelative();
+
         }
         else if (Input.GetButtonDown("Jump") && Input.GetKey(KeyCode.W))
         {
             inAction = true;
-            anim.SetTrigger("U-Dash");
+            if (transform.localEulerAngles.y > 0f)//右向き
+            {
+                anim.SetTrigger("U-Dash");
+                transform.DOLocalMove(transform.right * -1.3f, 0.8f).SetRelative();
+                Debug.Log("→上回避");
+            }
+            else//左向き
+            {
+                anim.SetTrigger("D-Dash");
+                transform.DOLocalMove(transform.right * 1.3f, 0.8f).SetRelative();
+                Debug.Log("←上回避");
+            }
         }
         else if (Input.GetButtonDown("Jump") && Input.GetKey(KeyCode.S))
         {
             inAction = true;
-            anim.SetTrigger("D-Dash");
+            if (transform.localEulerAngles.y > 0f)
+            {
+                anim.SetTrigger("D-Dash");
+                transform.DOLocalMove(transform.right * 1.3f, 0.8f).SetRelative();
+                Debug.Log("→下回避");
+            }
+            if (transform.localEulerAngles.y < 0f)//右向き
+            {
+                anim.SetTrigger("U-Dash");
+                transform.DOLocalMove(transform.right * -1.3f, 0.8f).SetRelative();
+                Debug.Log("←下回避");
+            }
+
         }
         else if (Input.GetButtonDown("Jump"))
         {
             inAction = true;
             anim.SetTrigger("B-Dash");
+            transform.DOLocalMove(transform.forward * -1.5f, 0.8f).SetRelative();
+
         }
     }
 
@@ -236,6 +280,8 @@ public class PlayerController : MonoBehaviour
     public void Resetflag()
     {
         inAction = false;
+        anim.ResetTrigger("RevAttack");
+
         anim.ResetTrigger("L-Attack");
         anim.ResetTrigger("H-Attack");
         anim.ResetTrigger("Parry");
@@ -243,10 +289,47 @@ public class PlayerController : MonoBehaviour
         anim.ResetTrigger("U-Dash");
         anim.ResetTrigger("D-Dash");
         anim.ResetTrigger("B-Dash");
-        //食らいモーショントリガーオフ
+        anim.ResetTrigger("Kumiuchi");
+        anim.ResetTrigger("Oiuchi");
         //コライダー全部オフ
         //トレイルオフ
+    }
 
+    /// <summary>
+    /// 被ダメージモーションフラグリセット
+    /// </summary>
+    public void P_RevAttack()
+    {
+        anim.ResetTrigger("L-Attack");
+        anim.ResetTrigger("H-Attack");
+        anim.ResetTrigger("Parry");
+        anim.ResetTrigger("F-Dash");
+        anim.ResetTrigger("U-Dash");
+        anim.ResetTrigger("D-Dash");
+        anim.ResetTrigger("B-Dash");
+        anim.ResetTrigger("Kumiuchi");
+        anim.ResetTrigger("Oiuchi");
+        //コライダー全部オフ
+        //トレイルオフ
+    }
+
+    public void KatanaTransform()
+    {
+        Transform curKatanaPos = playerKatanaPos;
+
+        curKatanaPos.transform.localPosition = new Vector3(-0.0439999998f, 0.200000003f, -0.0149999997f);
+        curKatanaPos.transform.localRotation = Quaternion.Euler(351.700012f, 10.1860008f, 89.9479828f);
+        //追い討ち時に武器の位置を変える
+        //追い討ち時に武器の向きを変える
+    }
+    public void KatanaTransformReset()
+    {
+        Transform curKatanaPos = playerKatanaPos;
+
+        curKatanaPos.transform.localPosition = new Vector3(-0.0439999998f, -0.289999992f, -0.0149999997f);
+        curKatanaPos.transform.localRotation = Quaternion.Euler(0.198864356f, 190.186005f, 269.947632f);
+        //ゲーム開始時の位置に戻す
+        //ゲーム開始時の向きに戻す
     }
 
 
