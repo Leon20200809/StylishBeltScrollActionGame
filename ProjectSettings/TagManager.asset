@@ -6,7 +6,9 @@ TagManager:
   tags:
   - Enemy
   - BossEnemy
-  - PlayerWeapon
+  - P_LightAttack
+  - P_MidAttack
+  - P_HeavyAttack
   layers:
   - Default
   - TransparentFX

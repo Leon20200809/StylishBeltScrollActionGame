@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public bool isKumiuchi;
     public bool isOiuchi;
 
+    public GameObject p_Waponcollider;
+    public Collider waponcollider;
     public TrailRenderer weapontrail;
     public Transform playerKatanaPos;
 
@@ -141,6 +143,7 @@ public class PlayerController : MonoBehaviour
         {
             inAction = true;
             anim.SetTrigger("L-Attack");
+
         }
 
         else if (Input.GetButtonDown("Fire1") && isKumiuchi == true)
@@ -163,7 +166,7 @@ public class PlayerController : MonoBehaviour
     {
         //アニメーションイベントに埋め込む
         transform.DOLocalMove(transform.forward * 0.1f, 0.2f).SetRelative();
-
+        waponcollider.enabled = true;
     }
 
     /// <summary>
@@ -187,6 +190,17 @@ public class PlayerController : MonoBehaviour
         //rb.velocity = Vector3.zero;
         transform.DOLocalMove(transform.forward * 0.1f, 0.2f).SetRelative();
         //rb.velocity = Vector3.zero;
+    }
+
+    /// <summary>
+    /// 居合攻撃中身
+    /// </summary>
+    void IaiAttackStart()
+    {
+        //アニメーションイベントに埋め込む
+        transform.DOLocalMove(transform.forward * 2.8f, 0.6f).SetRelative();
+        p_Waponcollider.tag = "P_HeavyAttack";
+        waponcollider.enabled = true;
     }
 
     /// <summary>
@@ -221,7 +235,7 @@ public class PlayerController : MonoBehaviour
         {
             inAction = true;
             anim.SetTrigger("F-Dash");
-            transform.DOLocalMove(transform.forward * 1.5f, 3f).SetRelative();
+            transform.DOLocalMove(transform.forward * 1.5f, 0.8f).SetRelative();
 
         }
         else if (Input.GetButtonDown("Jump") && Input.GetKey(KeyCode.W))
@@ -281,7 +295,8 @@ public class PlayerController : MonoBehaviour
     {
         inAction = false;
         anim.ResetTrigger("RevAttack");
-
+        p_Waponcollider.tag = "P_LightAttack";
+        waponcollider.enabled = false;
         anim.ResetTrigger("L-Attack");
         anim.ResetTrigger("H-Attack");
         anim.ResetTrigger("Parry");
