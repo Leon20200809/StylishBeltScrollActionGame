@@ -9,6 +9,15 @@ TagManager:
   - P_LightAttack
   - P_MidAttack
   - P_HeavyAttack
+  - Parry
+  - E_Weapon
+  - OIuchiCol
+  - Oiuchi
+  - Kumiuchi
+  - OiuchiCol
+  - KumiuchiCol
+  - P_StunAttack
+  - E_ParryAtk
   layers:
   - Default
   - TransparentFX

@@ -10,8 +10,11 @@ public class OnTriggerTest_A : MonoBehaviour
         //タグ判定
         if (other.CompareTag("Enemy") || other.CompareTag("BossEnemy"))
         {
-            Debug.Log("弱攻撃ＨＩＴ");
+            
             wcollider.enabled = false;
+            Debug.Log("弱攻撃ＨＩＴ");
+            Debug.Log(wcollider);
+
         }
     }
     // Start is called before the first frame update

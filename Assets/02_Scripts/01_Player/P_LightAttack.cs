@@ -4,18 +4,11 @@ using UnityEngine;
 
 public class P_LightAttack : StateMachineBehaviour
 {
-    PlayerController playerController;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        // PlayerControllerを取得していない場合には取得する
-        if (playerController == null)
-        {
-            playerController = animator.gameObject.GetComponent<PlayerController>();
-        }
-        //playerController.waponcollider.enabled = true;
-
+        SoundManager.instance.PlaySE(SoundManager.SE_Type.KatanaFuri);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

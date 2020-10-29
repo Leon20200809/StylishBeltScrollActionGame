@@ -14,7 +14,7 @@ public class P_Idle : StateMachineBehaviour
         {
             playerController = animator.gameObject.GetComponent<PlayerController>();
         }
-        //playerController.Resetflag();
+        playerController.Resetflag();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

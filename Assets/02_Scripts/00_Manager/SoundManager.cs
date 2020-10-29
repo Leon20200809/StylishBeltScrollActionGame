@@ -24,8 +24,12 @@ public class SoundManager : MonoBehaviour
     public enum SE_Type
     {
         //SE列挙子を登録
-        OK,
-        NG,
+        KatanaFuri,
+        KatanaHit,
+        KatanaIai,
+        KatanaTuki,
+        Kick,
+        Parry,
 
     }
 

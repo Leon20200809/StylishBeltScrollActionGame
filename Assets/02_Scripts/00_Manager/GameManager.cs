@@ -187,4 +187,5 @@ public class GameManager : MonoBehaviour
             // TODO 次のエリアへ移行するための準備処理を追加
         }
     }
+
 }
