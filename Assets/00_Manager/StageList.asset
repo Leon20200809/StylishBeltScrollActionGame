@@ -21,8 +21,8 @@ MonoBehaviour:
           left: -10
           right: 10
         depthLimit:
-          forword: 3
-          back: -3
+          forword: 5
+          back: -4
       appearNum: 000000000000000000000000
     - areaNo: 0
       areaMoveLimit:

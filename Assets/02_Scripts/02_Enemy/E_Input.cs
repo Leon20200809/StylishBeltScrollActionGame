@@ -204,6 +204,7 @@ public class E_Input : MonoBehaviour
         anim.SetTrigger("Rev-Parry");
     }
 
+    public E_RevAtk e_RevAtk;
     /// <summary>
     /// フラグリセット（アイドルモーション開始時に埋め込む）
     /// </summary>
@@ -213,6 +214,8 @@ public class E_Input : MonoBehaviour
         inAction = false;
         e_Weaponcol.enabled = false;
         e_Weapontrail.enabled = false;
+        e_RevAtk.OiuchiColOFF();
+        e_RevAtk.KumiuchiColOFF();
         anim.ResetTrigger("Rev-Atk");
         anim.ResetTrigger("Rev-Down");
         anim.ResetTrigger("L-Atk");

@@ -16,7 +16,6 @@ public class EnemyController : MonoBehaviour
     public void SetUpEnemy(GameManager gameManager)
     {
         this.gameManager = gameManager;
-        Debug.Log(this.gameManager);
     }
 
     // Start is called before the first frame update

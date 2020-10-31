@@ -55,6 +55,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(enemyPrefabs.Count == 0)
+        {
+            return;
+        }
         //生成数チェック
         if (generateCount >= currentStageData.areaDatas[areaIndex].appearNum.Length)
         {

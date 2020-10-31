@@ -445,6 +445,7 @@ public class PlayerController : MonoBehaviour
         {
             isOiuchi = true;
             p_Waponcollider.tag = "Oiuchi";
+            //Debug.Log("追い討ち範囲内");
 
         }
         else if (other.CompareTag("KumiuchiCol"))
@@ -462,6 +463,8 @@ public class PlayerController : MonoBehaviour
         {
             isOiuchi = false;
             p_Waponcollider.tag = "P_LightAttack";
+            Debug.Log("追い討ち範囲外");
+
 
         }
         else if (other.CompareTag("KumiuchiCol"))

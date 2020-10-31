@@ -7,13 +7,13 @@ public class E_RevAtk : MonoBehaviour
 {
     Animator animator;
     GameManager gameManager;
+    Rigidbody rb;
 
     private void OnTriggerEnter(Collider other)
     {
         //タグ判定
         if (other.CompareTag("P_LightAttack"))
         {
-            //animator.Play("DAMAGED00");
             animator.SetTrigger("Rev-Atk");
             GenerateEffect(other.gameObject);
             Debug.Log("のけぞり小");
@@ -22,7 +22,11 @@ public class E_RevAtk : MonoBehaviour
         {
             animator.SetTrigger("Rev-Stun");
             GenerateEffect(other.gameObject);
-            transform.DOLocalMove(transform.forward * -1.5f, 0.3f).SetRelative();
+            // 自分の位置と接触してきたオブジェクトの位置とを計算して、距離と方向を出して正規化(速度ベクトルを算出)
+            Vector3 distination = (other.transform.position - transform.position).normalized;
+            distination = new Vector3(distination.x, 0f, 0f).normalized;
+            Debug.Log(distination);
+            rb.AddForce(distination * -3f, ForceMode.VelocityChange);
 
             Debug.Log("のけぞり大");
         }
@@ -30,7 +34,11 @@ public class E_RevAtk : MonoBehaviour
         {
             animator.SetTrigger("Rev-Down");
             GenerateEffect(other.gameObject);
-            transform.DOLocalMove(transform.forward * -2.5f, 0.5f).SetRelative();
+            // 自分の位置と接触してきたオブジェクトの位置とを計算して、距離と方向を出して正規化(速度ベクトルを算出)
+            Vector3 distination = (other.transform.position - transform.position).normalized;
+            distination = new Vector3(distination.x, 0f, 0f).normalized;
+            Debug.Log(distination);
+            rb.AddForce(distination * -5f, ForceMode.VelocityChange);
 
             Debug.Log("ダウン");
         }
@@ -49,10 +57,19 @@ public class E_RevAtk : MonoBehaviour
             Debug.Log("組み討ちHIT");
         }
     }
+
+    public void TestAction()
+    {
+        //アニメーションイベントに埋め込む　無敵時間とモーションによる移動
+        transform.DOLocalMove(transform.forward * -2.5f, 0.5f).SetRelative();
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -80,12 +97,10 @@ public class E_RevAtk : MonoBehaviour
     public void OiuchiColON()
     {
         oiuchiCollider.enabled = true;
-        Debug.Log(oiuchiCollider);
     }
     public void OiuchiColOFF()
     {
         oiuchiCollider.enabled = false;
-        Debug.Log(oiuchiCollider);
 
     }
     public Collider KumiuchiCollider;
@@ -100,9 +115,10 @@ public class E_RevAtk : MonoBehaviour
 
     }
 
-    void KumiuchiFinish()
+    void KumiuchiFinish(Collider other)
     {
-        transform.DOLocalMove(transform.forward * -1.5f, 0.3f).SetRelative();
+        // 自分の位置と接触してきたオブジェクトの位置とを計算して、距離と方向を出して正規化(速度ベクトルを算出)
+        transform.DOLocalMove(transform.forward * -2.5f, 0.3f).SetRelative();
     }
 
 
