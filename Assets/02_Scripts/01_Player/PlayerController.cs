@@ -361,7 +361,8 @@ public class PlayerController : MonoBehaviour
     public void Resetflag()
     {
         inAction = false;
-        anim.ResetTrigger("RevAttack");
+        anim.ResetTrigger("Rev-Atk");
+        anim.ResetTrigger("Rev-Down");
         p_Waponcollider.tag = "P_LightAttack";
         waponcollider.enabled = false;
         weapontrail.enabled = false;
@@ -406,6 +407,14 @@ public class PlayerController : MonoBehaviour
         kicktrail.enabled = false;
         parrycollider.enabled = false;
         parrytrail.enabled = false;
+    }
+    /// <summary>
+    /// ハイパーアーマー
+    /// </summary>
+    public void P_HypAmr()
+    {
+        anim.ResetTrigger("Rev-Atk");
+        anim.ResetTrigger("Rev-Down");
     }
 
     /// <summary>

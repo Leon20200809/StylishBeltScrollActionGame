@@ -30,6 +30,9 @@ public class SoundManager : MonoBehaviour
         KatanaTuki,
         Kick,
         Parry,
+        ParryS,
+        E_HvAtk,
+        MagicBall,
 
     }
 

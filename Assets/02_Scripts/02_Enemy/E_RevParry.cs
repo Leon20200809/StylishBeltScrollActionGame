@@ -6,7 +6,7 @@ using DG.Tweening;
 
 public class E_RevParry : MonoBehaviour
 {
-    Animator animator;
+    public E_Input e_Input;
     GameManager gameManager;
 
     private void OnTriggerEnter(Collider other)
@@ -14,8 +14,7 @@ public class E_RevParry : MonoBehaviour
         //タグ判定
         if (other.CompareTag("Parry"))
         {
-            //animator.Play("DAMAGED00");
-            animator.SetTrigger("Rev-Parry");
+            e_Input.RevParryStart();
             GenerateEffect(other.gameObject);
             Debug.Log("パリィ成功");
         }
@@ -25,7 +24,7 @@ public class E_RevParry : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -39,7 +38,7 @@ public class E_RevParry : MonoBehaviour
 
     public void GenerateEffect(GameObject other)
     {
-        SoundManager.instance.PlaySE(SoundManager.SE_Type.KatanaHit);
+        SoundManager.instance.PlaySE(SoundManager.SE_Type.ParryS);
         GameObject effect = Instantiate(parryEffectPrefab, transform.position + effecOfset, transform.rotation);
         Destroy(effect, 2f);
     }

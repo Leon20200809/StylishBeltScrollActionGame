@@ -16,6 +16,9 @@ public class E_ParryAtk : StateMachineBehaviour
             Debug.Log(enemyInput);
         }
         enemyInput.e_Weaponcollider.tag = "E_ParryAtk";
+        enemyInput.GenerateEffect(animator.gameObject);
+        animator.ResetTrigger("Rev-Atk");
+        animator.ResetTrigger("Rev-Down");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -28,6 +31,8 @@ public class E_ParryAtk : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         enemyInput.e_Weaponcollider.tag = "E_Weapon";
+        animator.ResetTrigger("Rev-Atk");
+        animator.ResetTrigger("Rev-Down");
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

@@ -18,6 +18,7 @@ TagManager:
   - KumiuchiCol
   - P_StunAttack
   - E_ParryAtk
+  - E_Magic
   layers:
   - Default
   - TransparentFX

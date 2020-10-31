@@ -5,6 +5,9 @@ using DG.Tweening;
 
 public class E_Input : MonoBehaviour
 {
+    [Header("プレイヤー操作")]
+    public bool playerCont;
+
     [Header("移動速度")]
     public float moveSpeed;
 
@@ -38,13 +41,20 @@ public class E_Input : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (playerCont == true)
+        {
+            // キー入力
+            float x = Input.GetAxisRaw(HORIZONTAL);
+            float z = Input.GetAxisRaw(VERTICAL);
 
-        // キー入力
-        float x = Input.GetAxisRaw(HORIZONTAL);
-        float z = Input.GetAxisRaw(VERTICAL);
-
-        // 移動
-        if (inAction == false) Move(x, z);
+            // 移動
+            if (inAction == false) Move(x, z);
+        }
+        else
+        {
+            return;
+        }
+        
     }
 
     /// <summary>
@@ -112,10 +122,17 @@ public class E_Input : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //移動以外のアクション中は移動を制限すること
-        LightAttack();
-        HeavyAttack();
-        CombAttack();
+        if (playerCont == true)
+        {
+            //移動以外のアクション中は移動を制限すること
+            LightAttack();
+            HeavyAttack();
+            CombAttack();
+        }
+        else
+        {
+            return;
+        }
 
     }
 
@@ -128,6 +145,7 @@ public class E_Input : MonoBehaviour
         {
             inAction = true;
             anim.SetTrigger("L-Atk");
+            Debug.Log(e_Weaponcol);
 
         }
     }
@@ -151,7 +169,7 @@ public class E_Input : MonoBehaviour
         if (Input.GetButtonDown("Fire2"))
         {
             inAction = true;
-            //e_Waponcollider.tag = "E_ParryAtk";
+            e_Weaponcollider.tag = "E_ParryAtk";
             anim.SetTrigger("H-Atk");
         }
     }
@@ -166,7 +184,6 @@ public class E_Input : MonoBehaviour
         transform.DOLocalMove(transform.forward * 0.1f, 0.2f).SetRelative();
         e_Weaponcol.enabled = true;
         e_Weapontrail.enabled = true;
-
     }
 
     void CombAttack()
@@ -180,11 +197,11 @@ public class E_Input : MonoBehaviour
 
 
     /// <summary>
-    /// 居合攻撃中身
+    /// パリィ成功アニメーション再生
     /// </summary>
-    void IaiAttackStart()
+    public void RevParryStart()
     {
-        //アニメーションイベントに埋め込む
+        anim.SetTrigger("Rev-Parry");
     }
 
     /// <summary>
@@ -192,6 +209,7 @@ public class E_Input : MonoBehaviour
     /// </summary>
     public void Resetflag()
     {
+
         inAction = false;
         e_Weaponcol.enabled = false;
         e_Weapontrail.enabled = false;
@@ -203,6 +221,7 @@ public class E_Input : MonoBehaviour
         anim.ResetTrigger("Rev-Oiuchi");
         anim.ResetTrigger("Rev-Kumiuchi");
         anim.ResetTrigger("Rev-Stun");
+        anim.ResetTrigger("Rev-Parry");
 
     }
 
@@ -222,6 +241,17 @@ public class E_Input : MonoBehaviour
         e_Weaponcol.enabled = false;
         e_Weapontrail.enabled = false;
     }
+
+    public GameObject HvAtkEffectPrefab;
+    public Vector3 effecOfset;
+
+    public void GenerateEffect(GameObject other)
+    {
+        SoundManager.instance.PlaySE(SoundManager.SE_Type.E_HvAtk);
+        GameObject effect = Instantiate(HvAtkEffectPrefab, transform.position + effecOfset, transform.rotation);
+        Destroy(effect, 1f);
+    }
+
 
 
 }
