@@ -290,12 +290,10 @@ public class PlayerController : MonoBehaviour
             if (transform.localEulerAngles.y < 99f)//右向き
             {
                 anim.SetTrigger("U-Dash");
-                Debug.Log("→上回避");
             }
             if (transform.localEulerAngles.y > 269f)//左向き
             {
                 anim.SetTrigger("D-Dash");
-                Debug.Log("←上回避");
             }
         }
 
@@ -306,12 +304,10 @@ public class PlayerController : MonoBehaviour
             if (transform.localEulerAngles.y < 99f)
             {
                 anim.SetTrigger("D-Dash");
-                Debug.Log("→下回避");
             }
             if (transform.localEulerAngles.y > 269f)//右向き
             {
                 anim.SetTrigger("U-Dash");
-                Debug.Log("←下回避");
             }
 
         }

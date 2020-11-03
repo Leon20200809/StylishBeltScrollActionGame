@@ -8,6 +8,7 @@ public class P_RevAtk : MonoBehaviour
     PlayerController playerController;
     Animator animator;
     GameManager gameManager;
+    Rigidbody rb;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -24,7 +25,11 @@ public class P_RevAtk : MonoBehaviour
             playerController.inAction = true;
             animator.SetTrigger("Rev-Down");
             GenerateEffect(other.gameObject);
-            transform.DOLocalMove(transform.forward * -1.5f, 0.3f).SetRelative();
+            // 自分の位置と接触してきたオブジェクトの位置とを計算して、距離と方向を出して正規化(速度ベクトルを算出)
+            Vector3 distination = (other.transform.position - transform.position).normalized;
+            distination = new Vector3(distination.x, 0f, 0f).normalized;
+            Debug.Log(distination);
+            rb.AddForce(distination * -3f, ForceMode.VelocityChange);
 
             Debug.Log("のけぞり大");
         }
@@ -33,7 +38,11 @@ public class P_RevAtk : MonoBehaviour
             playerController.inAction = true;
             animator.SetTrigger("Rev-Down");
             GenerateEffect(other.gameObject);
-            transform.DOLocalMove(transform.forward * -2.5f, 0.5f).SetRelative();
+            // 自分の位置と接触してきたオブジェクトの位置とを計算して、距離と方向を出して正規化(速度ベクトルを算出)
+            Vector3 distination = (other.transform.position - transform.position).normalized;
+            distination = new Vector3(distination.x, 0f, 0f).normalized;
+            Debug.Log(distination);
+            rb.AddForce(distination * -5f, ForceMode.VelocityChange);
 
             Debug.Log("ダウン");
         }
@@ -43,6 +52,7 @@ public class P_RevAtk : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         playerController = GetComponent<PlayerController>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
