@@ -7,9 +7,16 @@ public class E_Sus_RevAtk : MonoBehaviour
 {
     Animator animator;
     GameManager gameManager;
+    [SerializeField]
+    Vector3 distination;
+
 
     private void OnTriggerEnter(Collider other)
     {
+        // 自分の位置と接触してきたオブジェクトの位置とを計算して、距離と方向を出して正規化(速度ベクトルを算出)
+        distination = (other.transform.position - transform.position).normalized;
+        distination = new Vector3(distination.x, 0f, 0f).normalized;
+
         //タグ判定
         if (other.CompareTag("P_LightAttack"))
         {
@@ -22,7 +29,7 @@ public class E_Sus_RevAtk : MonoBehaviour
         {
             animator.SetTrigger("Rev-Stun");
             GenerateEffect(other.gameObject);
-            transform.DOLocalMove(transform.forward * -1.5f, 0.3f).SetRelative();
+            transform.DOLocalMove(distination * -1.5f, 0.3f).SetRelative();
 
             Debug.Log("のけぞり大");
         }
@@ -30,7 +37,7 @@ public class E_Sus_RevAtk : MonoBehaviour
         {
             animator.SetTrigger("Rev-Down");
             GenerateEffect(other.gameObject);
-            transform.DOLocalMove(transform.forward * -2.5f, 0.5f).SetRelative();
+            transform.DOLocalMove(distination * -2.5f, 0.5f).SetRelative();
 
             Debug.Log("ダウン");
         }
@@ -80,12 +87,10 @@ public class E_Sus_RevAtk : MonoBehaviour
     public void OiuchiColON()
     {
         oiuchiCollider.enabled = true;
-        Debug.Log(oiuchiCollider);
     }
     public void OiuchiColOFF()
     {
         oiuchiCollider.enabled = false;
-        Debug.Log(oiuchiCollider);
 
     }
     public Collider KumiuchiCollider;

@@ -126,10 +126,10 @@ public class E_SUSInput : MonoBehaviour
         if (playerCont == true)
         {
             //移動以外のアクション中は移動を制限すること
-            LightAttack();
-            HeavyAttack();
-            CombAttack();
-            MagicAttack();
+            L_Attack();
+            H_Attack();
+            M_Attack();
+            S_Attack();
             Dash();
 
         }
@@ -143,13 +143,12 @@ public class E_SUSInput : MonoBehaviour
     /// <summary>
     /// 弱攻撃アニメーション再生
     /// </summary>
-    void LightAttack()
+    void L_Attack()
     {
         if (Input.GetButtonDown("Fire1"))
         {
             inAction = true;
             anim.SetTrigger("L-Atk");
-            Debug.Log(e_Weaponcol);
 
         }
     }
@@ -157,10 +156,11 @@ public class E_SUSInput : MonoBehaviour
     /// <summary>
     /// 弱攻撃中身
     /// </summary>
-    void LightAttackStart()
+    void L_AttackStart()
     {
         //アニメーションイベントに埋め込む
-        transform.DOLocalMove(transform.forward * 0.1f, 0.2f).SetRelative();
+        transform.DOLocalMove(transform.forward * 0.3f, 0.2f).SetRelative();
+        SoundManager.instance.PlaySE(SoundManager.SE_Type.WhipAtk);
         e_Weaponcol.enabled = true;
         e_Weapontrail.enabled = true;
     }
@@ -168,7 +168,7 @@ public class E_SUSInput : MonoBehaviour
     /// <summary>
     /// 強攻撃アニメーション再生
     /// </summary>
-    void HeavyAttack()
+    void H_Attack()
     {
         if (Input.GetButtonDown("Fire2"))
         {
@@ -181,37 +181,47 @@ public class E_SUSInput : MonoBehaviour
     /// <summary>
     /// 強攻撃中身
     /// </summary>
-    void HeavyAttackStart()
+    void H_AttackStart()
     {
         //アニメーションイベントに埋め込む
         //rb.velocity = Vector3.zero;
-        transform.DOLocalMove(transform.forward * 0.1f, 0.2f).SetRelative();
+        transform.DOLocalMove(transform.forward * 0.3f, 0.2f).SetRelative();
+        SoundManager.instance.PlaySE(SoundManager.SE_Type.WhipAtk);
         e_Weaponcol.enabled = true;
         e_Weapontrail.enabled = true;
     }
 
-    void CombAttack()
+    void S_Attack()
     {
         if (Input.GetButtonDown("Fire3"))
         {
             inAction = true;
-            anim.SetTrigger("S-Atk");
+            anim.SetTrigger("M-Atk");
         }
     }
 
+    void S_AttackReady()
+    {
+        GenerateExplosionReady();
+    }
+    void S_AttackStart()
+    {
+        GenerateExplosion();
+    }
 
-    void MagicAttack()
+
+    void M_Attack()
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
             inAction = true;
-            anim.SetTrigger("M-Atk");
+            anim.SetTrigger("S-Atk");
             //e_Sus_MagicBall.MagicBallshot();
         }
     }
 
     public E_Sus_MagicBall e_Sus_MagicBall;
-    void MagicAttackStart()
+    void M_AttackStart()
     {
         e_Sus_MagicBall.MagicBallshot();
     }
@@ -240,6 +250,7 @@ public class E_SUSInput : MonoBehaviour
         anim.SetTrigger("Rev-Parry");
     }
 
+    public E_Sus_RevAtk e_Sus_RevAtk;
     /// <summary>
     /// フラグリセット（アイドルモーション開始時に埋め込む）
     /// </summary>
@@ -249,11 +260,14 @@ public class E_SUSInput : MonoBehaviour
         inAction = false;
         e_Weaponcol.enabled = false;
         e_Weapontrail.enabled = false;
+        e_Sus_RevAtk.OiuchiColOFF();
+        e_Sus_RevAtk.KumiuchiColOFF();
         anim.ResetTrigger("Rev-Atk");
         anim.ResetTrigger("Rev-Down");
         anim.ResetTrigger("L-Atk");
         anim.ResetTrigger("H-Atk");
-        anim.ResetTrigger("Comb-Atk");
+        anim.ResetTrigger("M-Atk");
+        anim.ResetTrigger("S-Atk");
         anim.ResetTrigger("Rev-Oiuchi");
         anim.ResetTrigger("Rev-Kumiuchi");
         anim.ResetTrigger("Rev-Stun");
@@ -270,7 +284,8 @@ public class E_SUSInput : MonoBehaviour
         anim.ResetTrigger("Rev-Down");
         anim.ResetTrigger("L-Atk");
         anim.ResetTrigger("H-Atk");
-        anim.ResetTrigger("Comb-Atk");
+        anim.ResetTrigger("M-Atk");
+        anim.ResetTrigger("S-Atk");
         anim.ResetTrigger("Rev-Oiuchi");
         anim.ResetTrigger("Rev-Kumiuchi");
         anim.ResetTrigger("Rev-Stun");
@@ -278,14 +293,29 @@ public class E_SUSInput : MonoBehaviour
         e_Weapontrail.enabled = false;
     }
 
-    public GameObject HvAtkEffectPrefab;
-    public Vector3 effecOfset;
+    public Vector3 exeffecOfset;
 
     public void GenerateEffect(GameObject other)
     {
         SoundManager.instance.PlaySE(SoundManager.SE_Type.E_HvAtk);
-        GameObject effect = Instantiate(HvAtkEffectPrefab, transform.position + effecOfset, transform.rotation);
-        Destroy(effect, 1f);
+        GameObject hAtkEffect = Instantiate(EffectManager.instance.GetEffect(1), transform.position, transform.rotation);
+        hAtkEffect.transform.parent = this.transform;
+        Destroy(hAtkEffect, 1f);
+    }
+
+    public void GenerateExplosionReady()
+    {
+        SoundManager.instance.PlaySE(SoundManager.SE_Type.SusSAtkReady);
+        GameObject sAtkEffect = Instantiate(EffectManager.instance.GetEffect(4), transform.position + exeffecOfset, Quaternion.Euler(-90, 0, 0));
+        sAtkEffect.transform.parent = this.transform;
+        Destroy(sAtkEffect, 3f);
+    }
+
+    public void GenerateExplosion()
+    {
+        SoundManager.instance.PlaySE(SoundManager.SE_Type.SusSAtk);
+        GameObject sAtkEffect = Instantiate(EffectManager.instance.GetEffect(3), transform.position, transform.rotation);
+        Destroy(sAtkEffect, 4f);
     }
 
 

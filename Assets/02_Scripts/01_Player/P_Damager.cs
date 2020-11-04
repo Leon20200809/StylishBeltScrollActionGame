@@ -5,13 +5,17 @@ using UnityEngine;
 public class P_Damager : MonoBehaviour
 {
     Collider wcollider;
+    public PlayerController playerController;
+
     private void OnTriggerEnter(Collider other)
     {
         //タグ判定
         if (other.CompareTag("Enemy") || other.CompareTag("BossEnemy"))
         {
             wcollider.enabled = false;
-            Debug.Log("プレイヤー攻撃ＨＩＴ");
+            playerController.isOiuchi = false;
+            playerController.isKumiuchi = false;
+            Debug.Log("プレイヤー攻撃HIT");
         }
     }
     // Start is called before the first frame update

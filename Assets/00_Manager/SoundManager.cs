@@ -33,6 +33,9 @@ public class SoundManager : MonoBehaviour
         ParryS,
         E_HvAtk,
         MagicBall,
+        WhipAtk,
+        SusSAtk,
+        SusSAtkReady,
 
     }
 

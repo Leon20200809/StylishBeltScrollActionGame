@@ -33,13 +33,13 @@ public class E_RevParry : MonoBehaviour
         
     }
 
-    public GameObject parryEffectPrefab;
     public Vector3 effecOfset;
 
     public void GenerateEffect(GameObject other)
     {
         SoundManager.instance.PlaySE(SoundManager.SE_Type.ParryS);
-        GameObject effect = Instantiate(parryEffectPrefab, transform.position + effecOfset, transform.rotation);
+        GameObject effect = Instantiate(EffectManager.instance.GetEffect(2), transform.position + effecOfset, transform.rotation);
+        //effect.transform.parent = this.transform;
         Destroy(effect, 2f);
     }
 

@@ -13,7 +13,6 @@ public class E_Sus_MagicBallDamager : MonoBehaviour
             
             wcollider.enabled = false;
             Debug.Log("マジックボールHIT");
-            Debug.Log(wcollider);
             Destroy(this.gameObject);
 
         }

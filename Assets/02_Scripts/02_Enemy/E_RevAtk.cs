@@ -8,9 +8,17 @@ public class E_RevAtk : MonoBehaviour
     Animator animator;
     GameManager gameManager;
     Rigidbody rb;
+    [SerializeField]
+    Vector3 distination;
 
     private void OnTriggerEnter(Collider other)
     {
+        // 自分の位置と接触してきたオブジェクトの位置とを計算して、距離と方向を出して正規化(速度ベクトルを算出)
+        distination = (other.transform.position - transform.position).normalized;
+        distination = new Vector3(distination.x, 0f, 0f).normalized;
+        Debug.Log(distination);
+
+
         //タグ判定
         if (other.CompareTag("P_LightAttack"))
         {
@@ -22,10 +30,6 @@ public class E_RevAtk : MonoBehaviour
         {
             animator.SetTrigger("Rev-Stun");
             GenerateEffect(other.gameObject);
-            // 自分の位置と接触してきたオブジェクトの位置とを計算して、距離と方向を出して正規化(速度ベクトルを算出)
-            Vector3 distination = (other.transform.position - transform.position).normalized;
-            distination = new Vector3(distination.x, 0f, 0f).normalized;
-            Debug.Log(distination);
             rb.AddForce(distination * -3f, ForceMode.VelocityChange);
 
             Debug.Log("のけぞり大");
@@ -34,9 +38,6 @@ public class E_RevAtk : MonoBehaviour
         {
             animator.SetTrigger("Rev-Down");
             GenerateEffect(other.gameObject);
-            // 自分の位置と接触してきたオブジェクトの位置とを計算して、距離と方向を出して正規化(速度ベクトルを算出)
-            Vector3 distination = (other.transform.position - transform.position).normalized;
-            distination = new Vector3(distination.x, 0f, 0f).normalized;
             Debug.Log(distination);
             rb.AddForce(distination * -5f, ForceMode.VelocityChange);
 
@@ -63,6 +64,7 @@ public class E_RevAtk : MonoBehaviour
         //アニメーションイベントに埋め込む　無敵時間とモーションによる移動
         transform.DOLocalMove(transform.forward * -2.5f, 0.5f).SetRelative();
 
+
     }
 
     // Start is called before the first frame update
@@ -78,8 +80,7 @@ public class E_RevAtk : MonoBehaviour
 
     }
 
-    public GameObject hitEffectPrefab;
-    public Vector3 effecOfset;
+    public Vector3 hitEffecOfset;
 
     /// <summary>
     /// HITエフェクト再生
@@ -88,8 +89,8 @@ public class E_RevAtk : MonoBehaviour
     public void GenerateEffect(GameObject other)
     {
         SoundManager.instance.PlaySE(SoundManager.SE_Type.KatanaHit);
-        GameObject effect = Instantiate(hitEffectPrefab, transform.position + effecOfset, transform.rotation);
-        Destroy(effect, 2f);
+        GameObject hitEffect = Instantiate(EffectManager.instance.GetEffect(0), transform.position + hitEffecOfset, transform.rotation);
+        Destroy(hitEffect, 2f);
     }
 
     public Collider oiuchiCollider;
@@ -118,7 +119,8 @@ public class E_RevAtk : MonoBehaviour
     void KumiuchiFinish(Collider other)
     {
         // 自分の位置と接触してきたオブジェクトの位置とを計算して、距離と方向を出して正規化(速度ベクトルを算出)
-        transform.DOLocalMove(transform.forward * -2.5f, 0.3f).SetRelative();
+        rb.AddForce(distination * -5f, ForceMode.VelocityChange);
+
     }
 
 

@@ -245,14 +245,14 @@ public class E_Input : MonoBehaviour
         e_Weapontrail.enabled = false;
     }
 
-    public GameObject HvAtkEffectPrefab;
     public Vector3 effecOfset;
 
     public void GenerateEffect(GameObject other)
     {
         SoundManager.instance.PlaySE(SoundManager.SE_Type.E_HvAtk);
-        GameObject effect = Instantiate(HvAtkEffectPrefab, transform.position + effecOfset, transform.rotation);
-        Destroy(effect, 1f);
+        GameObject hAtkEffect = Instantiate(EffectManager.instance.GetEffect(1), transform.position + effecOfset, transform.rotation);
+        hAtkEffect.transform.parent = this.transform;
+        Destroy(hAtkEffect, 1f);
     }
 
 

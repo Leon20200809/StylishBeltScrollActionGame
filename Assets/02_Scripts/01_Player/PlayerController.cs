@@ -236,6 +236,14 @@ public class PlayerController : MonoBehaviour
         waponcollider.enabled = true;
         weapontrail.enabled = true;
     }
+    void ZangetsuAttackStart()
+    {
+        //アニメーションイベントに埋め込む
+        transform.DOLocalMove(transform.forward * 2.0f, 0.3f).SetRelative();
+        p_Waponcollider.tag = "P_HeavyAttack";
+        waponcollider.enabled = true;
+        weapontrail.enabled = true;
+    }
 
     void KumiuchiFinish()
     {

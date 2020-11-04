@@ -33,7 +33,7 @@ public class P_RevAtk : MonoBehaviour
 
             Debug.Log("のけぞり大");
         }
-        else if (other.CompareTag("P_HeavyAttack"))
+        else if (other.CompareTag("E_Magic"))
         {
             playerController.inAction = true;
             animator.SetTrigger("Rev-Down");

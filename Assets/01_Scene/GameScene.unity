@@ -364,8 +364,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1.9, y: 1.93, z: 1.99}
-  m_Center: {x: -0.12, y: 0, z: 0.48}
+  m_Size: {x: 1.9, y: 1.93, z: 2.29}
+  m_Center: {x: -0.12, y: 0, z: 0.7}
 --- !u!1 &441589736
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,8 +408,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 2.02, y: 3.27, z: 2.35}
-  m_Center: {x: 0, y: 0, z: 0.63}
+  m_Size: {x: 3.36, y: 2.18, z: 3.89}
+  m_Center: {x: -0.17, y: 0.24, z: -0.02}
 --- !u!1 &458037837
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,6 +982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10091e542e8e2ef439c44c7b27561dad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 5868177804063203776}
 --- !u!1 &905405227
 GameObject:
   m_ObjectHideFlags: 0
@@ -1414,6 +1415,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2896476626493401307, guid: 3feff53a147eff844a935eb5a696393d, type: 3}
+      propertyPath: effecOfset.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6323236553117737739, guid: 3feff53a147eff844a935eb5a696393d, type: 3}
+      propertyPath: m_Size.x
+      value: 1.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 6323236553117737739, guid: 3feff53a147eff844a935eb5a696393d, type: 3}
+      propertyPath: m_Size.z
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6323236553117737739, guid: 3feff53a147eff844a935eb5a696393d, type: 3}
+      propertyPath: m_Center.z
+      value: 0.59
+      objectReference: {fileID: 0}
     - target: {fileID: 6323236554250643953, guid: 3feff53a147eff844a935eb5a696393d, type: 3}
       propertyPath: gameManager
       value: 
@@ -1422,6 +1439,10 @@ PrefabInstance:
       propertyPath: e_RevAtk
       value: 
       objectReference: {fileID: 1291455878}
+    - target: {fileID: 6323236554250643953, guid: 3feff53a147eff844a935eb5a696393d, type: 3}
+      propertyPath: playerCont
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6323236554250643956, guid: 3feff53a147eff844a935eb5a696393d, type: 3}
       propertyPath: m_Constraints
       value: 112
@@ -1429,6 +1450,14 @@ PrefabInstance:
     - target: {fileID: 6323236554250643956, guid: 3feff53a147eff844a935eb5a696393d, type: 3}
       propertyPath: m_Mass
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6323236554250643958, guid: 3feff53a147eff844a935eb5a696393d, type: 3}
+      propertyPath: hitEffectPrefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6323236554250643958, guid: 3feff53a147eff844a935eb5a696393d, type: 3}
+      propertyPath: hitEffecOfset.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6323236554250643959, guid: 3feff53a147eff844a935eb5a696393d, type: 3}
       propertyPath: isDebug
@@ -1440,7 +1469,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6478921488361270138, guid: 3feff53a147eff844a935eb5a696393d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8048663832806938985, guid: 3feff53a147eff844a935eb5a696393d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1472,7 +1501,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8048663832806938985, guid: 3feff53a147eff844a935eb5a696393d, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8048663832806938985, guid: 3feff53a147eff844a935eb5a696393d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1633,6 +1662,59 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1716189876
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1716189878}
+  - component: {fileID: 1716189877}
+  m_Layer: 0
+  m_Name: EffectManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1716189877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716189876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75b70ca28f31e494d827876c81271f97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effect_Prefabs:
+  - {fileID: 1150618658446862, guid: 816db0cf37bb11448bff9a1b25ac7367, type: 3}
+  - {fileID: 1640751378235536, guid: 64ae029813d32c1489d3027539cc4cee, type: 3}
+  - {fileID: 100006, guid: 8fc06027b01064e4f885fd8dd2929310, type: 3}
+  - {fileID: 8671619593708031685, guid: 034c59a64da7f1f41bdf4edcf03eaf00, type: 3}
+  - {fileID: 100000, guid: 3d4907e6bd39f474b8fd8220920e65c4, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!4 &1716189878
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716189876}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2055366387
 GameObject:
   m_ObjectHideFlags: 0
@@ -1658,7 +1740,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2055366387}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.8}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1691,6 +1773,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8c7016df60bdcb2428c7d096a4bf5776, type: 3}
   - {fileID: 8300000, guid: fe3c61e26f42f824883bc676f8775b02, type: 3}
   - {fileID: 8300000, guid: eed08658b218cc24bafce2cfbe0553e4, type: 3}
+  - {fileID: 8300000, guid: 1a6f2366b3520cb4988d8814e75b660a, type: 3}
+  - {fileID: 8300000, guid: 3a0a8555ee126a143b2a0d7055bc4c2e, type: 3}
+  - {fileID: 8300000, guid: 50c801a892d8c9e4583ab166d96f472d, type: 3}
+  - {fileID: 8300000, guid: a7cf47c6d17e1ef4488ccba923a62a37, type: 3}
+  - {fileID: 8300000, guid: 1a6f2366b3520cb4988d8814e75b660a, type: 3}
+  - {fileID: 8300000, guid: 1a6f2366b3520cb4988d8814e75b660a, type: 3}
   - {fileID: 8300000, guid: 1a6f2366b3520cb4988d8814e75b660a, type: 3}
   VOICE_Clips: []
   audioMixer: {fileID: 0}
@@ -2068,8 +2156,8 @@ MonoBehaviour:
   e_Weapontrail: {fileID: 1278714646}
   gameManager: {fileID: 178757065}
   e_Sus_MagicBall: {fileID: 458037839}
-  HvAtkEffectPrefab: {fileID: 1640751378235536, guid: 64ae029813d32c1489d3027539cc4cee, type: 3}
-  effecOfset: {x: 0, y: 0, z: 0}
+  e_Sus_RevAtk: {fileID: 210729474063890955}
+  exeffecOfset: {x: 0, y: 0.1, z: 0}
 --- !u!114 &210729474063890955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2082,6 +2170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 115031bc0248c6d4db6c2096bbf9a98d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distination: {x: 0, y: 0, z: 0}
   hitEffectPrefab: {fileID: 1150618658446862, guid: 816db0cf37bb11448bff9a1b25ac7367, type: 3}
   effecOfset: {x: 0, y: 1, z: 0}
   oiuchiCollider: {fileID: 441589738}
@@ -4240,13 +4329,7 @@ Animator:
   m_UpdateMode: 1
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tTransform 'Bip001 R UpperArm'\n\tTransform 'Bip001 Head'\n\tTransform
-    'Bip001 Spine1'\n\tTransform 'Bip001 R Finger11'\n\tTransform 'Bip001 L UpperArm'\n\tTransform
-    'Bip001 R Foot'\n\tTransform 'Bip001 L Finger11'\n\tTransform 'Bip001 R Calf'\n\tTransform
-    'Bip001 L Finger1'\n\tTransform 'Bip001 L Hand'\n\tand more ...\n\tFrom animation
-    clip 'In'"
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -4514,6 +4597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10091e542e8e2ef439c44c7b27561dad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 5868177804063203776}
 --- !u!1 &1375333934963817356
 GameObject:
   m_ObjectHideFlags: 0
