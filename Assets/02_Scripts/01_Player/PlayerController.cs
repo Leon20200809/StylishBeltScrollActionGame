@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     public TrailRenderer kicktrail;
     public TrailRenderer parrytrail;
     public Transform playerKatanaPos;
+    public P_KumiuchiCam kumiuchiCam;
 
     private Rigidbody rb;
     private Animator anim;
@@ -145,35 +146,21 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1") && isKumiuchi == false && isOiuchi == false)
         {
-            inAction = true;
             anim.SetTrigger("L-Attack");
-
         }
 
         else if (Input.GetButtonDown("Fire1") && isKumiuchi == true)
         {
-            inAction = true;
             anim.SetTrigger("Kumiuchi");
+            kumiuchiCam.KumiuchiStaging();
         }
 
         else if (Input.GetButtonDown("Fire1") && isOiuchi == true)
         {
-            inAction = true;
             anim.SetTrigger("Oiuchi");
         }
     }
 
-    /// <summary>
-    /// 弱攻撃中身
-    /// </summary>
-    void LightAttackStart()
-    {
-        //アニメーションイベントに埋め込む
-        transform.DOLocalMove(transform.forward * 0.1f, 0.2f).SetRelative();
-        waponcollider.enabled = true;
-        weapontrail.enabled = true;
-
-    }
 
     /// <summary>
     /// 強攻撃アニメーション再生
@@ -182,72 +169,8 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire2"))
         {
-            inAction = true;
             anim.SetTrigger("H-Attack");
         }
-    }
-
-    /// <summary>
-    /// 強攻撃中身
-    /// </summary>
-    void HeavyAttackStart()
-    {
-        //アニメーションイベントに埋め込む
-        //rb.velocity = Vector3.zero;
-        p_Waponcollider.tag = "P_HeavyAttack";
-        transform.DOLocalMove(transform.forward * 0.1f, 0.2f).SetRelative();
-        waponcollider.enabled = true;
-        weapontrail.enabled = true;
-
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    void StunAttackStart()
-    {
-        //アニメーションイベントに埋め込む
-        //rb.velocity = Vector3.zero;
-        p_Waponcollider.tag = "P_StunAttack";
-        transform.DOLocalMove(transform.forward * 0.1f, 0.2f).SetRelative();
-        waponcollider.enabled = true;
-        weapontrail.enabled = true;
-
-    }
-    void KickAttackStart()
-    {
-        //アニメーションイベントに埋め込む
-        //rb.velocity = Vector3.zero;
-        SoundManager.instance.PlaySE(SoundManager.SE_Type.Kick);
-        transform.DOLocalMove(transform.forward * 0.5f, 0.2f).SetRelative();
-        kickcollider.enabled = true;
-        kicktrail.enabled = true;
-
-    }
-
-    /// <summary>
-    /// 居合攻撃中身
-    /// </summary>
-    void IaiAttackStart()
-    {
-        //アニメーションイベントに埋め込む
-        transform.DOLocalMove(transform.forward * 4.0f, 0.6f).SetRelative();
-        p_Waponcollider.tag = "P_HeavyAttack";
-        waponcollider.enabled = true;
-        weapontrail.enabled = true;
-    }
-    void ZangetsuAttackStart()
-    {
-        //アニメーションイベントに埋め込む
-        transform.DOLocalMove(transform.forward * 2.0f, 0.3f).SetRelative();
-        p_Waponcollider.tag = "P_HeavyAttack";
-        waponcollider.enabled = true;
-        weapontrail.enabled = true;
-    }
-
-    void KumiuchiFinish()
-    {
-        SoundManager.instance.PlaySE(SoundManager.SE_Type.Kick);
     }
 
     /// <summary>
@@ -255,24 +178,10 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void Parry()
     {
-        //
         if (Input.GetButtonDown("Fire3"))
         {
-            inAction = true;
             anim.SetTrigger("Parry");
         }
-
-    }
-
-    /// <summary>
-    /// パリィアニメーション中身
-    /// </summary>
-    void ParryAction()
-    {
-        //アニメーションイベントに埋め込む
-        SoundManager.instance.PlaySE(SoundManager.SE_Type.Parry);
-        parrycollider.enabled = true;
-        parrytrail.enabled = true;
 
     }
 
@@ -284,7 +193,6 @@ public class PlayerController : MonoBehaviour
         //前ダッシュ
         if (Input.GetButtonDown("Jump") && Input.GetKey(KeyCode.A) || Input.GetButtonDown("Jump") && Input.GetKey(KeyCode.D))
         {
-            inAction = true;
             anim.SetTrigger("F-Dash");
 
         }
@@ -294,7 +202,6 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log(transform.localEulerAngles.y);
 
-            inAction = true;
             if (transform.localEulerAngles.y < 99f)//右向き
             {
                 anim.SetTrigger("U-Dash");
@@ -308,7 +215,6 @@ public class PlayerController : MonoBehaviour
         //下回避
         else if (Input.GetButtonDown("Jump") && Input.GetKey(KeyCode.S))
         {
-            inAction = true;
             if (transform.localEulerAngles.y < 99f)
             {
                 anim.SetTrigger("D-Dash");
@@ -323,14 +229,93 @@ public class PlayerController : MonoBehaviour
         //バックステップ
         else if (Input.GetButtonDown("Jump"))
         {
-            inAction = true;
             anim.SetTrigger("B-Dash");
 
         }
     }
 
+    //================= アニメーションイベント用メソッド ===================//　ここから
+
     /// <summary>
-    /// 前ダッシュアクション中身
+    /// 弱攻撃中身
+    /// </summary>
+    void LightAttackStart()
+    {
+        transform.DOLocalMove(transform.forward * 0.1f, 0.2f).SetRelative();
+        waponcollider.enabled = true;
+        weapontrail.enabled = true;
+    }
+
+    /// <summary>
+    /// 強攻撃アニメーションイベント用
+    /// </summary>
+    void HeavyAttackStart()
+    {
+        p_Waponcollider.tag = "P_HeavyAttack";
+        transform.DOLocalMove(transform.forward * 0.1f, 0.2f).SetRelative();
+        waponcollider.enabled = true;
+        weapontrail.enabled = true;
+    }
+
+    /// <summary>
+    /// パリィアニメーションイベント用
+    /// </summary>
+    void ParryAction()
+    {
+        SoundManager.instance.PlaySE(SoundManager.SE_Type.Parry);
+        transform.DOLocalMove(transform.forward * 0.2f, 0.2f).SetRelative();
+        parrycollider.enabled = true;
+        parrytrail.enabled = true;
+    }
+
+    /// <summary>
+    /// 居合攻撃アニメーションイベント用
+    /// </summary>
+    void IaiAttackStart()
+    {
+        //アニメーションイベントに埋め込む
+        transform.DOLocalMove(transform.forward * 4.0f, 0.6f).SetRelative();
+        p_Waponcollider.tag = "P_HeavyAttack";
+        waponcollider.enabled = true;
+        weapontrail.enabled = true;
+    }
+
+    /// <summary>
+    /// 残月攻撃アニメーションイベント用
+    /// </summary>
+    void ZangetsuAttackStart()
+    {
+        transform.DOLocalMove(transform.forward * 2.0f, 0.3f).SetRelative();
+        p_Waponcollider.tag = "P_HeavyAttack";
+        waponcollider.enabled = true;
+        weapontrail.enabled = true;
+    }
+
+    /// <summary>
+    /// 蹴り攻撃アニメーションイベント用
+    /// </summary>
+    void KickAttackStart()
+    {
+        SoundManager.instance.PlaySE(SoundManager.SE_Type.Kick);
+        transform.DOLocalMove(transform.forward * 0.5f, 0.2f).SetRelative();
+        kickcollider.enabled = true;
+        kicktrail.enabled = true;
+    }
+
+    /// <summary>
+    /// スタン攻撃アニメーションイベント用
+    /// </summary>
+    void StunAttackStart()
+    {
+        p_Waponcollider.tag = "P_StunAttack";
+        transform.DOLocalMove(transform.forward * 0.1f, 0.2f).SetRelative();
+        waponcollider.enabled = true;
+        weapontrail.enabled = true;
+    }
+
+
+    /// <summary>
+    /// 前ダッシュアニメーションイベント用
     /// </summary>
     void DashAction_F()
     {
@@ -358,9 +343,42 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// 追い討ち時の刀位置補正アニメーションイベント用
+    /// </summary>
+    public void KatanaTransform()
+    {
+        Transform curKatanaPos = playerKatanaPos;
+
+        curKatanaPos.transform.localPosition = new Vector3(-0.0439999998f, 0.200000003f, -0.0149999997f);
+        curKatanaPos.transform.localRotation = Quaternion.Euler(351.700012f, 10.1860008f, 89.9479828f);
+    }
 
     /// <summary>
-    /// フラグリセット（アイドルモーション開始時に埋め込む）
+    /// 追い討ち時の刀位置リセットアニメーションイベント用
+    /// </summary>
+    public void KatanaTransformReset()
+    {
+        Transform curKatanaPos = playerKatanaPos;
+
+        curKatanaPos.transform.localPosition = new Vector3(-0.0439999998f, -0.289999992f, -0.0149999997f);
+        curKatanaPos.transform.localRotation = Quaternion.Euler(0.198864356f, 190.186005f, 269.947632f);
+    }
+
+
+    void KumiuchiFinish()
+    {
+        SoundManager.instance.PlaySE(SoundManager.SE_Type.Kick);
+    }
+
+
+
+
+
+    //=========== Smb用メソッド ===================//　ここから
+
+    /// <summary>
+    /// フラグリセット
     /// </summary>
     public void Resetflag()
     {
@@ -376,7 +394,6 @@ public class PlayerController : MonoBehaviour
         kicktrail.enabled = false;
         parrycollider.enabled = false;
         parrytrail.enabled = false;
-
         anim.ResetTrigger("L-Attack");
         anim.ResetTrigger("H-Attack");
         anim.ResetTrigger("Parry");
@@ -393,6 +410,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void P_RevAttack()
     {
+        inAction = true;
         anim.ResetTrigger("L-Attack");
         anim.ResetTrigger("H-Attack");
         anim.ResetTrigger("Parry");
@@ -419,47 +437,43 @@ public class PlayerController : MonoBehaviour
     {
         anim.ResetTrigger("Rev-Atk");
         anim.ResetTrigger("Rev-Down");
+        inAction = true;
     }
 
-    /// <summary>
-    /// 追い討ち時の刀位置補正
-    /// </summary>
-    public void KatanaTransform()
-    {
-        Transform curKatanaPos = playerKatanaPos;
 
-        curKatanaPos.transform.localPosition = new Vector3(-0.0439999998f, 0.200000003f, -0.0149999997f);
-        curKatanaPos.transform.localRotation = Quaternion.Euler(351.700012f, 10.1860008f, 89.9479828f);
-    }
+    //=========== OnTrigger用メソッド ===================//
 
-    /// <summary>
-    /// 追い討ち時の刀位置リセット
-    /// </summary>
-    public void KatanaTransformReset()
-    {
-        Transform curKatanaPos = playerKatanaPos;
-
-        curKatanaPos.transform.localPosition = new Vector3(-0.0439999998f, -0.289999992f, -0.0149999997f);
-        curKatanaPos.transform.localRotation = Quaternion.Euler(0.198864356f, 190.186005f, 269.947632f);
-    }
 
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("OiuchiCol"))
         {
-            isOiuchi = true;
-            p_Waponcollider.tag = "Oiuchi";
-            //Debug.Log("追い討ち範囲内");
-
+            StartCoroutine(OiuchiFlag(2.0f));
         }
         else if (other.CompareTag("KumiuchiCol"))
         {
-            isKumiuchi = true;
-            p_Waponcollider.tag = "Kumiuchi";
-
+            StartCoroutine(KumiuchiFlag(2.0f));
         }
         return;
     }
+
+    IEnumerator OiuchiFlag(float waitTime = 0.0f)
+    {
+        isOiuchi = true;
+        p_Waponcollider.tag = "Oiuchi";
+        yield return new WaitForSeconds(waitTime);
+        isOiuchi = false;
+        p_Waponcollider.tag = "P_LightAttack";
+    }
+    IEnumerator KumiuchiFlag(float waitTime = 0.0f)
+    {
+        isKumiuchi = true;
+        p_Waponcollider.tag = "Kumiuchi";
+        yield return new WaitForSeconds(waitTime);
+        isKumiuchi = false;
+        p_Waponcollider.tag = "P_LightAttack";
+    }
+
 
     private void OnTriggerExit(Collider other)
     {
@@ -468,16 +482,13 @@ public class PlayerController : MonoBehaviour
             isOiuchi = false;
             p_Waponcollider.tag = "P_LightAttack";
             Debug.Log("追い討ち範囲外");
-
-
         }
+
         else if (other.CompareTag("KumiuchiCol"))
         {
             isKumiuchi = false;
             p_Waponcollider.tag = "P_LightAttack";
-
         }
-
     }
 
 

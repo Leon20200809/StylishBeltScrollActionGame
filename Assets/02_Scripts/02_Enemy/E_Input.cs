@@ -143,22 +143,8 @@ public class E_Input : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            inAction = true;
             anim.SetTrigger("L-Atk");
-            Debug.Log(e_Weaponcol);
-
         }
-    }
-
-    /// <summary>
-    /// 弱攻撃中身
-    /// </summary>
-    void LightAttackStart()
-    {
-        //アニメーションイベントに埋め込む
-        transform.DOLocalMove(transform.forward * 0.1f, 0.2f).SetRelative();
-        e_Weaponcol.enabled = true;
-        e_Weapontrail.enabled = true;
     }
 
     /// <summary>
@@ -168,33 +154,44 @@ public class E_Input : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire2"))
         {
-            inAction = true;
-            e_Weaponcollider.tag = "E_ParryAtk";
             anim.SetTrigger("H-Atk");
         }
     }
+
+    /// <summary>
+    /// 強攻撃アニメーション再生
+    /// </summary>
+    void CombAttack()
+    {
+        if (Input.GetButtonDown("Fire3"))
+        {
+            anim.SetTrigger("Comb-Atk");
+        }
+    }
+
+
+    //================= アニメーションイベント用メソッド ===================//　ここから
+
+    /// <summary>
+    /// 弱攻撃中身
+    /// </summary>
+    void LightAttackStart()
+    {
+        transform.DOLocalMove(transform.forward * 0.4f, 0.2f).SetRelative();
+        e_Weaponcol.enabled = true;
+        e_Weapontrail.enabled = true;
+    }
+
 
     /// <summary>
     /// 強攻撃中身
     /// </summary>
     void HeavyAttackStart()
     {
-        //アニメーションイベントに埋め込む
-        //rb.velocity = Vector3.zero;
-        transform.DOLocalMove(transform.forward * 0.1f, 0.2f).SetRelative();
+        transform.DOLocalMove(transform.forward * 0.8f, 0.2f).SetRelative();
         e_Weaponcol.enabled = true;
         e_Weapontrail.enabled = true;
     }
-
-    void CombAttack()
-    {
-        if (Input.GetButtonDown("Fire3"))
-        {
-            inAction = true;
-            anim.SetTrigger("Comb-Atk");
-        }
-    }
-
 
     /// <summary>
     /// パリィ成功アニメーション再生

@@ -19,6 +19,7 @@ public class E_Sus_ParryAtk_Smb : StateMachineBehaviour
         enemyInput.GenerateEffect(animator.gameObject);
         animator.ResetTrigger("Rev-Atk");
         animator.ResetTrigger("Rev-Down");
+        enemyInput.inAction = true;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

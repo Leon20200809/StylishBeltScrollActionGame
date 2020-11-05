@@ -9,9 +9,16 @@ public class P_RevAtk : MonoBehaviour
     Animator animator;
     GameManager gameManager;
     Rigidbody rb;
+    [SerializeField]
+    Vector3 distination;
+
 
     private void OnTriggerEnter(Collider other)
     {
+        // 自分の位置と接触してきたオブジェクトの位置とを計算して、距離と方向を出して正規化(速度ベクトルを算出)
+        Vector3 distination = (other.transform.position - transform.position).normalized;
+        distination = new Vector3(distination.x, 0f, 0f).normalized;
+
         //タグ判定
         if (other.CompareTag("E_Weapon"))
         {
@@ -25,9 +32,6 @@ public class P_RevAtk : MonoBehaviour
             playerController.inAction = true;
             animator.SetTrigger("Rev-Down");
             GenerateEffect(other.gameObject);
-            // 自分の位置と接触してきたオブジェクトの位置とを計算して、距離と方向を出して正規化(速度ベクトルを算出)
-            Vector3 distination = (other.transform.position - transform.position).normalized;
-            distination = new Vector3(distination.x, 0f, 0f).normalized;
             Debug.Log(distination);
             rb.AddForce(distination * -3f, ForceMode.VelocityChange);
 
@@ -38,9 +42,6 @@ public class P_RevAtk : MonoBehaviour
             playerController.inAction = true;
             animator.SetTrigger("Rev-Down");
             GenerateEffect(other.gameObject);
-            // 自分の位置と接触してきたオブジェクトの位置とを計算して、距離と方向を出して正規化(速度ベクトルを算出)
-            Vector3 distination = (other.transform.position - transform.position).normalized;
-            distination = new Vector3(distination.x, 0f, 0f).normalized;
             Debug.Log(distination);
             rb.AddForce(distination * -5f, ForceMode.VelocityChange);
 

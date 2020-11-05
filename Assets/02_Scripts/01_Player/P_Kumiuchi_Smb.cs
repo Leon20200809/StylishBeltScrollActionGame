@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class P_Kumiuchi_Smb : StateMachineBehaviour
+public class P_Oiuchi_Smb : StateMachineBehaviour
 {
     PlayerController playerController;
 
@@ -14,7 +14,7 @@ public class P_Kumiuchi_Smb : StateMachineBehaviour
         {
             playerController = animator.gameObject.GetComponent<PlayerController>();
         }
-        playerController.isKumiuchi = false;
+        playerController.isOiuchi = false;
 
     }
 

@@ -1387,8 +1387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   e_Input: {fileID: 6323236554250643953}
-  parryEffectPrefab: {fileID: 1039816552800756, guid: 0b415c68d3bdb244e8d29bf0bba20f90, type: 3}
-  effecOfset: {x: 0, y: 0, z: 0}
+  effecOfset: {x: 0, y: 0.5, z: 0}
 --- !u!1 &2972104128280475377
 GameObject:
   m_ObjectHideFlags: 0
@@ -2887,8 +2886,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 2.53, y: 2.96, z: 3.05}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.32, y: 2.96, z: 1.4}
+  m_Center: {x: 0, y: 0, z: 0.59}
 --- !u!1 &6323236553246869432
 GameObject:
   m_ObjectHideFlags: 0
@@ -3292,13 +3291,13 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6478921488361270138}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 116
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &6323236554250643957
 CapsuleCollider:
@@ -3334,7 +3333,7 @@ MonoBehaviour:
   e_Weaponcol: {fileID: 6323236553616014902}
   e_Weapontrail: {fileID: 6323236553976696866}
   gameManager: {fileID: 0}
-  HvAtkEffectPrefab: {fileID: 1640751378235536, guid: 64ae029813d32c1489d3027539cc4cee, type: 3}
+  e_RevAtk: {fileID: 6323236554250643958}
   effecOfset: {x: 0, y: 0, z: 0}
 --- !u!114 &6323236554250643958
 MonoBehaviour:
@@ -3348,8 +3347,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 062108cd94be0cc42bebde740c07e0da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitEffectPrefab: {fileID: 1150618658446862, guid: 816db0cf37bb11448bff9a1b25ac7367, type: 3}
-  effecOfset: {x: 0, y: 1, z: 0}
+  distination: {x: 0, y: 0, z: 0}
+  hitEffecOfset: {x: 0, y: 1, z: 0}
   oiuchiCollider: {fileID: 6323236553246869433}
   KumiuchiCollider: {fileID: 6323236553117737739}
 --- !u!114 &6323236554250643959
@@ -3364,7 +3363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4330188ccfeab344be800ff69405188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDebug: 1
+  isDebug: 0
 --- !u!1 &6486364400878027732
 GameObject:
   m_ObjectHideFlags: 0

@@ -147,22 +147,8 @@ public class E_SUSInput : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            inAction = true;
             anim.SetTrigger("L-Atk");
-
         }
-    }
-
-    /// <summary>
-    /// 弱攻撃中身
-    /// </summary>
-    void L_AttackStart()
-    {
-        //アニメーションイベントに埋め込む
-        transform.DOLocalMove(transform.forward * 0.3f, 0.2f).SetRelative();
-        SoundManager.instance.PlaySE(SoundManager.SE_Type.WhipAtk);
-        e_Weaponcol.enabled = true;
-        e_Weapontrail.enabled = true;
     }
 
     /// <summary>
@@ -172,91 +158,157 @@ public class E_SUSInput : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire2"))
         {
-            inAction = true;
-            e_Weaponcollider.tag = "E_ParryAtk";
             anim.SetTrigger("H-Atk");
         }
     }
 
     /// <summary>
-    /// 強攻撃中身
+    /// 飛び道具アニメーション再生
     /// </summary>
-    void H_AttackStart()
-    {
-        //アニメーションイベントに埋め込む
-        //rb.velocity = Vector3.zero;
-        transform.DOLocalMove(transform.forward * 0.3f, 0.2f).SetRelative();
-        SoundManager.instance.PlaySE(SoundManager.SE_Type.WhipAtk);
-        e_Weaponcol.enabled = true;
-        e_Weapontrail.enabled = true;
-    }
-
-    void S_Attack()
+    void M_Attack()
     {
         if (Input.GetButtonDown("Fire3"))
         {
-            inAction = true;
             anim.SetTrigger("M-Atk");
         }
     }
 
-    void S_AttackReady()
-    {
-        GenerateExplosionReady();
-    }
-    void S_AttackStart()
-    {
-        GenerateExplosion();
-    }
-
-
-    void M_Attack()
+    /// <summary>
+    /// 必殺技アニメーション再生
+    /// </summary>
+    void S_Attack()
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            inAction = true;
             anim.SetTrigger("S-Atk");
-            //e_Sus_MagicBall.MagicBallshot();
         }
     }
 
-    public E_Sus_MagicBall e_Sus_MagicBall;
-    void M_AttackStart()
-    {
-        e_Sus_MagicBall.MagicBallshot();
-    }
-
     /// <summary>
-    /// ボスダッシュ
+    /// ボスダッシュアニメーション再生
     /// </summary>
     void Dash()
     {
         //前ダッシュ
         if (Input.GetButtonDown("Jump") && Input.GetKey(KeyCode.A) || Input.GetButtonDown("Jump") && Input.GetKey(KeyCode.D))
         {
-            inAction = true;
             anim.SetTrigger("Dash");
-            transform.DOLocalMove(transform.forward * 4f, 0.5f).SetRelative();
-
         }
     }
 
 
-        /// <summary>
-        /// パリィ成功アニメーション再生
-        /// </summary>
-        public void RevParryStart()
+    //================= アニメーションイベント用メソッド ===================//　ここから
+
+    /// <summary>
+    /// 弱攻撃アニメーションイベント用
+    /// </summary>
+    void L_AttackStart()
+    {
+        transform.DOLocalMove(transform.forward * 0.3f, 0.2f).SetRelative();
+        SoundManager.instance.PlaySE(SoundManager.SE_Type.WhipAtk);
+        e_Weaponcol.enabled = true;
+        e_Weapontrail.enabled = true;
+    }
+
+    /// <summary>
+    /// 強攻撃アニメーションイベント用
+    /// </summary>
+    void H_AttackStart()
+    {
+        e_Weaponcollider.tag = "E_ParryAtk";
+        transform.DOLocalMove(transform.forward * 0.3f, 0.2f).SetRelative();
+        SoundManager.instance.PlaySE(SoundManager.SE_Type.WhipAtk);
+        e_Weaponcol.enabled = true;
+        e_Weapontrail.enabled = true;
+    }
+
+    /// <summary>
+    /// ダッシュアニメーションイベント用
+    /// </summary>
+    void DashAction()
+    {
+        transform.DOLocalMove(transform.forward * 4f, 0.5f).SetRelative();
+    }
+
+
+    /// <summary>
+    /// 必殺技溜めアニメーションイベント用
+    /// </summary>
+    void S_AttackReady()
+    {
+        GenerateExplosionReady();
+    }
+    /// <summary>
+    /// 必殺技アニメーションイベント用
+    /// </summary>
+    void S_AttackStart()
+    {
+        GenerateExplosion();
+    }
+
+
+    //飛び道具プレファブ
+    public E_Sus_MagicBall e_Sus_MagicBall;
+    /// <summary>
+    /// 飛び道具アニメーションイベント用
+    /// </summary>
+    void M_AttackStart()
+    {
+        e_Sus_MagicBall.MagicBallshot();
+    }
+
+    /// <summary>
+    /// パリィ成功アニメーション再生
+    /// </summary>
+    public void RevParryStart()
     {
         anim.SetTrigger("Rev-Parry");
     }
 
+    public Vector3 exeffecOfset;
+    /// <summary>
+    /// パリィ攻撃用エフェクト再生
+    /// </summary>
+    /// <param name="other"></param>
+    public void GenerateEffect(GameObject other)
+    {
+        SoundManager.instance.PlaySE(SoundManager.SE_Type.E_HvAtk);
+        GameObject hAtkEffect = Instantiate(EffectManager.instance.GetEffect(1), transform.position, transform.rotation);
+        hAtkEffect.transform.parent = this.transform;
+        Destroy(hAtkEffect, 1f);
+    }
+
+    /// <summary>
+    /// 必殺技溜め用エフェクト再生
+    /// </summary>
+    public void GenerateExplosionReady()
+    {
+        SoundManager.instance.PlaySE(SoundManager.SE_Type.SusSAtkReady);
+        GameObject sAtkEffect = Instantiate(EffectManager.instance.GetEffect(4), transform.position + exeffecOfset, Quaternion.Euler(-90, 0, 0));
+        sAtkEffect.transform.parent = this.transform;
+        Destroy(sAtkEffect, 3f);
+    }
+
+
+    /// <summary>
+    /// 必殺技用エフェクト再生
+    /// </summary>
+    public void GenerateExplosion()
+    {
+        SoundManager.instance.PlaySE(SoundManager.SE_Type.SusSAtk);
+        GameObject sAtkEffect = Instantiate(EffectManager.instance.GetEffect(3), transform.position, transform.rotation);
+        Destroy(sAtkEffect, 4f);
+    }
+
+
+    //=============== Smb用メソッド ===================//　ここから
+
     public E_Sus_RevAtk e_Sus_RevAtk;
     /// <summary>
-    /// フラグリセット（アイドルモーション開始時に埋め込む）
+    /// フラグリセット
     /// </summary>
     public void Resetflag()
     {
-
         inAction = false;
         e_Weaponcol.enabled = false;
         e_Weapontrail.enabled = false;
@@ -272,7 +324,6 @@ public class E_SUSInput : MonoBehaviour
         anim.ResetTrigger("Rev-Kumiuchi");
         anim.ResetTrigger("Rev-Stun");
         anim.ResetTrigger("Rev-Parry");
-
     }
 
     /// <summary>
@@ -292,32 +343,6 @@ public class E_SUSInput : MonoBehaviour
         e_Weaponcol.enabled = false;
         e_Weapontrail.enabled = false;
     }
-
-    public Vector3 exeffecOfset;
-
-    public void GenerateEffect(GameObject other)
-    {
-        SoundManager.instance.PlaySE(SoundManager.SE_Type.E_HvAtk);
-        GameObject hAtkEffect = Instantiate(EffectManager.instance.GetEffect(1), transform.position, transform.rotation);
-        hAtkEffect.transform.parent = this.transform;
-        Destroy(hAtkEffect, 1f);
-    }
-
-    public void GenerateExplosionReady()
-    {
-        SoundManager.instance.PlaySE(SoundManager.SE_Type.SusSAtkReady);
-        GameObject sAtkEffect = Instantiate(EffectManager.instance.GetEffect(4), transform.position + exeffecOfset, Quaternion.Euler(-90, 0, 0));
-        sAtkEffect.transform.parent = this.transform;
-        Destroy(sAtkEffect, 3f);
-    }
-
-    public void GenerateExplosion()
-    {
-        SoundManager.instance.PlaySE(SoundManager.SE_Type.SusSAtk);
-        GameObject sAtkEffect = Instantiate(EffectManager.instance.GetEffect(3), transform.position, transform.rotation);
-        Destroy(sAtkEffect, 4f);
-    }
-
 
 
 }

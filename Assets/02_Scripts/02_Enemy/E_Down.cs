@@ -15,7 +15,6 @@ public class E_Down : StateMachineBehaviour
             oiuchiCol = animator.gameObject.GetComponent<E_RevAtk>();
             Debug.Log(oiuchiCol);
         }
-        //oiuchiCol.OiuchiColON();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -27,7 +26,7 @@ public class E_Down : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-            //oiuchiCol.OiuchiColOFF();
+
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

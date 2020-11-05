@@ -19,6 +19,7 @@ TagManager:
   - P_StunAttack
   - E_ParryAtk
   - E_Magic
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -28,7 +29,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Invincible
   - 
   - 
   - 

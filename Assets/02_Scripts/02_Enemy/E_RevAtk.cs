@@ -32,13 +32,12 @@ public class E_RevAtk : MonoBehaviour
             GenerateEffect(other.gameObject);
             rb.AddForce(distination * -3f, ForceMode.VelocityChange);
 
-            Debug.Log("のけぞり大");
+            Debug.Log("組み討ちやられ");
         }
         else if (other.CompareTag("P_HeavyAttack"))
         {
             animator.SetTrigger("Rev-Down");
             GenerateEffect(other.gameObject);
-            Debug.Log(distination);
             rb.AddForce(distination * -5f, ForceMode.VelocityChange);
 
             Debug.Log("ダウン");
@@ -63,8 +62,6 @@ public class E_RevAtk : MonoBehaviour
     {
         //アニメーションイベントに埋め込む　無敵時間とモーションによる移動
         transform.DOLocalMove(transform.forward * -2.5f, 0.5f).SetRelative();
-
-
     }
 
     // Start is called before the first frame update
@@ -116,6 +113,10 @@ public class E_RevAtk : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// 組み討ち食らいアニメーションイベント用
+    /// </summary>
+    /// <param name="other"></param>
     void KumiuchiFinish(Collider other)
     {
         // 自分の位置と接触してきたオブジェクトの位置とを計算して、距離と方向を出して正規化(速度ベクトルを算出)

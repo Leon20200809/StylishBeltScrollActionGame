@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class P_Kumiuchi_Smb : StateMachineBehaviour
+public class P_RevAttack_Smb : StateMachineBehaviour
 {
     PlayerController playerController;
 
@@ -14,8 +14,7 @@ public class P_Kumiuchi_Smb : StateMachineBehaviour
         {
             playerController = animator.gameObject.GetComponent<PlayerController>();
         }
-        playerController.isKumiuchi = false;
-
+        playerController.P_RevAttack();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

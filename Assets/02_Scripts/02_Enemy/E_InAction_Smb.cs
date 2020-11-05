@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RevAttack : StateMachineBehaviour
+public class E_InAction_Smb : StateMachineBehaviour
 {
-    PlayerController playerController;
+    E_Input enemyInput;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        // PlayerControllerを取得していない場合には取得する
-        if (playerController == null)
+        // スクリプトを取得していない場合には取得する
+        if (enemyInput == null)
         {
-            playerController = animator.gameObject.GetComponent<PlayerController>();
+            enemyInput = animator.gameObject.GetComponent<E_Input>();
+            Debug.Log(enemyInput);
         }
-        playerController.P_RevAttack();
+        enemyInput.inAction = true;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

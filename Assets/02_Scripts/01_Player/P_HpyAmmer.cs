@@ -28,6 +28,7 @@ public class P_HpyAmmer : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         playerController.P_HypAmr();
+        playerController.inAction = false;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

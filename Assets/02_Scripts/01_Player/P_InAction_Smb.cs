@@ -2,20 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class E_Idle : StateMachineBehaviour
+public class P_InAction_Smb : StateMachineBehaviour
 {
-    E_Input enemyInput;
+    PlayerController playerController;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        // スクリプトを取得していない場合には取得する
-        if (enemyInput == null)
+        // PlayerControllerを取得していない場合には取得する
+        if (playerController == null)
         {
-            enemyInput = animator.gameObject.GetComponent<E_Input>();
-            Debug.Log(enemyInput);
+            playerController = animator.gameObject.GetComponent<PlayerController>();
         }
-        enemyInput.Resetflag();
+        playerController.inAction = true;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

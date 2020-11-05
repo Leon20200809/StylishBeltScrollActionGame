@@ -2,20 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class P_Kumiuchi_Smb : StateMachineBehaviour
+public class E_SUS_OiuchiReset_Smb : StateMachineBehaviour
 {
-    PlayerController playerController;
+    E_Sus_RevAtk enemyInput;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        // PlayerControllerを取得していない場合には取得する
-        if (playerController == null)
+        // スクリプトを取得していない場合には取得する
+        if (enemyInput == null)
         {
-            playerController = animator.gameObject.GetComponent<PlayerController>();
+            enemyInput = animator.gameObject.GetComponent<E_Sus_RevAtk>();
         }
-        playerController.isKumiuchi = false;
-
+        enemyInput.OiuchiColOFF();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
