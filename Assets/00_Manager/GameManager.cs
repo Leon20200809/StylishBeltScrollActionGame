@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("オンで敵生成しない")]
+    public bool isDebug;
+
     //スクリプタブル・オブジェクトを登録
     public StageList stageList;
 
@@ -42,8 +45,17 @@ public class GameManager : MonoBehaviour
     //このエリアで倒した敵の数
     public int destroyCount;
 
-    //エリア内敵、生成完了フラグ
+    //エリア内敵、生成完了フラグ trueで生成完了
     public bool isCompleteGenerate;
+
+    //ゲーム状況
+    public enum GameState
+    {
+        Play,
+        Wait,
+        Move,
+    }
+    public GameState gameState = GameState.Wait;
 
     // Start is called before the first frame update
     void Start()
@@ -55,10 +67,34 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(enemyPrefabs.Count == 0)
+        if(isDebug == true)
+        {
+            generateCount = 0;
+            return;
+        }
+
+        if (gameState == GameState.Wait)
         {
             return;
         }
+
+        if (gameState == GameState.Move)
+        {
+            // エリア移動可能な状態のときに、キャラの位置がエリアの右端を超えたら次のエリアへ移る
+            if (playerController.transform.position.x >= rightLimitPos)
+            {
+                // 次のエリア設定のためにGameStateをWaitにしてUpdateメソッドを動かないようにする
+                gameState = GameState.Wait;
+                Debug.Log(gameState);
+
+                // エリアの番号を進める
+                areaIndex++;
+
+                // 次のエリアをセット
+                SetUpNextArea();
+            }
+        }
+
         //生成数チェック
         if (generateCount >= currentStageData.areaDatas[areaIndex].appearNum.Length)
         {
@@ -80,6 +116,10 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void InitStage()
     {
+        // gameState をWaitに設定してUpdateメソッドを止めておく
+        gameState = GameState.Wait;
+        Debug.Log(gameState);
+
         // TODO GameDataからステージ番号をセット。現在はステージ１としておく
         currentStageNo = 0;
 
@@ -128,6 +168,9 @@ public class GameManager : MonoBehaviour
         //エリア内の敵生成完了フラグリセット
         isCompleteGenerate = false;
 
+        //ゲームスタート
+        gameState = GameState.Play;
+        Debug.Log(gameState);
     }
 
     void GenerateEnemy(Vector3 charaPos, int enemyIndex)
@@ -188,7 +231,9 @@ public class GameManager : MonoBehaviour
         if (destroyCount >= generateCount)
         {
             Debug.Log("エリアクリア");
-            // TODO 次のエリアへ移行するための準備処理を追加
+            // 次のエリアへ移動可能にする
+            gameState = GameState.Move;
+            Debug.Log(gameState);
         }
     }
 

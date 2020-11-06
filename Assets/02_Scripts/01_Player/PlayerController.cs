@@ -200,7 +200,7 @@ public class PlayerController : MonoBehaviour
         //上回避
         else if (Input.GetButtonDown("Jump") && Input.GetKey(KeyCode.W))
         {
-            Debug.Log(transform.localEulerAngles.y);
+            //Debug.Log(transform.localEulerAngles.y);
 
             if (transform.localEulerAngles.y < 99f)//右向き
             {
@@ -321,25 +321,26 @@ public class PlayerController : MonoBehaviour
     {
         //アニメーションイベントに埋め込む　無敵時間とモーションによる移動
         transform.DOLocalMove(transform.forward * 2.0f, 0.5f).SetRelative();
-
+        StartCoroutine(InvTime(0.4f));
     }
     void DashAction_U()
     {
         //アニメーションイベントに埋め込む　無敵時間とモーションによる移動
         transform.DOLocalMove(transform.right * -1.3f, 0.5f).SetRelative();
-
+        StartCoroutine(InvTime(0.4f));
     }
 
     void DashAction_D()
     {
         //アニメーションイベントに埋め込む　無敵時間とモーションによる移動
         transform.DOLocalMove(transform.right * 1.3f, 0.5f).SetRelative();
-
+        StartCoroutine(InvTime(0.4f));
     }
     void DashAction_B()
     {
         //アニメーションイベントに埋め込む　無敵時間とモーションによる移動
         transform.DOLocalMove(transform.forward * -2.0f, 0.5f).SetRelative();
+        StartCoroutine(InvTime(0.4f));
     }
 
 
@@ -366,6 +367,10 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    void KumiuchiInv()
+    {
+        StartCoroutine(InvTime(2f));
+    }
     void KumiuchiFinish()
     {
         SoundManager.instance.PlaySE(SoundManager.SE_Type.Kick);
@@ -491,5 +496,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// 無敵メソッド
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator InvTime(float time) //StartCoroutine(InvTime(時間f));
+    {
+        gameObject.layer = LayerMask.NameToLayer("Invincible");
+        yield return new WaitForSeconds(time);
+        gameObject.layer = LayerMask.NameToLayer("Default");
+    }
 }
