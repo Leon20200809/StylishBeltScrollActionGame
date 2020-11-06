@@ -20,6 +20,7 @@ TagManager:
   - E_ParryAtk
   - E_Magic
   - FxTemporaire
+  - E_Bow
   layers:
   - Default
   - TransparentFX
