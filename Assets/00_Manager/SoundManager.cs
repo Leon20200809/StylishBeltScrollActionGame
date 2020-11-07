@@ -36,6 +36,8 @@ public class SoundManager : MonoBehaviour
         WhipAtk,
         SusSAtk,
         SusSAtkReady,
+        BowAtk,
+        Dash,
 
     }
 

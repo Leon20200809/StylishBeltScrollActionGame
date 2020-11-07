@@ -322,12 +322,15 @@ public class PlayerController : MonoBehaviour
         //アニメーションイベントに埋め込む　無敵時間とモーションによる移動
         transform.DOLocalMove(transform.forward * 2.0f, 0.5f).SetRelative();
         StartCoroutine(InvTime(0.4f));
+        SoundManager.instance.PlaySE(SoundManager.SE_Type.Dash);
+
     }
     void DashAction_U()
     {
         //アニメーションイベントに埋め込む　無敵時間とモーションによる移動
         transform.DOLocalMove(transform.right * -1.3f, 0.5f).SetRelative();
         StartCoroutine(InvTime(0.4f));
+        SoundManager.instance.PlaySE(SoundManager.SE_Type.Dash);
     }
 
     void DashAction_D()
@@ -335,12 +338,14 @@ public class PlayerController : MonoBehaviour
         //アニメーションイベントに埋め込む　無敵時間とモーションによる移動
         transform.DOLocalMove(transform.right * 1.3f, 0.5f).SetRelative();
         StartCoroutine(InvTime(0.4f));
+        SoundManager.instance.PlaySE(SoundManager.SE_Type.Dash);
     }
     void DashAction_B()
     {
         //アニメーションイベントに埋め込む　無敵時間とモーションによる移動
         transform.DOLocalMove(transform.forward * -2.0f, 0.5f).SetRelative();
         StartCoroutine(InvTime(0.4f));
+        SoundManager.instance.PlaySE(SoundManager.SE_Type.Dash);
     }
 
 
@@ -453,11 +458,11 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("OiuchiCol"))
         {
-            StartCoroutine(OiuchiFlag(2.0f));
+            StartCoroutine(OiuchiFlag(3.0f));
         }
         else if (other.CompareTag("KumiuchiCol"))
         {
-            StartCoroutine(KumiuchiFlag(2.0f));
+            StartCoroutine(KumiuchiFlag(3.0f));
         }
         return;
     }

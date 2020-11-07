@@ -14,7 +14,7 @@ public class P_Oiuchi_Smb : StateMachineBehaviour
         {
             playerController = animator.gameObject.GetComponent<PlayerController>();
         }
-        playerController.isOiuchi = false;
+        playerController.isKumiuchi = false;
 
     }
 

@@ -17,7 +17,7 @@ public class E_BowShot : MonoBehaviour
         GameObject arrowShot = Instantiate(arrowPrefab, transform.position + effecOfset, Quaternion.Euler(0, 0, 90));
         Rigidbody mbRb = arrowShot.GetComponent<Rigidbody>();
         mbRb.AddForce(transform.forward * arrowSpeed);
-        SoundManager.instance.PlaySE(SoundManager.SE_Type.MagicBall);
+        SoundManager.instance.PlaySE(SoundManager.SE_Type.BowAtk);
         Destroy(arrowShot, 4f);
 
     }

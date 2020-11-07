@@ -39,10 +39,17 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     /// <param name="waitTime"></param>
     /// <returns></returns>
-    IEnumerator DestroyEnemy(float waitTime = 0.0f)
+    public IEnumerator DestroyEnemy(float waitTime = 0.0f)
     {
+        Debug.Log("敵撃破処理");
         yield return new WaitForSeconds(waitTime);
         gameManager.RemoveEnemyList(this);
+        Destroy(gameObject);
+    }
+
+    public void DestroyEnemySend()
+    {
+        //gameManager.RemoveEnemyList(this);
         Destroy(gameObject);
     }
 }

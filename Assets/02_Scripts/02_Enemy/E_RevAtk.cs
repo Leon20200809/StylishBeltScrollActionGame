@@ -7,6 +7,7 @@ public class E_RevAtk : MonoBehaviour
 {
     Animator animator;
     GameManager gameManager;
+    EnemyController enemyController;
     Rigidbody rb;
     [SerializeField]
     Vector3 distination;
@@ -18,6 +19,7 @@ public class E_RevAtk : MonoBehaviour
         distination = new Vector3(distination.x, 0f, 0f).normalized;
         Debug.Log(distination);
 
+        //Damage();
 
         //タグ判定
         if (other.CompareTag("P_LightAttack"))
@@ -55,13 +57,17 @@ public class E_RevAtk : MonoBehaviour
             GenerateEffect(other.gameObject);
 
             Debug.Log("組み討ちHIT");
+
         }
     }
 
-    public void TestAction()
+    public void Damage()
     {
-        //アニメーションイベントに埋め込む　無敵時間とモーションによる移動
-        transform.DOLocalMove(transform.forward * -2.5f, 0.5f).SetRelative();
+        //HP減らす
+
+        //撃破処理
+        animator.SetTrigger("Dead");
+        StartCoroutine(enemyController.DestroyEnemy(3.0f));
     }
 
     // Start is called before the first frame update
@@ -69,12 +75,7 @@ public class E_RevAtk : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        enemyController = GetComponent<EnemyController>();
     }
 
     public Vector3 hitEffecOfset;
@@ -99,7 +100,6 @@ public class E_RevAtk : MonoBehaviour
     public void OiuchiColOFF()
     {
         oiuchiCollider.enabled = false;
-
     }
     public Collider KumiuchiCollider;
 
@@ -110,7 +110,6 @@ public class E_RevAtk : MonoBehaviour
     public void KumiuchiColOFF()
     {
         KumiuchiCollider.enabled = false;
-
     }
 
     /// <summary>
@@ -121,7 +120,6 @@ public class E_RevAtk : MonoBehaviour
     {
         // 自分の位置と接触してきたオブジェクトの位置とを計算して、距離と方向を出して正規化(速度ベクトルを算出)
         rb.AddForce(distination * -5f, ForceMode.VelocityChange);
-
     }
 
 
