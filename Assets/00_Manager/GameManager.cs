@@ -90,8 +90,18 @@ public class GameManager : MonoBehaviour
                 // エリアの番号を進める
                 areaIndex++;
 
-                // 次のエリアをセット
-                SetUpNextArea();
+                //ステージをクリアしたか確認
+                if (CheckStageClear())
+                {
+                    NextStage();
+                }
+                else
+                {
+                    // 次のエリアをセット
+                    SetUpNextArea();
+                }
+
+                
             }
         }
 
@@ -237,4 +247,43 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// ステージクリア判定
+    /// </summary>
+    /// <returns></returns>
+    bool CheckStageClear()
+    {
+        if (areaIndex >= currentStageData.areaDatas.Count)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    void NextStage()
+    {
+        //ステージ番号を次に送る
+        currentStageNo++;
+
+        //すべてのステージをクリアしたか確認する
+        if (currentStageNo >= stageList.stageDatas.Count)
+        {
+            //
+            Debug.Log("ゲームクリア");
+        }
+        else
+        {
+            //次のステージへ
+            Debug.Log("次のステージへ");
+
+            // TODO ステージクリア演出
+            
+
+            //次のステージのデータを取得
+            InitStage();
+
+            //次のステージの最初のエリアを用意
+            SetUpNextArea();
+        }
+    }
 }

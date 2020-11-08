@@ -18,36 +18,36 @@ MonoBehaviour:
     - areaNo: 0
       areaMoveLimit:
         horizontalLimit:
-          left: -10
-          right: 10
+          left: -5
+          right: 15
         depthLimit:
           forword: 5
-          back: -4
-      appearNum: 0000000000000000010000000100000000000000
+          back: -5
+      appearNum: 000000000100000000000000
     - areaNo: 1
       areaMoveLimit:
         horizontalLimit:
-          left: -10
-          right: 10
+          left: 15
+          right: 50
         depthLimit:
           forword: 5
-          back: -4
-      appearNum: 0000000000000000000000000000000002000000
-    - areaNo: 0
+          back: -5
+      appearNum: 0000000001000000000000000000000001000000
+    - areaNo: 2
       areaMoveLimit:
         horizontalLimit:
-          left: -10
-          right: 10
+          left: 50
+          right: 85
         depthLimit:
           forword: 5
-          back: -4
-      appearNum: 000000000100000002000000
-    - areaNo: 1
+          back: -5
+      appearNum: 000000000000000000000000
+    - areaNo: 3
       areaMoveLimit:
         horizontalLimit:
-          left: -10
-          right: 10
+          left: 85
+          right: 115
         depthLimit:
           forword: 5
-          back: -4
-      appearNum: 01000000
+          back: -5
+      appearNum: 02000000

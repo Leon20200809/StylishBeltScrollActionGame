@@ -13,8 +13,7 @@ public class P_Damager : MonoBehaviour
         if (other.CompareTag("Enemy") || other.CompareTag("BossEnemy"))
         {
             wcollider.enabled = false;
-            playerController.isOiuchi = false;
-            playerController.isKumiuchi = false;
+            GameData.instance.ComboCountStart();
             Debug.Log("プレイヤー攻撃HIT");
         }
     }
