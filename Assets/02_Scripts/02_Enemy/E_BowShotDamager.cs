@@ -24,9 +24,4 @@ public class E_BowShotDamager : MonoBehaviour
         wcollider = GetComponent<Collider>(); 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

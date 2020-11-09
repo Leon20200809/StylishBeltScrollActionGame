@@ -5,6 +5,9 @@ using DG.Tweening;
 
 public class P_RevAtk : MonoBehaviour
 {
+    bool isDead;
+    public int maxHp;
+    public int hp;
     PlayerController playerController;
     Animator animator;
     GameManager gameManager;
@@ -12,9 +15,17 @@ public class P_RevAtk : MonoBehaviour
     [SerializeField]
     Vector3 distination;
 
+    
 
     private void OnTriggerEnter(Collider other)
     {
+        if (isDead)
+        {
+            return;
+        }
+        //ダメージソース取得
+        other.gameObject.TryGetComponent(out E_Damager damager);
+
         // 自分の位置と接触してきたオブジェクトの位置とを計算して、距離と方向を出して正規化(速度ベクトルを算出)
         Vector3 distination = (other.transform.position - transform.position).normalized;
         distination = new Vector3(distination.x, 0f, 0f).normalized;
@@ -22,14 +33,14 @@ public class P_RevAtk : MonoBehaviour
         //タグ判定
         if (other.CompareTag("E_Weapon"))
         {
-            playerController.inAction = true;
+            Damage(damager.atkPow_L);
             animator.SetTrigger("Rev-Atk");
             GenerateEffect(other.gameObject);
             Debug.Log("のけぞり小");
         }
         else if (other.CompareTag("E_ParryAtk"))
         {
-            playerController.inAction = true;
+            Damage(damager.atkPow_H);
             animator.SetTrigger("Rev-Down");
             GenerateEffect(other.gameObject);
             Debug.Log(distination);
@@ -39,7 +50,7 @@ public class P_RevAtk : MonoBehaviour
         }
         else if (other.CompareTag("E_Magic"))
         {
-            playerController.inAction = true;
+            Damage(damager.atkPow_L);
             animator.SetTrigger("Rev-Down");
             GenerateEffect(other.gameObject);
             Debug.Log(distination);
@@ -48,18 +59,36 @@ public class P_RevAtk : MonoBehaviour
             Debug.Log("ダウン");
         }
     }
+
+    /// <summary>
+    /// ダメージ処理
+    /// </summary>
+    /// <param name="AtkPow"></param>
+    void Damage(int AtkPow)
+    {
+        //HP減らす
+        hp -= AtkPow;
+
+        //撃破処理
+        if (hp <= 0)
+        {
+            hp = 0;
+            isDead = true;
+            animator.SetTrigger("Dead");
+        }
+
+        // TODO UIに現在のHPを反映
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         playerController = GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        maxHp = GameData.instance.charaDataList[0].hp;
+        hp = maxHp;
     }
 
     public GameObject hitEffectPrefab;

@@ -5,6 +5,9 @@ using DG.Tweening;
 
 public class E_RevAtk : MonoBehaviour
 {
+    bool isDead;
+    public int maxHp;
+    public int hp;
     Animator animator;
     GameManager gameManager;
     EnemyController enemyController;
@@ -14,60 +17,94 @@ public class E_RevAtk : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (isDead)
+        {
+            return;
+        }
+        //ダメージソース取得
+        other.gameObject.TryGetComponent(out P_Damager damager);
+
         // 自分の位置と接触してきたオブジェクトの位置とを計算して、距離と方向を出して正規化(速度ベクトルを算出)
         distination = (other.transform.position - transform.position).normalized;
         distination = new Vector3(distination.x, 0f, 0f).normalized;
         Debug.Log(distination);
 
-        //Damage();
-
         //タグ判定
         if (other.CompareTag("P_LightAttack"))
         {
+            Damage(damager.atkPow_L);
             animator.SetTrigger("Rev-Atk");
             GenerateEffect(other.gameObject);
             Debug.Log("のけぞり小");
         }
         else if (other.CompareTag("P_StunAttack"))
         {
+            Damage(damager.atkPow_Kick);
             animator.SetTrigger("Rev-Stun");
             GenerateEffect(other.gameObject);
             rb.AddForce(distination * -3f, ForceMode.VelocityChange);
-
             Debug.Log("組み討ちやられ");
         }
         else if (other.CompareTag("P_HeavyAttack"))
         {
+            Damage(damager.atkPow_H);
             animator.SetTrigger("Rev-Down");
             GenerateEffect(other.gameObject);
             rb.AddForce(distination * -5f, ForceMode.VelocityChange);
-
+            Debug.Log("ダウン");
+        }
+        else if (other.CompareTag("P_KickAtk"))
+        {
+            Damage(damager.atkPow_Kick);
+            animator.SetTrigger("Rev-Down");
+            GenerateEffect(other.gameObject);
+            rb.AddForce(distination * -5f, ForceMode.VelocityChange);
+            Debug.Log("ダウン");
+        }
+        else if (other.CompareTag("P_IaiAtk"))
+        {
+            Damage(damager.atkPow_I);
+            animator.SetTrigger("Rev-Down");
+            GenerateEffect(other.gameObject);
+            rb.AddForce(distination * -5f, ForceMode.VelocityChange);
             Debug.Log("ダウン");
         }
         else if (other.CompareTag("Oiuchi"))
         {
+            Damage(damager.atkPow_Oiuchi);
             animator.SetTrigger("Rev-Oiuchi");
             GenerateEffect(other.gameObject);
-
             Debug.Log("追い討ちHIT");
         }
         else if (other.CompareTag("Kumiuchi"))
         {
+            Damage(damager.atkPow_Kumiuchi);
             animator.SetTrigger("Rev-Kumiuchi");
             GenerateEffect(other.gameObject);
-
             Debug.Log("組み討ちHIT");
-
         }
     }
 
-    public void Damage()
+    /// <summary>
+    /// ダメージ処理
+    /// </summary>
+    /// <param name="AtkPow"></param>
+    void Damage(int AtkPow)
     {
         //HP減らす
+        hp -= AtkPow;
 
         //撃破処理
-        animator.SetTrigger("Dead");
-        StartCoroutine(enemyController.DestroyEnemy(3.0f));
+        if (hp <= 0)
+        {
+            hp = 0;
+            isDead = true;
+            animator.SetTrigger("Dead");
+            StartCoroutine(enemyController.DestroyEnemy(3.0f));
+        }
+        
+        // TODO UIに現在のHPを反映
+            
     }
 
     // Start is called before the first frame update
@@ -76,6 +113,8 @@ public class E_RevAtk : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         enemyController = GetComponent<EnemyController>();
+        maxHp = GameData.instance.charaDataList[1].hp;
+        hp = maxHp;
     }
 
     public Vector3 hitEffecOfset;

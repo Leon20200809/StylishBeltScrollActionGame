@@ -21,6 +21,8 @@ TagManager:
   - E_Magic
   - FxTemporaire
   - E_Bow
+  - P_IaiAtk
+  - P_KickAtk
   layers:
   - Default
   - TransparentFX

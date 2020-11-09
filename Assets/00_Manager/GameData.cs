@@ -21,7 +21,7 @@ public class GameData : MonoBehaviour
         public int hp;
         public float moveSpeed;
         public float rotateSpeed;
-        public int attackPower;
+        public int baseAttackPower;
     }
 
     public List<CharaData> charaDataList = new List<CharaData>();

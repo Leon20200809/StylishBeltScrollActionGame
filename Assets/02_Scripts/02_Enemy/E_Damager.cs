@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class E_Damager : MonoBehaviour
 {
+    public int atkPow_L;
+    public int atkPow_H;
+    public int atkPow_C;
     Collider wcollider;
+
     private void OnTriggerEnter(Collider other)
     {
         //タグ判定
@@ -21,6 +25,9 @@ public class E_Damager : MonoBehaviour
     void Start()
     {
         wcollider = GetComponent<Collider>();
+        atkPow_L = GameData.instance.charaDataList[1].baseAttackPower;
+        atkPow_H = atkPow_L * 3;
+        atkPow_C = Mathf.RoundToInt(atkPow_L * 0.7f);
     }
 
     // Update is called once per frame

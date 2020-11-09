@@ -16,7 +16,10 @@ public class PlayerController : MonoBehaviour
     public bool isKumiuchi;
     public bool isOiuchi;
 
+    public int atkPow;
+
     public GameObject p_Waponcollider;
+    //public P_Damager p_Damager;
     public Collider waponcollider;
     public Collider kickcollider;
     public Collider parrycollider;
@@ -135,8 +138,6 @@ public class PlayerController : MonoBehaviour
         HeavyAttack();
         Dash();
         Parry();
-
-
     }
 
     /// <summary>
@@ -241,6 +242,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void LightAttackStart()
     {
+        
         transform.DOLocalMove(transform.forward * 0.1f, 0.2f).SetRelative();
         waponcollider.enabled = true;
         weapontrail.enabled = true;
@@ -252,6 +254,7 @@ public class PlayerController : MonoBehaviour
     void HeavyAttackStart()
     {
         p_Waponcollider.tag = "P_HeavyAttack";
+
         transform.DOLocalMove(transform.forward * 0.1f, 0.2f).SetRelative();
         waponcollider.enabled = true;
         weapontrail.enabled = true;
@@ -275,7 +278,7 @@ public class PlayerController : MonoBehaviour
     {
         //アニメーションイベントに埋め込む
         transform.DOLocalMove(transform.forward * 4.0f, 0.6f).SetRelative();
-        p_Waponcollider.tag = "P_HeavyAttack";
+        p_Waponcollider.tag = "P_IaiAtk";
         waponcollider.enabled = true;
         weapontrail.enabled = true;
     }
@@ -296,6 +299,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void KickAttackStart()
     {
+        p_Waponcollider.tag = "P_KickAtk";
         SoundManager.instance.PlaySE(SoundManager.SE_Type.Kick);
         transform.DOLocalMove(transform.forward * 0.5f, 0.2f).SetRelative();
         kickcollider.enabled = true;
