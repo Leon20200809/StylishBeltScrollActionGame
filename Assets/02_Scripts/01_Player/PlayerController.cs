@@ -16,10 +16,7 @@ public class PlayerController : MonoBehaviour
     public bool isKumiuchi;
     public bool isOiuchi;
 
-    public int atkPow;
-
     public GameObject p_Waponcollider;
-    //public P_Damager p_Damager;
     public Collider waponcollider;
     public Collider kickcollider;
     public Collider parrycollider;
@@ -111,12 +108,12 @@ public class PlayerController : MonoBehaviour
         if (dir.x > 0)
         {
             // 右
-            pos = 90;    
+            pos = 90;
         }
         else
         {
             // 左
-            pos = -90;   
+            pos = -90;
         }
 
         // プレイヤーの向きを進行方向に合わせる(上下移動の際には変更しない)
@@ -242,7 +239,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void LightAttackStart()
     {
-        
+
         transform.DOLocalMove(transform.forward * 0.1f, 0.2f).SetRelative();
         waponcollider.enabled = true;
         weapontrail.enabled = true;
@@ -384,10 +381,6 @@ public class PlayerController : MonoBehaviour
     {
         SoundManager.instance.PlaySE(SoundManager.SE_Type.Kick);
     }
-
-
-
-
 
     //=========== Smb用メソッド ===================//　ここから
 

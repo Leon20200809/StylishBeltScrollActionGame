@@ -1,14 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 
 public class P_RevAtk : MonoBehaviour
 {
     bool isDead;
+
+    public Slider hpSlider;
     public int maxHp;
     public int hp;
+
     PlayerController playerController;
+    PlayerUIManager playerUI;
     Animator animator;
     GameManager gameManager;
     Rigidbody rb;
@@ -24,7 +29,7 @@ public class P_RevAtk : MonoBehaviour
             return;
         }
         //ダメージソース取得
-        other.gameObject.TryGetComponent(out E_Damager damager);
+        other.gameObject.TryGetComponent(out E_DamagerBase damager);
 
         // 自分の位置と接触してきたオブジェクトの位置とを計算して、距離と方向を出して正規化(速度ベクトルを算出)
         Vector3 distination = (other.transform.position - transform.position).normalized;
@@ -78,8 +83,17 @@ public class P_RevAtk : MonoBehaviour
         }
 
         // TODO UIに現在のHPを反映
-
+        UpdateHP(hp);
     }
+
+
+    public void UpdateHP(int hp)
+    {
+        Debug.Log(hp);
+        hpSlider.DOValue((float)hp / maxHp, 0.5f);
+        //hpSlider.DOValue(hp, 0.5f);
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -89,6 +103,7 @@ public class P_RevAtk : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         maxHp = GameData.instance.charaDataList[0].hp;
         hp = maxHp;
+        UpdateHP(hp);
     }
 
     public GameObject hitEffectPrefab;

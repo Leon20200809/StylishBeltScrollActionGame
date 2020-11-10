@@ -14,7 +14,7 @@ public class E_RevAtk : MonoBehaviour
     Rigidbody rb;
     [SerializeField]
     Vector3 distination;
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if (isDead)
