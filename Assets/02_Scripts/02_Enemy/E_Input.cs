@@ -64,18 +64,20 @@ public class E_Input : MonoBehaviour
     /// <param name="z">Z軸の移動値</param>
     private void Move(float x, float z)
     {
-        // キー入力値を正規化
-        Vector3 moveDir = new Vector3(x, 0, z).normalized;
+        if (playerCont)
+        {
+            // キー入力値を正規化
+            Vector3 moveDir = new Vector3(x, 0, z).normalized;
 
-        // プレイヤーの移動
-        rb.velocity = new Vector3(moveDir.x * moveSpeed, rb.velocity.y, moveDir.z * moveSpeed);
+            // プレイヤーの移動
+            rb.velocity = new Vector3(moveDir.x * moveSpeed, rb.velocity.y, moveDir.z * moveSpeed);
 
-        // 移動のアニメの同期
-        anim.SetFloat("Speed", rb.velocity.magnitude);
+            // 移動のアニメの同期
+            anim.SetFloat("Speed", rb.velocity.magnitude);
 
-        // 移動に合わせて向きを変える
-        LookDirection(moveDir);
-
+            // 移動に合わせて向きを変える
+            LookDirection(moveDir);
+        }
     }
 
     /// <summary>
