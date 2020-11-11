@@ -42,7 +42,7 @@ public class E_RevAtk : MonoBehaviour
             Damage(damager.atkPow_Kick);
             animator.SetTrigger("Rev-Stun");
             GenerateEffect(other.gameObject);
-            rb.AddForce(distination * -3f, ForceMode.VelocityChange);
+            transform.DOLocalMove(distination * -3f, 0.5f).SetRelative();
             Debug.Log("組み討ちやられ");
         }
         else if (other.CompareTag("P_HeavyAttack"))
@@ -50,7 +50,7 @@ public class E_RevAtk : MonoBehaviour
             Damage(damager.atkPow_H);
             animator.SetTrigger("Rev-Down");
             GenerateEffect(other.gameObject);
-            rb.AddForce(distination * -5f, ForceMode.VelocityChange);
+            transform.DOLocalMove(distination * -3f, 0.5f).SetRelative();
             Debug.Log("ダウン");
         }
         else if (other.CompareTag("P_KickAtk"))
@@ -58,7 +58,7 @@ public class E_RevAtk : MonoBehaviour
             Damage(damager.atkPow_Kick);
             animator.SetTrigger("Rev-Down");
             GenerateEffect(other.gameObject);
-            rb.AddForce(distination * -5f, ForceMode.VelocityChange);
+            transform.DOLocalMove(distination * -3f, 0.5f).SetRelative();
             Debug.Log("ダウン");
         }
         else if (other.CompareTag("P_IaiAtk"))
@@ -66,7 +66,7 @@ public class E_RevAtk : MonoBehaviour
             Damage(damager.atkPow_I);
             animator.SetTrigger("Rev-Down");
             GenerateEffect(other.gameObject);
-            rb.AddForce(distination * -5f, ForceMode.VelocityChange);
+            transform.DOLocalMove(distination * -3f, 0.5f).SetRelative();
             Debug.Log("ダウン");
         }
         else if (other.CompareTag("Oiuchi"))

@@ -8,7 +8,7 @@ using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public Transform targetPos;
+    Transform targetPos;
     private NavMeshAgent navAgent = null;
     [SerializeField]
     private DestinationController destinationController;
@@ -18,6 +18,13 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     Vector3 distination;
 
+    [SerializeField]
+    float battleRange;
+
+    [SerializeField]
+    float targetDistance;
+
+    float timeleft;
 
     void Start()
     {
@@ -25,6 +32,8 @@ public class EnemyMovement : MonoBehaviour
         destinationController = GetComponent<DestinationController>();
         navAgent.SetDestination(destinationController.GetDestination());
         animator = GetComponent<Animator>();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        targetPos = player.transform;
     }
 
     void Update()
@@ -33,52 +42,102 @@ public class EnemyMovement : MonoBehaviour
         // 自分の位置と接触してきたオブジェクトの位置とを計算して、距離と方向を出して正規化(速度ベクトルを算出)
         Vector3 distination = (targetPos.transform.position - transform.position).normalized;
         distination = new Vector3(distination.x, 0f, 0f).normalized;
-        Debug.Log(distination);
 
         if (distination.x == 1)
         {
             transform.LookAt(targetPos);
             transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
-
         }
         else
         {
             transform.LookAt(targetPos);
             transform.rotation = Quaternion.Euler(new Vector3(0, -90, 0));
-
         }
         animator.SetFloat("Speed", navAgent.velocity.magnitude);
 
 
 
+        //移動先決定
         if (Vector3.Distance(transform.position, destinationController.GetDestination()) < 0.5f)
         {
             destinationController.CreateDestination();
             navAgent.SetDestination(destinationController.GetDestination());
         }
-        else if (Vector3.Distance(transform.position, destinationController.GetDestination()) < 1f)
+
+        //攻撃開始
+        /*if (Vector3.Distance(transform.position, targetPos.position) < 0f)
         {
-            //navAgent.speed = 0f;
-
-            if (attackDice > 1f)
+            Debug.Log(navAgent.remainingDistance);
+            timeleft -= Time.deltaTime;
+            if (timeleft <= 0.0)
             {
-                Debug.Log("攻撃");
+                timeleft = 2.0f;
+                attackIndex = Random.Range(1, 101);
+                Debug.Log(attackIndex);
+
+                if (1 <= attackIndex && attackIndex <= 21)
+                {
+                    animator.SetTrigger("H-Atk");
+                }
+                else if (31 <= attackIndex && attackIndex <= 51)
+                {
+                    animator.SetTrigger("Comb-Atk");
+                }
+                else
+                {
+                    animator.SetTrigger("L-Atk");
+                }
             }
-        }
-
-
+        }*/
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "AtkPoint")
+        {
+            Debug.Log("AtkPoint");
+            timeleft -= Time.deltaTime;
+            if (timeleft <= 0.0)
+            {
+                timeleft = 2.0f;
+                attackIndex = Random.Range(1, 101);
+                Debug.Log(attackIndex);
+
+                if (1 <= attackIndex && attackIndex <= 21)
+                {
+                    animator.SetTrigger("H-Atk");
+                }
+                else if (31 <= attackIndex && attackIndex <= 51)
+                {
+                    animator.SetTrigger("Comb-Atk");
+                }
+                else
+                {
+                    animator.SetTrigger("L-Atk");
+                }
+            }
+
+        }
+    }
     //乱数用
-    float attackDice;
+    int attackIndex;
 
     /// <summary>
     /// 乱数生成＠攻撃アニメーションランダム再生
     /// </summary>
-    public void RandomAttackIndex()
+    void AttackIndex()
     {
-        attackDice = Random.value;
-        animator.SetFloat("RandomAttackIndex", attackDice);
-        //Debug.Log("乱数 : " + randomAttack);
+        attackIndex = Random.Range(1, 101);
+        Debug.Log(attackIndex);
+    }
+
+    public void NaviMesh_OFF()
+    {
+        navAgent.isStopped = true;
+    }
+
+    public void NaviMesh_ON()
+    {
+        navAgent.isStopped = false;
     }
 }

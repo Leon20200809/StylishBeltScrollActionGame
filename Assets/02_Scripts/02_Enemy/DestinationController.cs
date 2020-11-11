@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class DestinationController : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class DestinationController : MonoBehaviour
 
     void Start()
     {
+        targets = GameObject.FindGameObjectsWithTag("AtkPoint").Select(x => x.transform).ToArray();
+        Debug.Log(targets[0].transform.position);
         //　初期位置を設定
         startPosition = transform.position;
         SetDestination(transform.position);

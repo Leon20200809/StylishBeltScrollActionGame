@@ -23,6 +23,7 @@ TagManager:
   - E_Bow
   - P_IaiAtk
   - P_KickAtk
+  - AtkPoint
   layers:
   - Default
   - TransparentFX

@@ -196,6 +196,15 @@ public class E_Input : MonoBehaviour
     }
 
     /// <summary>
+    /// 武器コライダーオフ
+    /// </summary>
+    void AttackEnd()
+    {
+        e_Weaponcol.enabled = false;
+        e_Weapontrail.enabled = false;
+    }
+
+    /// <summary>
     /// パリィ成功アニメーション再生
     /// </summary>
     public void RevParryStart()
