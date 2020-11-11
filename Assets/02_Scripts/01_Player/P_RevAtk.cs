@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class P_RevAtk : MonoBehaviour
 {
@@ -80,6 +81,7 @@ public class P_RevAtk : MonoBehaviour
             hp = 0;
             isDead = true;
             animator.SetTrigger("Dead");
+            SceneManager.LoadScene("GameScene");
         }
 
         // TODO UIに現在のHPを反映
