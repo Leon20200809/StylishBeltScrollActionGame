@@ -12,7 +12,7 @@ public class NaviMesh_OFF_Smb : StateMachineBehaviour
         if (enemyMovement == null)
         {
             enemyMovement = animator.gameObject.GetComponent<EnemyMovement>();
-            Debug.Log(enemyMovement);
+
         }
         enemyMovement.NaviMesh_OFF();
 

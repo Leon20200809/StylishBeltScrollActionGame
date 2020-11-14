@@ -13,7 +13,6 @@ public class E_InAction_Smb : StateMachineBehaviour
         if (enemyInput == null)
         {
             enemyInput = animator.gameObject.GetComponent<E_Input>();
-            Debug.Log(enemyInput);
         }
         enemyInput.inAction = true;
     }

@@ -100,8 +100,7 @@ public class EnemyMovement : MonoBehaviour
             if (timeleft <= 0.0)
             {
                 timeleft = 2.0f;
-                attackIndex = Random.Range(1, 101);
-                Debug.Log(attackIndex);
+                AttackIndex();
 
                 if (1 <= attackIndex && attackIndex <= 21)
                 {
@@ -128,7 +127,7 @@ public class EnemyMovement : MonoBehaviour
     void AttackIndex()
     {
         attackIndex = Random.Range(1, 101);
-        Debug.Log(attackIndex);
+        //Debug.Log(attackIndex);
     }
 
     public void NaviMesh_OFF()

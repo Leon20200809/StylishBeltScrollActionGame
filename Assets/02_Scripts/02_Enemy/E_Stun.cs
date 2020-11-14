@@ -5,6 +5,7 @@ using UnityEngine;
 public class E_Stun : StateMachineBehaviour
 {
     E_RevAtk kumiuchiCol;
+    E_Input e_Input;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -12,9 +13,10 @@ public class E_Stun : StateMachineBehaviour
         if (kumiuchiCol == null)
         {
             kumiuchiCol = animator.gameObject.GetComponent<E_RevAtk>();
-            Debug.Log(kumiuchiCol);
+            e_Input = animator.gameObject.GetComponent<E_Input>();
         }
         kumiuchiCol.KumiuchiColON();
+        e_Input.e_Parrycollider.enabled = false;
 
     }
 

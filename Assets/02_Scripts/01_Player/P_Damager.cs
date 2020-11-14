@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class P_Damager : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class P_Damager : MonoBehaviour
     Collider wcollider;
     public PlayerController playerController;
 
+    public int hitCount;
+    public float comboTime;
+    public Text combCountText;
 
 
     private void OnTriggerEnter(Collider other)
@@ -22,7 +26,7 @@ public class P_Damager : MonoBehaviour
         if (other.CompareTag("Enemy") || other.CompareTag("BossEnemy"))
         {
             wcollider.enabled = false;
-            GameData.instance.ComboCountStart();
+            ComboCountStart();
             Debug.Log("プレイヤー攻撃HIT");
         }
     }
@@ -38,5 +42,25 @@ public class P_Damager : MonoBehaviour
         atkPow_Kumiuchi = atkPow_L * 7;
         atkPow_Oiuchi = atkPow_L * 3;
     }
+
+    // Update is called once per frame
+    void Update()
+    {
+        comboTime += Time.deltaTime;
+        if (comboTime > 2f)
+        {
+            comboTime = 0f;
+            hitCount = 0;
+        }
+        combCountText.text = hitCount.ToString();
+    }
+
+
+    public void ComboCountStart()
+    {
+        hitCount++;
+        comboTime = 0;
+    }
+
 
 }

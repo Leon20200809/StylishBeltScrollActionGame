@@ -21,6 +21,8 @@ public class E_Input : MonoBehaviour
     public Collider e_Weaponcol;
     public TrailRenderer e_Weapontrail;
 
+    public Collider e_Parrycollider;
+
     private Rigidbody rb;
     private Animator anim;
 
@@ -193,6 +195,7 @@ public class E_Input : MonoBehaviour
         transform.DOLocalMove(transform.forward * 0.8f, 0.2f).SetRelative();
         e_Weaponcol.enabled = true;
         e_Weapontrail.enabled = true;
+        e_Parrycollider.enabled = true;
     }
 
     /// <summary>
@@ -202,6 +205,7 @@ public class E_Input : MonoBehaviour
     {
         e_Weaponcol.enabled = false;
         e_Weapontrail.enabled = false;
+        e_Parrycollider.enabled = false;
     }
 
     /// <summary>
@@ -222,6 +226,7 @@ public class E_Input : MonoBehaviour
         inAction = false;
         e_Weaponcol.enabled = false;
         e_Weapontrail.enabled = false;
+        e_Parrycollider.enabled = false;
         e_RevAtk.OiuchiColOFF();
         e_RevAtk.KumiuchiColOFF();
         anim.ResetTrigger("Rev-Atk");

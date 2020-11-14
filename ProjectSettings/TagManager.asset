@@ -24,6 +24,8 @@ TagManager:
   - P_IaiAtk
   - P_KickAtk
   - AtkPoint
+  - ParryCol
+  - ShotAtkPoint
   layers:
   - Default
   - TransparentFX
@@ -35,10 +37,10 @@ TagManager:
   - 
   - Invincible
   - Ground
-  - 
-  - 
-  - 
-  - 
+  - E_Weapon
+  - Enemy
+  - P_Weapn
+  - Player
   - 
   - 
   - 

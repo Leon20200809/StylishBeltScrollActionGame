@@ -36,30 +36,30 @@ public class P_RevAtk : MonoBehaviour
         Vector3 distination = (other.transform.position - transform.position).normalized;
         distination = new Vector3(distination.x, 0f, 0f).normalized;
 
+        Debug.Log(other.gameObject.name);
+        Debug.Log(other.gameObject.layer);
+
         //タグ判定
         if (other.CompareTag("E_Weapon"))
         {
             Damage(damager.atkPow_L);
             animator.SetTrigger("Rev-Atk");
             GenerateEffect(other.gameObject);
-            Debug.Log("のけぞり小");
+            Debug.Log("L-Atk食らった");
         }
         else if (other.CompareTag("E_ParryAtk"))
         {
             Damage(damager.atkPow_H);
             animator.SetTrigger("Rev-Down");
             GenerateEffect(other.gameObject);
-            Debug.Log(distination);
+            Debug.Log("H-Atk食らった");
             rb.AddForce(distination * -3f, ForceMode.VelocityChange);
-
-            Debug.Log("のけぞり大");
         }
         else if (other.CompareTag("E_Magic"))
         {
             Damage(damager.atkPow_L);
             animator.SetTrigger("Rev-Down");
             GenerateEffect(other.gameObject);
-            Debug.Log(distination);
             rb.AddForce(distination * -5f, ForceMode.VelocityChange);
 
             Debug.Log("ダウン");
@@ -91,9 +91,7 @@ public class P_RevAtk : MonoBehaviour
 
     public void UpdateHP(int hp)
     {
-        Debug.Log(hp);
         hpSlider.DOValue((float)hp / maxHp, 0.5f);
-        //hpSlider.DOValue(hp, 0.5f);
     }
 
 

@@ -17,10 +17,14 @@ public class E_DamagerBase : MonoBehaviour
 
     protected virtual void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other.gameObject.name);
+        Debug.Log(other.gameObject.layer);
+
         //タグ判定
         if (other.CompareTag("Player"))
         {
             wcollider.enabled = false;
+            Debug.Log(wcollider.enabled);
             Debug.Log("敵の攻撃HIT");
         }
     }
@@ -34,11 +38,4 @@ public class E_DamagerBase : MonoBehaviour
         atkPow_H = atkPow_L * 3;
         atkPow_C = Mathf.RoundToInt(atkPow_L * 0.7f);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
 }

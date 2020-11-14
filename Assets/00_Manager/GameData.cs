@@ -48,23 +48,4 @@ public class GameData : MonoBehaviour
 
     }
 
-
-    public void ComboCountStart()
-    {
-        hitCount++;
-        comboTime = 0;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        comboTime += Time.deltaTime;
-        if (comboTime > 2f)
-        {
-            comboTime = 0f;
-            hitCount = 0;
-        }
-
-        combCountText.text = hitCount.ToString();
-    }
 }

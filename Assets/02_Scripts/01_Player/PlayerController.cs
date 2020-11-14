@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 
 public class PlayerController : MonoBehaviour
@@ -28,6 +29,8 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
     private Animator anim;
+
+    public float invTime;
 
     private const string HORIZONTAL = "Horizontal";
     private const string VERTICAL = "Vertical";
@@ -180,7 +183,6 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetTrigger("Parry");
         }
-
     }
 
     /// <summary>
@@ -322,7 +324,7 @@ public class PlayerController : MonoBehaviour
     {
         //アニメーションイベントに埋め込む　無敵時間とモーションによる移動
         transform.DOLocalMove(transform.forward * 2.0f, 0.5f).SetRelative();
-        StartCoroutine(InvTime(0.4f));
+        StartCoroutine(InvTime(invTime));
         SoundManager.instance.PlaySE(SoundManager.SE_Type.Dash);
 
     }
@@ -330,7 +332,7 @@ public class PlayerController : MonoBehaviour
     {
         //アニメーションイベントに埋め込む　無敵時間とモーションによる移動
         transform.DOLocalMove(transform.right * -1.3f, 0.5f).SetRelative();
-        StartCoroutine(InvTime(0.4f));
+        StartCoroutine(InvTime(invTime));
         SoundManager.instance.PlaySE(SoundManager.SE_Type.Dash);
     }
 
@@ -338,14 +340,14 @@ public class PlayerController : MonoBehaviour
     {
         //アニメーションイベントに埋め込む　無敵時間とモーションによる移動
         transform.DOLocalMove(transform.right * 1.3f, 0.5f).SetRelative();
-        StartCoroutine(InvTime(0.4f));
+        StartCoroutine(InvTime(invTime));
         SoundManager.instance.PlaySE(SoundManager.SE_Type.Dash);
     }
     void DashAction_B()
     {
         //アニメーションイベントに埋め込む　無敵時間とモーションによる移動
         transform.DOLocalMove(transform.forward * -2.0f, 0.5f).SetRelative();
-        StartCoroutine(InvTime(0.4f));
+        StartCoroutine(InvTime(invTime));
         SoundManager.instance.PlaySE(SoundManager.SE_Type.Dash);
     }
 
@@ -488,7 +490,6 @@ public class PlayerController : MonoBehaviour
         {
             isOiuchi = false;
             p_Waponcollider.tag = "P_LightAttack";
-            Debug.Log("追い討ち範囲外");
         }
 
         else if (other.CompareTag("KumiuchiCol"))
@@ -506,6 +507,6 @@ public class PlayerController : MonoBehaviour
     {
         gameObject.layer = LayerMask.NameToLayer("Invincible");
         yield return new WaitForSeconds(time);
-        gameObject.layer = LayerMask.NameToLayer("Default");
+        gameObject.layer = LayerMask.NameToLayer("Player");
     }
 }

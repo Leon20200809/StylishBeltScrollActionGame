@@ -8,7 +8,7 @@ public class P_DamagerParry : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //タグ判定
-        if (other.CompareTag("E_ParryAtk"))
+        if (other.CompareTag("E_ParryAtk") || other.CompareTag("ParryCol"))
         {
             wcollider.enabled = false;
             Debug.Log("プレイヤーパリィ");

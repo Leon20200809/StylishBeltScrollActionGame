@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 
 public class E_RevAtk : MonoBehaviour
@@ -8,6 +9,11 @@ public class E_RevAtk : MonoBehaviour
     bool isDead;
     public int maxHp;
     public int hp;
+    public Slider hpSlider;
+
+    public Collider oiuchiCollider;
+    public Collider KumiuchiCollider;
+
     Animator animator;
     GameManager gameManager;
     EnemyController enemyController;
@@ -27,7 +33,6 @@ public class E_RevAtk : MonoBehaviour
         // 自分の位置と接触してきたオブジェクトの位置とを計算して、距離と方向を出して正規化(速度ベクトルを算出)
         distination = (other.transform.position - transform.position).normalized;
         distination = new Vector3(distination.x, 0f, 0f).normalized;
-        Debug.Log(distination);
 
         //タグ判定
         if (other.CompareTag("P_LightAttack"))
@@ -102,10 +107,16 @@ public class E_RevAtk : MonoBehaviour
             animator.SetTrigger("Dead");
             StartCoroutine(enemyController.DestroyEnemy(3.0f));
         }
-        
+
         // TODO UIに現在のHPを反映
-            
+        UpdateHP(hp);
     }
+
+    public void UpdateHP(int hp)
+    {
+        hpSlider.DOValue((float)hp / maxHp, 0.5f);
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -115,6 +126,7 @@ public class E_RevAtk : MonoBehaviour
         enemyController = GetComponent<EnemyController>();
         maxHp = GameData.instance.charaDataList[1].hp;
         hp = maxHp;
+        UpdateHP(hp);
     }
 
     public Vector3 hitEffecOfset;
@@ -130,7 +142,6 @@ public class E_RevAtk : MonoBehaviour
         Destroy(hitEffect, 2f);
     }
 
-    public Collider oiuchiCollider;
 
     public void OiuchiColON()
     {
@@ -140,7 +151,6 @@ public class E_RevAtk : MonoBehaviour
     {
         oiuchiCollider.enabled = false;
     }
-    public Collider KumiuchiCollider;
 
     public void KumiuchiColON()
     {
