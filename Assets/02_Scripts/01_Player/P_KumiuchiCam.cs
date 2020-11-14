@@ -12,7 +12,6 @@ public class P_KumiuchiCam : MonoBehaviour
         StartCoroutine(CamChange(3.0f));
     }
 
-
     IEnumerator CamChange(float waitTime = 0.0f)
     {
         mainCam.SetActive(false);
@@ -27,7 +26,7 @@ public class P_KumiuchiCam : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        mainCam = Camera.main.gameObject;
     }
 
     // Update is called once per frame

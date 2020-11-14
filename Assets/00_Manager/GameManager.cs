@@ -16,7 +16,11 @@ public class GameManager : MonoBehaviour
     //現在のステージ数。ボスを倒してクリアすると増える。GameDataに管理させる
     public int currentStageNo;
 
+    //プレイヤーゲームオブジェクト
     public PlayerController playerController;
+    public PlayerController playerController_Prefab;
+    public CameraFollow cameraFollow;
+
 
     // 現在のエリアの移動制限の各値(確認用。不要になったら削除する) 
     public float leftLimitPos;
@@ -38,6 +42,9 @@ public class GameManager : MonoBehaviour
 
     //生成する敵のプレファブ。GameObject型ではなく、Enemy型(スクリプトの名前)でアサインする
     public List<EnemyController> enemyPrefabs = new List<EnemyController>();
+
+    //敵のHPUI用
+    public Transform enemyHPSliderGenerateTran;
 
     //生成した敵を入れるリスト
     public List<EnemyController> enemiesList = new List<EnemyController>();
@@ -61,7 +68,15 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         InitStage();
+        Generate_Player();
         SetUpNextArea();
+    }
+
+    private void Generate_Player()
+    {
+        playerController = Instantiate(playerController_Prefab);
+        playerController.InitPlayer(this);
+        cameraFollow.Setup_Camera(playerController.gameObject);
     }
 
     // Update is called once per frame

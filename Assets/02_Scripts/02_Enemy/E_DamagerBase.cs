@@ -24,8 +24,7 @@ public class E_DamagerBase : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             wcollider.enabled = false;
-            Debug.Log(wcollider.enabled);
-            Debug.Log("敵の攻撃HIT");
+            Attack_Successful();
         }
     }
     // Start is called before the first frame update
@@ -37,5 +36,11 @@ public class E_DamagerBase : MonoBehaviour
         atkPow_L = atttackPowerBase;
         atkPow_H = atkPow_L * 3;
         atkPow_C = Mathf.RoundToInt(atkPow_L * 0.7f);
+    }
+
+    protected virtual void Attack_Successful()
+    {
+        Debug.Log(wcollider.enabled);
+        Debug.Log("敵の攻撃HIT");
     }
 }

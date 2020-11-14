@@ -9,6 +9,8 @@ public class EnemyController : MonoBehaviour
 
     GameManager gameManager;
 
+    public E_RevAtk e_RevAtk;
+
     /// <summary>
     /// EnemyController初期設定
     /// </summary>
@@ -16,6 +18,7 @@ public class EnemyController : MonoBehaviour
     public void SetUpEnemy(GameManager gameManager)
     {
         this.gameManager = gameManager;
+        e_RevAtk.SetUPSlider(gameManager);
     }
 
     // Start is called before the first frame update

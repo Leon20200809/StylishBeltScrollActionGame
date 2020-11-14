@@ -204,8 +204,7 @@ GameObject:
   - component: {fileID: 7142160998979135286}
   - component: {fileID: 808767828477080767}
   - component: {fileID: 126727307689233289}
-  - component: {fileID: 5834847022123652533}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: E_Arrow
   m_TagString: E_Weapon
   m_Icon: {fileID: 0}
@@ -269,23 +268,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf942e56f72367b4890f88f06343e91e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemyIndex: 2
-  atttackPowerBase: 0
-  atkPow_L: 0
-  atkPow_H: 0
-  atkPow_C: 0
---- !u!114 &5834847022123652533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8844742006785336145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa07cab289331f1489a46a6ef8e026ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyIndex: 2

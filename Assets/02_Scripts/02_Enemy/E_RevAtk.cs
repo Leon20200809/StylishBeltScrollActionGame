@@ -11,6 +11,8 @@ public class E_RevAtk : MonoBehaviour
     public int hp;
     public Slider hpSlider;
 
+    public GameObject hpSlider_Prefab; 
+
     public Collider oiuchiCollider;
     public Collider KumiuchiCollider;
 
@@ -20,7 +22,9 @@ public class E_RevAtk : MonoBehaviour
     Rigidbody rb;
     [SerializeField]
     Vector3 distination;
-    
+
+    P_Damager damager;
+
     private void OnTriggerEnter(Collider other)
     {
         if (isDead)
@@ -28,7 +32,7 @@ public class E_RevAtk : MonoBehaviour
             return;
         }
         //ダメージソース取得
-        other.gameObject.TryGetComponent(out P_Damager damager);
+        other.gameObject.TryGetComponent(out damager);
 
         // 自分の位置と接触してきたオブジェクトの位置とを計算して、距離と方向を出して正規化(速度ベクトルを算出)
         distination = (other.transform.position - transform.position).normalized;
@@ -99,6 +103,8 @@ public class E_RevAtk : MonoBehaviour
         //HP減らす
         hp -= AtkPow;
 
+        UpdateHP(hp);
+
         //撃破処理
         if (hp <= 0)
         {
@@ -106,10 +112,11 @@ public class E_RevAtk : MonoBehaviour
             isDead = true;
             animator.SetTrigger("Dead");
             StartCoroutine(enemyController.DestroyEnemy(3.0f));
+            Destroy(hpSlider.gameObject, 3.0f);
         }
 
         // TODO UIに現在のHPを反映
-        UpdateHP(hp);
+        //UpdateHP(hp);
     }
 
     public void UpdateHP(int hp)
@@ -117,6 +124,13 @@ public class E_RevAtk : MonoBehaviour
         hpSlider.DOValue((float)hp / maxHp, 0.5f);
     }
 
+    public void SetUPSlider(GameManager gameManager)
+    {
+        maxHp = GameData.instance.charaDataList[1].hp;
+        hp = maxHp;
+        hpSlider = Instantiate(hpSlider_Prefab, gameManager.enemyHPSliderGenerateTran).GetComponent<Slider>();
+        UpdateHP(hp);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -124,9 +138,10 @@ public class E_RevAtk : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         enemyController = GetComponent<EnemyController>();
-        maxHp = GameData.instance.charaDataList[1].hp;
-        hp = maxHp;
-        UpdateHP(hp);
+        //maxHp = GameData.instance.charaDataList[1].hp;
+        //hp = maxHp;
+        //hpSlider = Instantiate(hpSlider_Prefab, )
+        //UpdateHP(hp);
     }
 
     public Vector3 hitEffecOfset;

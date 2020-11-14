@@ -41,10 +41,11 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// Player情報の初期設定
     /// </summary>
-    private void InitPlayer()
+    public void InitPlayer(GameManager gameManager)
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+        this.gameManager = gameManager;
     }
 
     void FixedUpdate()
@@ -127,7 +128,10 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InitPlayer();
+        //InitPlayer();
+        rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
