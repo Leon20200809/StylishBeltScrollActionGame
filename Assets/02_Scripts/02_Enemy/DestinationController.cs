@@ -19,17 +19,42 @@ public class DestinationController : MonoBehaviour
 
     public enum EnemyType
     {
-        n,
-        l,
-        d,
+        Sword_Soldier,
+        Archer_Soldier,
+        Boss,
     }
 
     public EnemyType enemyType;
 
+    public void Select_Enemy_Type()
+    {
+        switch (enemyType)
+        {
+            case EnemyType.Sword_Soldier:
+
+                targets = GameObject.FindGameObjectsWithTag("AtkPoint").Select(x => x.transform).ToArray();
+                Debug.Log(targets[0].transform.position);
+
+                break;
+
+            case EnemyType.Archer_Soldier:
+
+                targets = GameObject.FindGameObjectsWithTag("ShotPoint").Select(x => x.transform).ToArray();
+                Debug.Log(targets[0].transform.position);
+
+                break;
+            case EnemyType.Boss:
+                //処理
+                break;
+        }
+    }
+
+
     void Start()
     {
-        targets = GameObject.FindGameObjectsWithTag("AtkPoint").Select(x => x.transform).ToArray();
-        Debug.Log(targets[0].transform.position);
+        Select_Enemy_Type();
+        //targets = GameObject.FindGameObjectsWithTag("AtkPoint").Select(x => x.transform).ToArray();
+        //Debug.Log(targets[0].transform.position);
         //　初期位置を設定
         startPosition = transform.position;
         SetDestination(transform.position);
@@ -80,4 +105,5 @@ public class DestinationController : MonoBehaviour
     {
         return destination;
     }
+
 }

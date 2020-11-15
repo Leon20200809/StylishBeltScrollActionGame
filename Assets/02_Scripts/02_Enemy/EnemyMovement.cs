@@ -13,7 +13,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     private DestinationController destinationController;
 
-    Animator animator;
+    protected Animator animator;
 
     [SerializeField]
     Vector3 distination;
@@ -24,9 +24,9 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     float targetDistance;
 
-    float timeleft;
+    protected float timeleft;
 
-    void Start()
+    protected virtual void Start()
     {
         navAgent = GetComponent<NavMeshAgent>();
         destinationController = GetComponent<DestinationController>();
@@ -36,7 +36,7 @@ public class EnemyMovement : MonoBehaviour
         targetPos = player.transform;
     }
 
-    void Update()
+    protected virtual void Update()
     {
 
         // 自分の位置と接触してきたオブジェクトの位置とを計算して、距離と方向を出して正規化(速度ベクトルを算出)
@@ -91,7 +91,7 @@ public class EnemyMovement : MonoBehaviour
         }*/
     }
 
-    private void OnTriggerStay(Collider other)
+    protected virtual void OnTriggerStay(Collider other)
     {
         if (other.tag == "AtkPoint")
         {
@@ -119,12 +119,12 @@ public class EnemyMovement : MonoBehaviour
         }
     }
     //乱数用
-    int attackIndex;
+    protected int attackIndex;
 
     /// <summary>
     /// 乱数生成＠攻撃アニメーションランダム再生
     /// </summary>
-    void AttackIndex()
+    protected void AttackIndex()
     {
         attackIndex = Random.Range(1, 101);
         //Debug.Log(attackIndex);
