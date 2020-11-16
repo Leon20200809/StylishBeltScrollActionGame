@@ -9,14 +9,13 @@ using UnityEngine.AI;
 public class EnemyMovement : MonoBehaviour
 {
     Transform targetPos;
-    private NavMeshAgent navAgent = null;
+    protected NavMeshAgent navAgent = null;
     [SerializeField]
-    private DestinationController destinationController;
+    protected DestinationController destinationController;
 
     protected Animator animator;
 
-    [SerializeField]
-    Vector3 distination;
+    public Vector3 distination;
 
     [SerializeField]
     float battleRange;
@@ -40,7 +39,7 @@ public class EnemyMovement : MonoBehaviour
     {
 
         // 自分の位置と接触してきたオブジェクトの位置とを計算して、距離と方向を出して正規化(速度ベクトルを算出)
-        Vector3 distination = (targetPos.transform.position - transform.position).normalized;
+        distination = (targetPos.transform.position - transform.position).normalized;
         distination = new Vector3(distination.x, 0f, 0f).normalized;
 
         if (distination.x == 1)

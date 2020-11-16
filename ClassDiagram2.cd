@@ -1,0 +1,661 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CameraFollow" Collapsed="true">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEEAAAAAAAIAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Assets\00_Manager\CameraFollow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EffectManager" Collapsed="true">
+    <Position X="13" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQACAAAACAAAAAAAAAAAAAAAABAAEAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\00_Manager\EffectManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameData" Collapsed="true">
+    <Position X="18.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAEAAAACIgAABAAAAAAAAICABAAAAAAAAAAAAIAEA=</HashCode>
+      <FileName>Assets\00_Manager\GameData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameManager" Collapsed="true">
+    <Position X="20" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYRSBBACCEAFQAARAQEAAAIAAACAAAAAAJmAISgAAE=</HashCode>
+      <FileName>Assets\00_Manager\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MoveLimit">
+    <Position X="9.75" Y="9.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="MoveLimit.HorizontalLimit" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\00_Manager\MoveLimit.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="MoveLimit.DepthLimit">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\00_Manager\MoveLimit.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAQBAAAAACAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\00_Manager\MoveLimit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerUIManager" Collapsed="true">
+    <Position X="7.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAEAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\00_Manager\PlayerUIManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SoundManager" Collapsed="true">
+    <Position X="11.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QQQAAAABAAAAQAGACUUAAgAgAABAAAAAIAASAAAAA1Q=</HashCode>
+      <FileName>Assets\00_Manager\SoundManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StageList" Collapsed="true">
+    <Position X="20" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Assets\00_Manager\StageList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="P_Damager" Collapsed="true">
+    <Position X="18.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACQACASAACAgAAAAAAAACgAAAAACAAAAQABIQAAKAAA=</HashCode>
+      <FileName>Assets\02_Scripts\01_Player\P_Damager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="P_DamagerParry" Collapsed="true">
+    <Position X="20" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAACAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\01_Player\P_DamagerParry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="P_HpyAmmer" Collapsed="true">
+    <Position X="21.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAABAAIAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\01_Player\P_HpyAmmer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="P_Iai_Smb" Collapsed="true">
+    <Position X="6" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\01_Player\P_Iai_Smb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="P_InAction_Smb" Collapsed="true">
+    <Position X="7.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\01_Player\P_InAction_Smb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="P_Oiuchi_Smb" Collapsed="true">
+    <Position X="14.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\01_Player\P_Kumiuchi_Smb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="P_KumiuchiCam" Collapsed="true">
+    <Position X="11.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAIAAAAAAAAAAEAAAAAgAEA=</HashCode>
+      <FileName>Assets\02_Scripts\01_Player\P_KumiuchiCam.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="P_LightAttack_Smb" Collapsed="true">
+    <Position X="13" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\01_Player\P_LightAttack_Smb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="P_Kumiuchi_Smb" Collapsed="true">
+    <Position X="9.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\01_Player\P_Oiuchi_Smb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="P_ResetFrag_Smb" Collapsed="true">
+    <Position X="16.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAABAAIAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\01_Player\P_ResetFrag_Smb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="P_RevAtk" Collapsed="true">
+    <Position X="18.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FEBEAACEACAAgAAEAAAEAAAAABAAAAAAQABAAAAEAAA=</HashCode>
+      <FileName>Assets\02_Scripts\01_Player\P_RevAtk.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="P_RevAttack_Smb" Collapsed="true">
+    <Position X="20" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\01_Player\P_RevAttack_Smb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="P_TukiAtk_Smb" Collapsed="true">
+    <Position X="21.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\01_Player\P_TukiAtk_Smb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerController" Collapsed="true">
+    <Position X="6" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEVAAJjIOqYAABQEABAEAiAAQBIQSIUgCxAEAgI4AAA=</HashCode>
+      <FileName>Assets\02_Scripts\01_Player\PlayerController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="E_Sus_Damager" Collapsed="true">
+    <Position X="9.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAACAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\Boss_Sus\E_Sus_Damager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="E_SUS_Idle_Smb" Collapsed="true">
+    <Position X="11.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\Boss_Sus\E_SUS_Idle_Smb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="E_SUS_inAction_Smb" Collapsed="true">
+    <Position X="13" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\Boss_Sus\E_SUS_inAction_Smb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="E_Sus_MagicBall" Collapsed="true">
+    <Position X="14.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAQAAACAAAAAAAAAAAAAAAAAAAEAAAAQAAAAEAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\Boss_Sus\E_Sus_MagicBall.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="E_Sus_MagicBallDamager" Collapsed="true">
+    <Position X="16.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAACAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\Boss_Sus\E_Sus_MagicBallDamager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="E_SUS_OiuchiReset_Smb" Collapsed="true">
+    <Position X="18.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\Boss_Sus\E_SUS_OiuchiReset_Smb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="E_Sus_ParryAtk_Smb" Collapsed="true">
+    <Position X="20" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAgIAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\Boss_Sus\E_Sus_ParryAtk_Smb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="E_Sus_RevAtk" Collapsed="true">
+    <Position X="21.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BERAAAAAACIAwAAAEIAAAAAAAAAAAAAAQAAABAAECAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\Boss_Sus\E_Sus_RevAtk.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="E_Sus_RevKumiuchi_Smb" Collapsed="true">
+    <Position X="6" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAIAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\Boss_Sus\E_Sus_RevKumiuchi_Smb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="E_Sus_RevParry" Collapsed="true">
+    <Position X="7.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEQAAAAAACAAgAAAAAAAAAAAAAAAABAAQAAAAAAEAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\Boss_Sus\E_Sus_RevParry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="E_Sus_S_Atk_Damager" Collapsed="true">
+    <Position X="9.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAQAAAEAAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\Boss_Sus\E_Sus_S_Atk_Damager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="E_SUSInput" Collapsed="true">
+    <Position X="11.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AERCAIBoGqQAiAAEAIAAAARgBgAAKwBgQUAAAAYAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\Boss_Sus\E_SUSInput.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DestinationController">
+    <Position X="7.75" Y="2.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="DestinationController.Route" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\02_Scripts\02_Enemy\DestinationController.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="DestinationController.EnemyType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\02_Scripts\02_Enemy\DestinationController.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>BAUAAAABACAAAFBAAAAAAABAAAAAAAAAAABABAAgQAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\DestinationController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="E_ArcherAnim" Collapsed="true">
+    <Position X="6" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAqAAAAAAAAAAAAAAAIAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\E_ArcherAnim.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="E_BowAtk" Collapsed="true">
+    <Position X="7.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\E_BowAtk.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="E_BowShot" Collapsed="true">
+    <Position X="9.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAACAAEAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\E_BowShot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="E_BowShotDamager" Collapsed="true">
+    <Position X="3.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\E_BowShotDamager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="E_DamagerBase" Collapsed="true">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACBCAIAACAAAAAAAAAACgAAAAAAAAAAUAAAAAAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\E_DamagerBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="E_Down" Collapsed="true">
+    <Position X="11.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\E_Down.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="E_InAction_Smb" Collapsed="true">
+    <Position X="13" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\E_InAction_Smb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="E_Input" Collapsed="true">
+    <Position X="14.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AGRCBIDIEqQAgAAEAAAAAAAAQAAACQAAAVAAAgYUEAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\E_Input.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="E_InputArcher" Collapsed="true">
+    <Position X="16.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AGRCAIDIEqQAgAAEAAAAAAAAQAAACQAAAVAAAgYUAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\E_InputArcher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="E_ParryAtk" Collapsed="true">
+    <Position X="18.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAgIAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\E_ParryAtk.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="E_ResetFlag_Smb" Collapsed="true">
+    <Position X="20" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAgIAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\E_ResetFlag_Smb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="E_RevAtk" Collapsed="true">
+    <Position X="21.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FEBAAACEACIAwAAEEIAEIAAAABACAAAAQgBAhAAACAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\E_RevAtk.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="E_RevParry" Collapsed="true">
+    <Position X="6" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEQAAAAAACAAgAAAAAAAAAAAAAAAABAAQAAAAAAEAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\E_RevParry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="E_Stun" Collapsed="true">
+    <Position X="7.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAIAAABAAAAAAAIAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\E_Stun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyController" Collapsed="true">
+    <Position X="14.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEQAAAAIACAAAAAAAAAEAAAAAAAAAAAgAAAAAgAQAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\EnemyController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyMovement">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BARAgAgAgCAAABAAAAAAAAgAQAAEAACACAAQAAAAgAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\EnemyMovement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyMovement_A">
+    <Position X="0.5" Y="5.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\EnemyMovement_A.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaviMesh_OFF_Smb" Collapsed="true">
+    <Position X="13" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\NaviMesh_OFF_Smb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaviMesh_ON_Smb" Collapsed="true">
+    <Position X="14.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\NaviMesh_ON_Smb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnTriggerTest_B" Collapsed="true">
+    <Position X="16.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\OnTriggerTest_B.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IdleChanger" Collapsed="true">
+    <Position X="6" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAIAAAAAAAAAAIAAAAAQCAAAAAAAA=</HashCode>
+      <FileName>Assets\DL_Assets\FightingUnityChan_FreeAsset\FightingUnityChan_FreeAsset\Scripts\IdleChanger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CFX_AutoStopLoopedEffect" Collapsed="true">
+    <Position X="16.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAACAA=</HashCode>
+      <FileName>Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_AutoStopLoopedEffect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CFX_Demo_New" Collapsed="true">
+    <Position X="18.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQQgAAAACgAiAkAACgAAAwAIEAABEIAAAAIASiAKEA=</HashCode>
+      <FileName>Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_New.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CFX_Demo_RandomDir" Collapsed="true">
+    <Position X="20" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAACAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDir.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CFX_Demo_RandomDirectionTranslate" Collapsed="true">
+    <Position X="21.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAgAACAAAAAAAAEAAAAAAQAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RandomDirectionTranslate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CFX_Demo_RotateCamera" Collapsed="true">
+    <Position X="6" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAAAIAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_RotateCamera.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CFX_Demo_Translate" Collapsed="true">
+    <Position X="7.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAgAACAAAAAAAAGAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\JMO Assets\Cartoon FX\Demo\Assets\CFX_Demo_Translate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CFX_AutoRotate" Collapsed="true">
+    <Position X="14.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAgAAAAAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\JMO Assets\Cartoon FX\Scripts\CFX_AutoRotate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CFX_LightFlicker" Collapsed="true">
+    <Position X="9.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQACAAEAAAACAAAAAAAAAAAAAAAAAAAAAAAoAAACEg=</HashCode>
+      <FileName>Assets\JMO Assets\Cartoon FX\Scripts\CFX_LightFlicker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="csMouseOrbit" Collapsed="true">
+    <Position X="13" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAICEBAEAAAgAAAABgAABEAAA=</HashCode>
+      <FileName>Assets\Particle Effect Pack48\Script\csMouseOrbit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="csParticleEffectPackLightControl" Collapsed="true">
+    <Position X="14.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAIAAAAgEAAAAAAAAAAAAAAIAABAAAAAIAAAAAI=</HashCode>
+      <FileName>Assets\Particle Effect Pack48\Script\csParticleEffectPackLightControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="csParticleMove" Collapsed="true">
+    <Position X="16.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Particle Effect Pack48\Script\csParticleMove.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="csShowAllEffect" Collapsed="true">
+    <Position X="18.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACgAAAAAAAEAAAAAAAAAAAAgIAAAAACAAAA=</HashCode>
+      <FileName>Assets\Particle Effect Pack48\Script\csShowAllEffect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="csShurikenEffectChanger" Collapsed="true">
+    <Position X="20" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Particle Effect Pack48\ShurikenEffectEditor\csShurikenEffectChanger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="csShurikenEffectEditor" Collapsed="true">
+    <Position X="21.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAACAAIAAAABAAAAAAAAAACCAAAAAAA=</HashCode>
+      <FileName>Assets\Particle Effect Pack48\ShurikenEffectEditor\csShurikenEffectEditor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enemy.DemoScript" Collapsed="true">
+    <Position X="6" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABCAACAAAAAAAAAAIAAAIAAAAAABAAAAAAKAAAAAAAA=</HashCode>
+      <FileName>Assets\DL_Assets\EnemyMotion\Script\DemoScript.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OldOperaParticle.LightFlickering" Collapsed="true">
+    <Position X="9.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAACAAAAAAAIAAAAAIAAAAAAAgAAAAAABAAAA=</HashCode>
+      <FileName>Assets\DL_Assets\Katana\Resources\LightFlickering.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DG.Tweening.DOTweenModulePhysics" Collapsed="true">
+    <Position X="13" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAGBBAAAQAACAAAAEAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\DL_Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModulePhysics.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DG.Tweening.DOTweenModulePhysics2D" Collapsed="true">
+    <Position X="14.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAGBAAAAAAACAAAAEAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\DL_Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModulePhysics2D.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DG.Tweening.DOTweenModuleSprite" Collapsed="true">
+    <Position X="16.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAQAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Assets\DL_Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleSprite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DG.Tweening.DOTweenModuleUI" Collapsed="true">
+    <Position X="18.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>YAIQABAAAAgAgKAgAAAIAAQCLQEFAABAQAABBQAAAAg=</HashCode>
+      <FileName>Assets\DL_Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DG.Tweening.DOTweenModuleUnityVersion" Collapsed="true">
+    <Position X="20" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAQAAAAEAIACAAAAgAgAQAAAAAAQEAUCAACAAAAABA=</HashCode>
+      <FileName>Assets\DL_Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DG.Tweening.DOTweenModuleUtils" Collapsed="true">
+    <Position X="21.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAACABCAAAAAAA=</HashCode>
+      <FileName>Assets\DL_Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityChan.AutoBlink" Collapsed="true">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAUBAAAgACAAAEAACAAAIBDAAAhAAiCAAAEAAEAAAEA=</HashCode>
+      <FileName>Assets\DL_Assets\unity-chan!\Unity-chan! Model\Scripts\AutoBlink.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityChan.FaceUpdate" Collapsed="true">
+    <Position X="16.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACASAAAAAAAAAAAAhAAAEAAAAQCAQAAAAAA=</HashCode>
+      <FileName>Assets\DL_Assets\unity-chan!\Unity-chan! Model\Scripts\FaceUpdate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityChan.IdleChanger" Collapsed="true">
+    <Position X="21.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAIAAAAABAAAAIAAAAAQiAAAAAAAE=</HashCode>
+      <FileName>Assets\DL_Assets\unity-chan!\Unity-chan! Model\Scripts\IdleChanger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityChan.IKCtrlRightHand" Collapsed="true">
+    <Position X="7.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAQAAAAAAEAAAAAAAAAAAAAAAAAAAAQCEAAgAAEA=</HashCode>
+      <FileName>Assets\DL_Assets\unity-chan!\Unity-chan! Model\Scripts\IKCtrlRightHand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityChan.RandomWind" Collapsed="true">
+    <Position X="9.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAACAAAAAAAAAAAAACAAAAABAA=</HashCode>
+      <FileName>Assets\DL_Assets\unity-chan!\Unity-chan! Model\Scripts\RandomWind.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityChan.SpringBone" Collapsed="true">
+    <Position X="14.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAGCAAACCAAAAAAAACAhBAAACBYACAAEABEEAAAAEA=</HashCode>
+      <FileName>Assets\DL_Assets\unity-chan!\Unity-chan! Model\Scripts\SpringBone.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityChan.SpringCollider" Collapsed="true">
+    <Position X="16.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\DL_Assets\unity-chan!\Unity-chan! Model\Scripts\SpringCollider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityChan.SpringManager" Collapsed="true">
+    <Position X="18.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAACAACAAAAAQAAAAKAAAAAAAAAAAAADEAAAAAFA=</HashCode>
+      <FileName>Assets\DL_Assets\unity-chan!\Unity-chan! Model\Scripts\SpringManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityChan.ThirdPersonCamera" Collapsed="true">
+    <Position X="21.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEACAAAiAAAAAAAIEAAAAgAAAAQBAAEAAAAAAAAAA=</HashCode>
+      <FileName>Assets\DL_Assets\unity-chan!\Unity-chan! Model\Scripts\ThirdPersonCamera.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityChan.UnityChanControlScriptWithRgidBody" Collapsed="true">
+    <Position X="6" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABJAAjACAAAEGAAAKQKEAABAAABBAUSAAAAAAAQ=</HashCode>
+      <FileName>Assets\DL_Assets\unity-chan!\Unity-chan! Model\Scripts\UnityChanControlScriptWithRgidBody.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="TAK_CameraController.MouseButtonDown" Collapsed="true">
+    <Position X="6" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAQgAAAAAA=</HashCode>
+      <FileName>Assets\DL_Assets\FightingUnityChan_FreeAsset\FightingUnityChan_FreeAsset\Scripts\CameraController.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="UnityChan.MouseButtonDown" Collapsed="true">
+    <Position X="7.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAQgAAAAAA=</HashCode>
+      <FileName>Assets\DL_Assets\unity-chan!\Unity-chan! Model\Scripts\CameraController.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Yu Gothic UI" Size="9" />
+</ClassDiagram>

@@ -20,7 +20,6 @@ public class E_Sus_RevAtk : MonoBehaviour
         //タグ判定
         if (other.CompareTag("P_LightAttack"))
         {
-            //animator.Play("DAMAGED00");
             animator.SetTrigger("Rev-Atk");
             GenerateEffect(other.gameObject);
             Debug.Log("のけぞり小");

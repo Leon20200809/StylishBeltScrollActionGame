@@ -312,8 +312,8 @@ public class E_SUSInput : MonoBehaviour
         inAction = false;
         e_Weaponcol.enabled = false;
         e_Weapontrail.enabled = false;
-        e_Sus_RevAtk.OiuchiColOFF();
-        e_Sus_RevAtk.KumiuchiColOFF();
+        //e_Sus_RevAtk.OiuchiColOFF();
+        //e_Sus_RevAtk.KumiuchiColOFF();
         anim.ResetTrigger("Rev-Atk");
         anim.ResetTrigger("Rev-Down");
         anim.ResetTrigger("L-Atk");

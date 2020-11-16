@@ -45,6 +45,17 @@ public class DestinationController : MonoBehaviour
                 break;
             case EnemyType.Boss:
                 //処理
+                GameObject[] atkPoints = GameObject.FindGameObjectsWithTag("AtkPoint");
+                GameObject[] shotPoints = GameObject.FindGameObjectsWithTag("ShotPoint");
+
+                //リスト作成。コンストラクタによる代入
+                List<GameObject> tagObjs = new List<GameObject>(atkPoints);
+
+                for (int i = 0; i< shotPoints.Length; i++)
+                {
+                    tagObjs.Add(shotPoints[i]);
+                }
+                targets = tagObjs.Select(x => x.transform).ToArray();
                 break;
         }
     }
