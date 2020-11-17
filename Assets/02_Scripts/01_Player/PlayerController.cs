@@ -291,7 +291,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void ZangetsuAttackStart()
     {
-        transform.DOLocalMove(transform.forward * 2.0f, 0.3f).SetRelative();
+        transform.DOLocalMove(transform.forward * 2.0f, 1.0f).SetRelative();
         p_Waponcollider.tag = "P_HeavyAttack";
         waponcollider.enabled = true;
         weapontrail.enabled = true;
@@ -381,7 +381,7 @@ public class PlayerController : MonoBehaviour
 
     void KumiuchiInv()
     {
-        StartCoroutine(InvTime(2f));
+        StartCoroutine(InvTime(1f));
     }
     void KumiuchiFinish()
     {

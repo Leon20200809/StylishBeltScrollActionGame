@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class E_Sus_S_Atk_Damager : MonoBehaviour
+public class E_Sus_S_Atk_Damager : E_DamagerBase
 {
     Collider collider;
     
@@ -19,17 +19,4 @@ public class E_Sus_S_Atk_Damager : MonoBehaviour
             //Destroy(this.gameObject);
         }
     }
-
-    void Start()
-    {
-        //collider = GetComponent<Collider>();
-        Debug.Log(collider);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
 }

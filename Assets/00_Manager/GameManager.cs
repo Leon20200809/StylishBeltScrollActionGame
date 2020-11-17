@@ -202,7 +202,7 @@ public class GameManager : MonoBehaviour
     {
         //位置ランダム生成
         int direction = Random.Range(0, 2);
-        charaPos.x = direction == 0 ? charaPos.x += 2.5f : charaPos.x -= 2.5f;
+        charaPos.x = direction == 0 ? charaPos.x += 5f : charaPos.x -= 5f;
         float posX = charaPos.x;
         float posZ = charaPos.z;
         Vector3 generatePos = new Vector3(posX + Random.Range(-0.5f, 0.5f), charaPos.y, Random.Range(-0.5f, 0.5f));

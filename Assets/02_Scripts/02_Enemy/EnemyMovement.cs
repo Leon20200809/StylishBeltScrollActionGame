@@ -24,6 +24,7 @@ public class EnemyMovement : MonoBehaviour
     float targetDistance;
 
     protected float timeleft;
+    protected bool inAction;
 
     protected virtual void Start()
     {
@@ -37,7 +38,10 @@ public class EnemyMovement : MonoBehaviour
 
     protected virtual void Update()
     {
-
+        if (!inAction)
+        {
+            return;
+        }
         // 自分の位置と接触してきたオブジェクトの位置とを計算して、距離と方向を出して正規化(速度ベクトルを算出)
         distination = (targetPos.transform.position - transform.position).normalized;
         distination = new Vector3(distination.x, 0f, 0f).normalized;
@@ -53,8 +57,6 @@ public class EnemyMovement : MonoBehaviour
             transform.rotation = Quaternion.Euler(new Vector3(0, -90, 0));
         }
         animator.SetFloat("Speed", navAgent.velocity.magnitude);
-
-
 
         //移動先決定
         if (Vector3.Distance(transform.position, destinationController.GetDestination()) < 0.5f)
@@ -132,10 +134,12 @@ public class EnemyMovement : MonoBehaviour
     public void NaviMesh_OFF()
     {
         navAgent.isStopped = true;
+        inAction = false;
     }
 
     public void NaviMesh_ON()
     {
         navAgent.isStopped = false;
+        inAction = true;
     }
 }

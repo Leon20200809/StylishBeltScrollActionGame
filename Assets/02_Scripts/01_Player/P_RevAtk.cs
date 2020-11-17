@@ -53,14 +53,14 @@ public class P_RevAtk : MonoBehaviour
             animator.SetTrigger("Rev-Down");
             GenerateEffect(other.gameObject);
             Debug.Log("H-Atk食らった");
-            rb.AddForce(distination * -3f, ForceMode.VelocityChange);
+            transform.DOLocalMove(distination * -2f, 0.5f).SetRelative();
         }
         else if (other.CompareTag("E_Magic"))
         {
-            Damage(damager.atkPow_L);
+            Damage(damager.atkPow_H);
             animator.SetTrigger("Rev-Down");
             GenerateEffect(other.gameObject);
-            rb.AddForce(distination * -5f, ForceMode.VelocityChange);
+            transform.DOLocalMove(distination * -2f, 0.5f).SetRelative();
 
             Debug.Log("ダウン");
         }

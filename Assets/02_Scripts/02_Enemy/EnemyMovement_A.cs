@@ -11,9 +11,9 @@ public class EnemyMovement_A : EnemyMovement
     
     protected override void OnTriggerStay(Collider other)
     {
-        if (other.tag == "ShotAtkPoint")
+        if (other.tag == "ArcharAtkPoint")
         {
-            Debug.Log("ShotAtkPoint");
+            Debug.Log(timeleft);
             timeleft -= Time.deltaTime;
             if (timeleft <= 0.0)
             {

@@ -1113,6 +1113,10 @@ PrefabInstance:
       propertyPath: enemyType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5415881, guid: 3feff53a147eff844a935eb5a696393d, type: 3}
+      propertyPath: m_Speed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 506888329, guid: 3feff53a147eff844a935eb5a696393d, type: 3}
       propertyPath: m_RootOrder
       value: 6

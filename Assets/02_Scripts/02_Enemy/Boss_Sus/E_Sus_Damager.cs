@@ -2,31 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class E_Sus_Damager : MonoBehaviour
+public class E_Sus_Damager : E_DamagerBase
 {
-    Collider wcollider;
     private void OnTriggerEnter(Collider other)
     {
         //タグ判定
         if (other.CompareTag("Player"))
         {
-            
             wcollider.enabled = false;
-            Debug.Log("敵の攻撃HIT");
-            Debug.Log(wcollider);
-
+            Debug.Log("敵ボスの攻撃HIT");
         }
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        wcollider = GetComponent<Collider>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
 }

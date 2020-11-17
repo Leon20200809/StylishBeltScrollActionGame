@@ -25,7 +25,9 @@ public class E_RevAtk : MonoBehaviour
 
     P_Damager damager;
 
-    private void OnTriggerEnter(Collider other)
+    public int enemyType;
+
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (isDead)
         {
@@ -98,7 +100,7 @@ public class E_RevAtk : MonoBehaviour
     /// ダメージ処理
     /// </summary>
     /// <param name="AtkPow"></param>
-    void Damage(int AtkPow)
+    protected virtual void Damage(int AtkPow)
     {
         //HP減らす
         hp -= AtkPow;
@@ -115,8 +117,6 @@ public class E_RevAtk : MonoBehaviour
             Destroy(hpSlider.gameObject, 3.0f);
         }
 
-        // TODO UIに現在のHPを反映
-        //UpdateHP(hp);
     }
 
     public void UpdateHP(int hp)
@@ -126,14 +126,14 @@ public class E_RevAtk : MonoBehaviour
 
     public void SetUPSlider(GameManager gameManager)
     {
-        maxHp = GameData.instance.charaDataList[1].hp;
+        maxHp = GameData.instance.charaDataList[enemyType].hp;
         hp = maxHp;
         hpSlider = Instantiate(hpSlider_Prefab, gameManager.enemyHPSliderGenerateTran).GetComponent<Slider>();
         UpdateHP(hp);
     }
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();

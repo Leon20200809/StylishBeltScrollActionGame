@@ -31,12 +31,6 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     /// <summary>
     /// 敵オブジェクト削除
     /// </summary>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class E_SUSInput : MonoBehaviour
+public class E_SUSInput : E_Input
 {
     [Header("プレイヤー操作")]
     public bool playerCont;

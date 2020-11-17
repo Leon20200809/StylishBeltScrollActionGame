@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class E_Sus_MagicBallDamager : MonoBehaviour
+public class E_Sus_MagicBallDamager : E_DamagerBase
 {
     Collider wcollider;
     private void OnTriggerEnter(Collider other)
@@ -11,7 +11,7 @@ public class E_Sus_MagicBallDamager : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             
-            wcollider.enabled = false;
+            //wcollider.enabled = false;
             Debug.Log("マジックボールHIT");
             Destroy(this.gameObject);
 

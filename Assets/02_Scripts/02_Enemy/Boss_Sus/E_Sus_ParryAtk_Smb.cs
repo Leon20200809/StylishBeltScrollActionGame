@@ -20,6 +20,7 @@ public class E_Sus_ParryAtk_Smb : StateMachineBehaviour
         animator.ResetTrigger("Rev-Atk");
         animator.ResetTrigger("Rev-Down");
         enemyInput.inAction = true;
+        enemyInput.e_Parrycollider.enabled = true;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -34,6 +35,8 @@ public class E_Sus_ParryAtk_Smb : StateMachineBehaviour
         enemyInput.e_Weaponcollider.tag = "E_Weapon";
         animator.ResetTrigger("Rev-Atk");
         animator.ResetTrigger("Rev-Down");
+        enemyInput.e_Parrycollider.enabled = false;
+
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

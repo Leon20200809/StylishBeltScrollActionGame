@@ -9399,10 +9399,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8671619593708458725}
-  - component: {fileID: 8773797656795367127}
   - component: {fileID: 2778410609366419037}
   - component: {fileID: -4428496794477459414}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Boss_Sus_S_Atk
   m_TagString: E_Magic
   m_Icon: {fileID: 0}
@@ -9427,18 +9426,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8773797656795367127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8671619593708031685}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db08735561a38424182823d8d175333b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &2778410609366419037
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -14272,3 +14259,15 @@ MonoBehaviour:
   Delay3: 0
   Maxintensity: 0
   Up: 1
+--- !u!114 &8773797656795367127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db08735561a38424182823d8d175333b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
