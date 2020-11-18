@@ -23,7 +23,7 @@ MonoBehaviour:
         depthLimit:
           forword: 5
           back: -5
-      appearNum: 02000000
+      appearNum: 03000000
     - areaNo: 1
       areaMoveLimit:
         horizontalLimit:
@@ -32,7 +32,7 @@ MonoBehaviour:
         depthLimit:
           forword: 5
           back: -5
-      appearNum: 0000000000000000000000000000000000000000
+      appearNum: 00000000000000000100000000000000
     - areaNo: 2
       areaMoveLimit:
         horizontalLimit:
@@ -41,7 +41,7 @@ MonoBehaviour:
         depthLimit:
           forword: 5
           back: -5
-      appearNum: 000000000000000000000000
+      appearNum: 000000000100000001000000
     - areaNo: 3
       areaMoveLimit:
         horizontalLimit:

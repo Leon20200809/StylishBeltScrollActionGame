@@ -107,8 +107,8 @@
       <FileName>Assets\00_Manager\StageList.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="P_Damager" Collapsed="true">
-    <Position X="18.25" Y="6.5" Width="1.5" />
+  <Class Name="P_Damager">
+    <Position X="12" Y="12" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ACQACASAACAgAAAAAAAACgAAAAACAAAAQABIQAAKAAA=</HashCode>
       <FileName>Assets\02_Scripts\01_Player\P_Damager.cs</FileName>
@@ -243,7 +243,7 @@
   <Class Name="E_Sus_RevAtk">
     <Position X="9.75" Y="16.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BEBAAAAAACIAAAAAAAAAAAAAAAACAAAAAAAAAAAEAAA=</HashCode>
+      <HashCode>BEBAAAAAACIAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
       <FileName>Assets\02_Scripts\02_Enemy\Boss_Sus\E_Sus_RevAtk.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -257,7 +257,7 @@
   <Class Name="E_Sus_RevParry" Collapsed="true">
     <Position X="11.25" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AEQAAAAAACAAgAAAAAAAAAAAAAAAABAAQAAAAAAEAAA=</HashCode>
+      <HashCode>AEAAAAAAAAAAgAAAAAAAAAAAAAAAABAAQAAAAAAEAAA=</HashCode>
       <FileName>Assets\02_Scripts\02_Enemy\Boss_Sus\E_Sus_RevParry.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -377,14 +377,14 @@
   <Class Name="E_RevAtk">
     <Position X="9.75" Y="9.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>FEBAAACEACIAwAAEEIAEIAAAABACAAAAQgBAhAAACAA=</HashCode>
+      <HashCode>FEBAAACEACIAwABEEIAEIAAAABACAAAAQgBAhAAACAA=</HashCode>
       <FileName>Assets\02_Scripts\02_Enemy\E_RevAtk.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="E_RevParry">
     <Position X="6" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AEQAAAAAACAAgAAAAAAAAAAAAAAAABAAQAAAAAAEAAA=</HashCode>
+      <HashCode>AEAAAAAAAAAAgAAAAAAAAAAAAAAAABAAQAAAAAAEAAA=</HashCode>
       <FileName>Assets\02_Scripts\02_Enemy\E_RevParry.cs</FileName>
     </TypeIdentifier>
   </Class>

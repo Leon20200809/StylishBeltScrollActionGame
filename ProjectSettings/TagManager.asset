@@ -27,6 +27,7 @@ TagManager:
   - ParryCol
   - ShotAtkPoint
   - ShotPoint
+  - ArcharAtkPoint
   layers:
   - Default
   - TransparentFX

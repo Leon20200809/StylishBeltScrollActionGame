@@ -234,6 +234,7 @@ MonoBehaviour:
   - {fileID: 6323236554250643959, guid: 3feff53a147eff844a935eb5a696393d, type: 3}
   - {fileID: 1065667990760106004, guid: e6d3fdd1d95c9394094cb1d09efe53d0, type: 3}
   - {fileID: 1821828050469326619, guid: e739c7c2b86d57f4ab92e292078d2177, type: 3}
+  - {fileID: 2101791002433447051, guid: 387ae6170377db44687a611522b080c2, type: 3}
   enemyHPSliderGenerateTran: {fileID: 824867269}
   enemiesList: []
   destroyCount: 0
