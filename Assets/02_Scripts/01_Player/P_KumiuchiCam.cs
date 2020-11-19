@@ -29,9 +29,4 @@ public class P_KumiuchiCam : MonoBehaviour
         mainCam = Camera.main.gameObject;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

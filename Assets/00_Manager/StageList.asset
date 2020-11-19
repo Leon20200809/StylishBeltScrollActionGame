@@ -18,7 +18,7 @@ MonoBehaviour:
     - areaNo: 0
       areaMoveLimit:
         horizontalLimit:
-          left: -5
+          left: -10
           right: 15
         depthLimit:
           forword: 5

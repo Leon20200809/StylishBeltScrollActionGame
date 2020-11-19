@@ -239,6 +239,7 @@ MonoBehaviour:
   enemiesList: []
   destroyCount: 0
   isCompleteGenerate: 0
+  limitObjPrefab: {fileID: 8202113410352726637, guid: acc5de1281ef1d14da96735feb496a3e, type: 3}
   gameState: 1
 --- !u!4 &178757066
 Transform:
