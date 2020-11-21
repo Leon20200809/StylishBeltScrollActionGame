@@ -611,7 +611,7 @@ GameObject:
   - component: {fileID: 929996764}
   m_Layer: 0
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: UI_Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1091,6 +1091,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1a6f2366b3520cb4988d8814e75b660a, type: 3}
   VOICE_Clips: []
   audioMixer: {fileID: 0}
+  esc_Menu_Prefab: {fileID: 7021430115375800841, guid: 5ff7e7f5a25fd2e4dbcc5fe6c21e82c4, type: 3}
+  canvasTran: {fileID: 0}
 --- !u!205 &1248866384247607159
 LODGroup:
   m_ObjectHideFlags: 0

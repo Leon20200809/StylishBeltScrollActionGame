@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
+
 using DG.Tweening;
 
 /// <summary>
@@ -75,6 +77,11 @@ public class SoundManager : MonoBehaviour
     private bool isCrossFading;
     private int currentBgmIndex = 999;
 
+    //Escキーでオプションメニュー表示
+    public EscMenu esc_Menu_Prefab;
+    EscMenu escMenu;
+    [SerializeField] Transform canvasTran;
+
 
     void Awake()
     {
@@ -106,6 +113,11 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        canvasTran = GameObject.FindGameObjectWithTag("UI_Canvas").transform;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -125,6 +137,9 @@ public class SoundManager : MonoBehaviour
         {
             source.volume = VOICE_Volume;
         }
+
+        //Escキーでメニュー表示
+        Display_menu_screen_in_escape_key();
     }
 
     /// <summary>
@@ -309,6 +324,24 @@ public class SoundManager : MonoBehaviour
         else
         {
             audioMixer.SetFloat("volumeSE", 0);
+        }
+    }
+
+    /// <summary>
+    /// Escキーでメニュー表示
+    /// </summary>
+    public void Display_menu_screen_in_escape_key()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (escMenu == null)
+            {
+                escMenu = Instantiate(esc_Menu_Prefab, canvasTran, false);
+            }
+            else
+            {
+                Destroy(escMenu.gameObject);
+            }
         }
     }
 }

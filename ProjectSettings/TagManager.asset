@@ -29,6 +29,7 @@ TagManager:
   - ShotPoint
   - ArcharAtkPoint
   - LimitObj
+  - UI_Canvas
   layers:
   - Default
   - TransparentFX

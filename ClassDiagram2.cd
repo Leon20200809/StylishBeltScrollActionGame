@@ -44,7 +44,7 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAYRSBBACCEAFQAARAQEAAAIAAACAAAAAAJmAISgAAE=</HashCode>
+      <HashCode>AAYRSBBACCEAFQAARAUEAAAIAAACAAACEAJmAISgAAE=</HashCode>
       <FileName>Assets\00_Manager\GameManager.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -54,7 +54,7 @@
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAQBAAAAACAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\00_Manager\MoveLimit.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -81,7 +81,7 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>QQQAAAABAAAAQAGACUUAAgAgAABAAAAAIAASAAAAA1Q=</HashCode>
+      <HashCode>UQQAAAABAAAAQAGACUUAAgAgAABAAAAAIAASAQAAA1Q=</HashCode>
       <FileName>Assets\00_Manager\SoundManager.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -152,7 +152,7 @@
   <Class Name="P_KumiuchiCam" Collapsed="true">
     <Position X="11.25" Y="7.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAACAAAAAAAAAAAAIAAAAAAAAAAEAAAAAgAEA=</HashCode>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAIAAAAAAAAAAEAAAAAgAEA=</HashCode>
       <FileName>Assets\02_Scripts\01_Player\P_KumiuchiCam.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -180,7 +180,7 @@
   <Class Name="P_RevAtk" Collapsed="true">
     <Position X="18.25" Y="7.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>FEBEAACEACAAgAAEAAAEAAAAABAAAAAAQABAAAAEAAA=</HashCode>
+      <HashCode>FEBEAACEACAAgAAEAAAEAAAAABAAAAAAQQBAAAAEAAA=</HashCode>
       <FileName>Assets\02_Scripts\01_Player\P_RevAtk.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -194,7 +194,7 @@
   <Class Name="PlayerController">
     <Position X="3.25" Y="7.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AEVAAJjIOqYAABQEABAEAiAAQBIQSIUgCxAEAgI4AAA=</HashCode>
+      <HashCode>AEVAAJjIOqYAABQEABAEAiAAQBIQSIUiCxAEAgI4AAA=</HashCode>
       <FileName>Assets\02_Scripts\01_Player\PlayerController.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -736,6 +736,55 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAgIAAAAA=</HashCode>
       <FileName>Assets\02_Scripts\02_Enemy\Boss_Sus\E_Sus_ParryAtk_Smb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MissingDelete" Collapsed="true">
+    <Position X="29.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAgA=</HashCode>
+      <FileName>Assets\00_Manager\MissingDelete.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RaycastTest" Collapsed="true">
+    <Position X="31" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEAAAAACAAAwAAAAAAAAAAAAAAAAAAABAAAEAAAAA=</HashCode>
+      <FileName>Assets\00_Manager\RayCastTest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="E_Skeleton_Damager" Collapsed="true">
+    <Position X="1.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\Boss_Skeleton\E_Skeleton_Damager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="E_Skeleton_Input" Collapsed="true">
+    <Position X="12.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\Boss_Skeleton\E_Skeleton_Input.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="E_Skeleton_Movement" Collapsed="true">
+    <Position X="24.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\Boss_Skeleton\E_Skeleton_Movement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="E_Skeleton_Rev_Atk" Collapsed="true">
+    <Position X="1" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\Boss_Skeleton\E_Skeleton_Rev_Atk.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyMovement_Boss" Collapsed="true">
+    <Position X="26.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\02_Scripts\02_Enemy\EnemyMovement_Boss.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="TAK_CameraController.MouseButtonDown" Collapsed="true">
