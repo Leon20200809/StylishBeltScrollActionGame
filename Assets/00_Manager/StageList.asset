@@ -27,7 +27,7 @@ MonoBehaviour:
     - areaNo: 1
       areaMoveLimit:
         horizontalLimit:
-          left: 15
+          left: 14
           right: 50
         depthLimit:
           forword: 5

@@ -94,6 +94,16 @@ public class P_RevAtk : MonoBehaviour
         hpSlider.DOValue((float)hp / maxHp, 0.5f);
     }
 
+    public void RecoverHP(int reHp)
+    {
+        hp += reHp;
+        if (hp >= maxHp)
+        {
+            hp = maxHp;
+        }
+        UpdateHP(hp);
+    }
+
 
     // Start is called before the first frame update
     void Start()

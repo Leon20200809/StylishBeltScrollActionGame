@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
     private Animator anim;
+    private P_RevAtk p_RevAtk;
 
     public float invTime;
 
@@ -131,7 +132,7 @@ public class PlayerController : MonoBehaviour
         //InitPlayer();
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
-
+        p_RevAtk = GetComponent<P_RevAtk>();
     }
 
     // Update is called once per frame
@@ -157,12 +158,14 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetButtonDown("Fire1") && isKumiuchi == true)
         {
             anim.SetTrigger("Kumiuchi");
-            kumiuchiCam.KumiuchiStaging();
+            p_RevAtk.RecoverHP(200);
+            //kumiuchiCam.KumiuchiStaging();
         }
 
         else if (Input.GetButtonDown("Fire1") && isOiuchi == true)
         {
             anim.SetTrigger("Oiuchi");
+            p_RevAtk.RecoverHP(50);
         }
     }
 

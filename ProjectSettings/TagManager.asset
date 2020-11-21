@@ -28,6 +28,7 @@ TagManager:
   - ShotAtkPoint
   - ShotPoint
   - ArcharAtkPoint
+  - LimitObj
   layers:
   - Default
   - TransparentFX

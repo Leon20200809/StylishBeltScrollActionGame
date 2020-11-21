@@ -13,7 +13,6 @@ public class EnemyMovement_A : EnemyMovement
     {
         if (other.tag == "ArcharAtkPoint")
         {
-            Debug.Log(timeleft);
             timeleft -= Time.deltaTime;
             if (timeleft <= 0.0)
             {

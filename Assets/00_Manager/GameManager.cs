@@ -57,6 +57,8 @@ public class GameManager : MonoBehaviour
 
     //
     public GameObject limitObjPrefab;
+    GameObject limitObj;
+
 
     //ゲーム状況
     public enum GameState
@@ -118,8 +120,6 @@ public class GameManager : MonoBehaviour
                     // 次のエリアをセット
                     SetUpNextArea();
                 }
-
-                
             }
         }
 
@@ -196,23 +196,16 @@ public class GameManager : MonoBehaviour
         //エリア内の敵生成完了フラグリセット
         isCompleteGenerate = false;
 
+        //移動範囲制限可視化
+        Area_Limit_Generation();
+
         //ゲームスタート
         gameState = GameState.Play;
         Debug.Log(gameState);
 
-        //移動範囲制限可視化
-        Area_Limit_Generation1();
-
     }
 
     void Area_Limit_Generation()
-    {
-        GameObject leftLimitforword = Instantiate(limitObjPrefab, new Vector3(leftLimitPos, 1, forwordLimitPos), Quaternion.Euler(0, 90, 0));
-        GameObject leftLimitback = Instantiate(limitObjPrefab, new Vector3(leftLimitPos, 1, backLimitPos), Quaternion.Euler(0, 0, 0));
-        GameObject rightLimitforword = Instantiate(limitObjPrefab, new Vector3(rightLimitPos, 1, forwordLimitPos), Quaternion.Euler(0, 180, 0));
-        GameObject rightLimitback = Instantiate(limitObjPrefab, new Vector3(rightLimitPos, 1, backLimitPos), Quaternion.Euler(0, -90, 0));
-    }
-    void Area_Limit_Generation1()
     {
         int v = (int)(forwordLimitPos - backLimitPos);
         int h = (int)(rightLimitPos - leftLimitPos);
@@ -220,20 +213,20 @@ public class GameManager : MonoBehaviour
         Debug.Log(h);
         for (int i = 0; i < v ; i++)
         {
-            GameObject leftLimitforword = Instantiate(limitObjPrefab, new Vector3(leftLimitPos, 1, backLimitPos + i), Quaternion.Euler(0, 0, 0));
+            limitObj = Instantiate(limitObjPrefab, new Vector3(leftLimitPos - 1, 1, backLimitPos + i), Quaternion.Euler(0, 0, 0));
         }
         for (int i = 0; i < v ; i++)
         {
-            GameObject leftLimitforword = Instantiate(limitObjPrefab, new Vector3(rightLimitPos, 1, backLimitPos + i), Quaternion.Euler(0, 0, 0));
+            limitObj = Instantiate(limitObjPrefab, new Vector3(rightLimitPos, 1, backLimitPos + i), Quaternion.Euler(0, 0, 0));
         }
-        for (int i = 1; i < h ; i++)
+        /*for (int i = 1; i < h ; i++)
         {
             GameObject leftLimitforword = Instantiate(limitObjPrefab, new Vector3(leftLimitPos + i, 1, forwordLimitPos), Quaternion.Euler(0, 0, 0));
         }
         for (int i = 1; i < h ; i++)
         {
             GameObject leftLimitforword = Instantiate(limitObjPrefab, new Vector3(leftLimitPos + i, 1, backLimitPos), Quaternion.Euler(0, 0, 0));
-        }
+        }*/
     }
 
     void GenerateEnemy(Vector3 charaPos, int enemyIndex)
@@ -280,6 +273,17 @@ public class GameManager : MonoBehaviour
         CheckAreaClear();
     }
 
+    void Area_Limit_Destory()
+    {
+        GameObject[] del = GameObject.FindGameObjectsWithTag("LimitObj");
+
+        foreach(GameObject del_Index in del)
+        {
+            Destroy(del_Index);
+        }
+    }
+
+
     /// <summary>
     /// エリア内の敵の生成状況と討伐状況を確認してエリアクリアかどうか判定
     /// </summary>
@@ -299,6 +303,7 @@ public class GameManager : MonoBehaviour
             Debug.Log(gameState);
 
             //リミットオブジェクト削除
+            Area_Limit_Destory();
 
             //→GO演出
         }
