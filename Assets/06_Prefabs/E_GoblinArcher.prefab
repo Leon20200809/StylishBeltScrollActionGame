@@ -1517,6 +1517,10 @@ PrefabInstance:
       propertyPath: isDebug
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6323236554250643959, guid: 3feff53a147eff844a935eb5a696393d, type: 3}
+      propertyPath: enemyType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6345600370606195282, guid: 3feff53a147eff844a935eb5a696393d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0

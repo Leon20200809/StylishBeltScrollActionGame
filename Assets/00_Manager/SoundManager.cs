@@ -115,7 +115,7 @@ public class SoundManager : MonoBehaviour
 
     void Start()
     {
-        canvasTran = GameObject.FindGameObjectWithTag("UI_Canvas").transform;
+        SetUpCanvas();
     }
 
     // Update is called once per frame
@@ -343,5 +343,10 @@ public class SoundManager : MonoBehaviour
                 Destroy(escMenu.gameObject);
             }
         }
+    }
+
+    public void SetUpCanvas()
+    {
+        canvasTran = GameObject.FindGameObjectWithTag("UI_Canvas").transform;
     }
 }

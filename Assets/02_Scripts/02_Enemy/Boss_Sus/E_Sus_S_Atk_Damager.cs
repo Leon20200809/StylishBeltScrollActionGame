@@ -6,7 +6,7 @@ public class E_Sus_S_Atk_Damager : E_DamagerBase
 {
     Collider collider;
     
-    private void OnTriggerEnter(Collider other)
+    protected override void OnTriggerEnter(Collider other)
     {
         //タグ判定
         if (other.CompareTag("Player"))

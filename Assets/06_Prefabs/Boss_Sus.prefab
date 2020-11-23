@@ -296,6 +296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDebug: 0
   e_RevAtk: {fileID: 4838438858341118074}
+  enemyType: 2
 --- !u!114 &1821828050469326614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,6 +371,7 @@ MonoBehaviour:
   hpSlider_Prefab: {fileID: 2395918496205143317, guid: 97be33b7e9b761348b21526a1f5044f3, type: 3}
   oiuchiCollider: {fileID: 1991936436236675830}
   KumiuchiCollider: {fileID: 1991936436041138464}
+  enemyController: {fileID: 1821828050469326619}
   distination: {x: 0, y: 0, z: 0}
   enemyType: 3
   hitEffecOfset: {x: 0, y: 1, z: 0}

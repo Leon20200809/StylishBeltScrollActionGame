@@ -128,7 +128,15 @@ public class E_RevAtk : MonoBehaviour
     {
         maxHp = GameData.instance.charaDataList[enemyType].hp;
         hp = maxHp;
-        hpSlider = Instantiate(hpSlider_Prefab, gameManager.enemyHPSliderGenerateTran).GetComponent<Slider>();
+        enemyController = GetComponent<EnemyController>();
+        if (enemyController.enemyType == EnemyType.Boss)
+        {
+            hpSlider = Instantiate(hpSlider_Prefab, gameManager.bossEnemyHPSliderGenerateTran).GetComponent<Slider>();
+        }
+        else
+        {
+            hpSlider = Instantiate(hpSlider_Prefab, gameManager.enemyHPSliderGenerateTran).GetComponent<Slider>();
+        }
         UpdateHP(hp);
     }
 
@@ -137,7 +145,7 @@ public class E_RevAtk : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
-        enemyController = GetComponent<EnemyController>();
+        //enemyController = GetComponent<EnemyController>();
         //maxHp = GameData.instance.charaDataList[1].hp;
         //hp = maxHp;
         //hpSlider = Instantiate(hpSlider_Prefab, )

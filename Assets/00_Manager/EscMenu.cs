@@ -27,10 +27,12 @@ public class EscMenu : MonoBehaviour
     /// <summary>
     /// タイトル画面へ戻る
     /// </summary>
-    void GoTitleButton()
+    public static void GoTitleButton()
     {
         Time.timeScale = 1.0f;
-        StartCoroutine(Kankaku());
+        SceneManager.LoadScene("TitleScene");
+
+        //StartCoroutine(Kankaku());
 
     }
 

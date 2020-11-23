@@ -5,22 +5,6 @@ using DG.Tweening;
 
 public class E_SUSInput : E_Input
 {
-    [Header("プレイヤー操作")]
-    public bool playerCont;
-
-    [Header("移動速度")]
-    public float moveSpeed;
-
-    [Header("回転速度")]
-    public float rotateSpeed;
-
-    [Header("アクションフラグ")]
-    public bool inAction;
-
-    public GameObject e_Weaponcollider;
-    public Collider e_Weaponcol;
-    public TrailRenderer e_Weapontrail;
-
     private Rigidbody rb;
     private Animator anim;
 
@@ -29,6 +13,12 @@ public class E_SUSInput : E_Input
 
     [SerializeField]
     GameManager gameManager;
+
+    public E_Sus_RevAtk e_Sus_RevAtk;
+
+    //飛び道具プレファブ
+    public E_Sus_MagicBall e_Sus_MagicBall;
+
 
     /// <summary>
     /// Player情報の初期設定
@@ -247,8 +237,6 @@ public class E_SUSInput : E_Input
     }
 
 
-    //飛び道具プレファブ
-    public E_Sus_MagicBall e_Sus_MagicBall;
     /// <summary>
     /// 飛び道具アニメーションイベント用
     /// </summary>
@@ -260,23 +248,12 @@ public class E_SUSInput : E_Input
     /// <summary>
     /// パリィ成功アニメーション再生
     /// </summary>
-    public void RevParryStart()
+    public new void RevParryStart()
     {
         anim.SetTrigger("Rev-Parry");
     }
 
     public Vector3 exeffecOfset;
-    /// <summary>
-    /// パリィ攻撃用エフェクト再生
-    /// </summary>
-    /// <param name="other"></param>
-    public void GenerateEffect(GameObject other)
-    {
-        SoundManager.instance.PlaySE(SoundManager.SE_Type.E_HvAtk);
-        GameObject hAtkEffect = Instantiate(EffectManager.instance.GetEffect(1), transform.position, transform.rotation);
-        hAtkEffect.transform.parent = this.transform;
-        Destroy(hAtkEffect, 1f);
-    }
 
     /// <summary>
     /// 必殺技溜め用エフェクト再生
@@ -302,47 +279,5 @@ public class E_SUSInput : E_Input
 
 
     //=============== Smb用メソッド ===================//　ここから
-
-    public E_Sus_RevAtk e_Sus_RevAtk;
-    /// <summary>
-    /// フラグリセット
-    /// </summary>
-    public void Resetflag()
-    {
-        inAction = false;
-        e_Weaponcol.enabled = false;
-        e_Weapontrail.enabled = false;
-        //e_Sus_RevAtk.OiuchiColOFF();
-        //e_Sus_RevAtk.KumiuchiColOFF();
-        anim.ResetTrigger("Rev-Atk");
-        anim.ResetTrigger("Rev-Down");
-        anim.ResetTrigger("L-Atk");
-        anim.ResetTrigger("H-Atk");
-        anim.ResetTrigger("M-Atk");
-        anim.ResetTrigger("S-Atk");
-        anim.ResetTrigger("Rev-Oiuchi");
-        anim.ResetTrigger("Rev-Kumiuchi");
-        anim.ResetTrigger("Rev-Stun");
-        anim.ResetTrigger("Rev-Parry");
-    }
-
-    /// <summary>
-    /// 被ダメージモーションフラグリセット
-    /// </summary>
-    public void P_RevAttack()
-    {
-        anim.ResetTrigger("Rev-Atk");
-        anim.ResetTrigger("Rev-Down");
-        anim.ResetTrigger("L-Atk");
-        anim.ResetTrigger("H-Atk");
-        anim.ResetTrigger("M-Atk");
-        anim.ResetTrigger("S-Atk");
-        anim.ResetTrigger("Rev-Oiuchi");
-        anim.ResetTrigger("Rev-Kumiuchi");
-        anim.ResetTrigger("Rev-Stun");
-        e_Weaponcol.enabled = false;
-        e_Weapontrail.enabled = false;
-    }
-
 
 }

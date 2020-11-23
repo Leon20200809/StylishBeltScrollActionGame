@@ -17,12 +17,6 @@ public class DestinationController : MonoBehaviour
     public enum Route { inOrder, random }
     public Route route;
 
-    public enum EnemyType
-    {
-        Sword_Soldier,
-        Archer_Soldier,
-        Boss,
-    }
 
     public EnemyType enemyType;
 

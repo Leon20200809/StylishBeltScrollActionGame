@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -45,6 +47,8 @@ public class GameManager : MonoBehaviour
 
     //敵のHPUI用
     public Transform enemyHPSliderGenerateTran;
+    //敵のHPUI用
+    public Transform bossEnemyHPSliderGenerateTran;
 
     //生成した敵を入れるリスト
     public List<EnemyController> enemiesList = new List<EnemyController>();
@@ -59,6 +63,11 @@ public class GameManager : MonoBehaviour
     public GameObject limitObjPrefab;
     GameObject limitObj;
 
+    [SerializeField] //Transform の情報をアサインする
+    private Transform goAheadObjTran;
+
+    [SerializeField] //ComboDetail クラスの情報をアサインする
+    private ComboDetail goAheadObjTranPrefab;
 
     //ゲーム状況
     public enum GameState
@@ -121,6 +130,12 @@ public class GameManager : MonoBehaviour
                     SetUpNextArea();
                 }
             }
+        }
+
+        //用意してあるエリア数を超えたら処理しなし
+        if (areaIndex >= currentStageData.areaDatas.Count)
+        {
+            return;
         }
 
         //生成数チェック
@@ -283,6 +298,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// GO→演出
+    /// </summary>
+    void Area_Go_Ahead()
+    {
+        //
+    }
+
 
     /// <summary>
     /// エリア内の敵の生成状況と討伐状況を確認してエリアクリアかどうか判定
@@ -306,6 +329,7 @@ public class GameManager : MonoBehaviour
             Area_Limit_Destory();
 
             //→GO演出
+            Area_Go_Ahead();
         }
     }
 
@@ -332,6 +356,7 @@ public class GameManager : MonoBehaviour
         {
             //
             Debug.Log("ゲームクリア");
+            EscMenu.GoTitleButton();
         }
         else
         {

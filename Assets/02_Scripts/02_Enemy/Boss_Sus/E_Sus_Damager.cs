@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class E_Sus_Damager : E_DamagerBase
 {
-    private void OnTriggerEnter(Collider other)
+    protected override void OnTriggerEnter(Collider other)
     {
         //タグ判定
         if (other.CompareTag("Player"))

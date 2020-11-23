@@ -11,6 +11,8 @@ public class EnemyController : MonoBehaviour
 
     public E_RevAtk e_RevAtk;
 
+    public EnemyType enemyType;
+
     /// <summary>
     /// EnemyController初期設定
     /// </summary>

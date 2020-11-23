@@ -9,17 +9,6 @@ public class E_Sus_MagicBall : MonoBehaviour
     public Vector3 effecOfset;
     public float ballSpeed;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     /// <summary>
     /// マジックボール射出
     /// </summary>
