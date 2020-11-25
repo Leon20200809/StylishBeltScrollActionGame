@@ -23,11 +23,11 @@ public class E_Input : MonoBehaviour
 
     public Collider e_Parrycollider;
 
-    private Rigidbody rb;
-    private Animator anim;
+    protected Rigidbody rb;
+    protected Animator anim;
 
-    private const string HORIZONTAL = "Horizontal";
-    private const string VERTICAL = "Vertical";
+    protected const string HORIZONTAL = "Horizontal";
+    protected const string VERTICAL = "Vertical";
 
     [SerializeField]
     GameManager gameManager;
@@ -35,13 +35,13 @@ public class E_Input : MonoBehaviour
     /// <summary>
     /// Player情報の初期設定
     /// </summary>
-    private void InitPlayer()
+    protected void InitPlayer()
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
     }
 
-    void FixedUpdate()
+    protected void FixedUpdate()
     {
         if (playerCont == true)
         {
@@ -64,7 +64,7 @@ public class E_Input : MonoBehaviour
     /// </summary>
     /// <param name="x">X軸の移動値</param>
     /// <param name="z">Z軸の移動値</param>
-    private void Move(float x, float z)
+    protected void Move(float x, float z)
     {
         if (playerCont)
         {
@@ -86,7 +86,7 @@ public class E_Input : MonoBehaviour
     /// 向きを変える
     /// </summary>
     /// <param name="dir">移動値</param>
-    private void LookDirection(Vector3 dir)
+    protected void LookDirection(Vector3 dir)
     {
         // ベクトル(向きと大きさ)の2乗の長さをfloatで戻す = 動いているかどうかの確認し、動いていなければ処理しない
         if (dir.sqrMagnitude <= 0f)
@@ -118,13 +118,13 @@ public class E_Input : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         InitPlayer();
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         if (playerCont == true)
         {
@@ -184,6 +184,7 @@ public class E_Input : MonoBehaviour
         transform.DOLocalMove(transform.forward * 0.4f, 0.2f).SetRelative();
         e_Weaponcol.enabled = true;
         e_Weapontrail.enabled = true;
+        SoundManager.instance.PlaySE(SoundManager.SE_Type.SE_14);
     }
 
 
@@ -196,6 +197,7 @@ public class E_Input : MonoBehaviour
         e_Weaponcol.enabled = true;
         e_Weapontrail.enabled = true;
         e_Parrycollider.enabled = true;
+        SoundManager.instance.PlaySE(SoundManager.SE_Type.SE_14);
     }
 
     /// <summary>
@@ -214,6 +216,14 @@ public class E_Input : MonoBehaviour
     public void RevParryStart()
     {
         anim.SetTrigger("Rev-Parry");
+    }
+
+    /// <summary>
+    /// 死亡時アニメーション
+    /// </summary>
+    public void DeadDoScale()
+    {
+        this.gameObject.transform.DOScale(new Vector3(0.1f, 0.1f), 4f);
     }
 
     public E_RevAtk e_RevAtk;
@@ -266,6 +276,11 @@ public class E_Input : MonoBehaviour
         GameObject hAtkEffect = Instantiate(EffectManager.instance.GetEffect(1), transform.position + effecOfset, transform.rotation);
         hAtkEffect.transform.parent = this.transform;
         Destroy(hAtkEffect, 1f);
+    }
+
+    void Se_Attack()
+    {
+        SoundManager.instance.PlaySE(SoundManager.SE_Type.SE_14);
     }
 
 

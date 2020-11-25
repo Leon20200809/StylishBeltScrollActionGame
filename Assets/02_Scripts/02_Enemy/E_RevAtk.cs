@@ -31,6 +31,7 @@ public class E_RevAtk : MonoBehaviour
     {
         if (isDead)
         {
+
             return;
         }
         //ダメージソース取得
@@ -112,8 +113,10 @@ public class E_RevAtk : MonoBehaviour
         {
             hp = 0;
             isDead = true;
+            this.gameObject.tag = "Untagged";
             animator.SetTrigger("Dead");
-            StartCoroutine(enemyController.DestroyEnemy(3.0f));
+            //this.gameObject.transform.DOScale(new Vector3(0.1f, 0.1f), 4f);
+            StartCoroutine(enemyController.DestroyEnemy(5.0f));
             Destroy(hpSlider.gameObject, 3.0f);
         }
 

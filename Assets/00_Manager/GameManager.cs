@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
     private Transform goAheadObjTran;
 
     [SerializeField] //ComboDetail クラスの情報をアサインする
-    private ComboDetail goAheadObjTranPrefab;
+    private GoAheadDetail goAheadObjTranPrefab;
 
     //ゲーム状況
     public enum GameState
@@ -118,6 +118,15 @@ public class GameManager : MonoBehaviour
 
                 // エリアの番号を進める
                 areaIndex++;
+                if (areaIndex == 2)
+                {
+                    SoundManager.instance.PlayBGM(SoundManager.BGM_Type.Game2);
+                }
+                if (areaIndex == 3)
+                {
+                    SoundManager.instance.PlayBGM(SoundManager.BGM_Type.Game3);
+                }
+                
 
                 //ステージをクリアしたか確認
                 if (CheckStageClear())
@@ -132,7 +141,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        //用意してあるエリア数を超えたら処理しなし
+        //用意してあるエリア数を超えたら処理しない
         if (areaIndex >= currentStageData.areaDatas.Count)
         {
             return;
@@ -301,9 +310,10 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// GO→演出
     /// </summary>
-    void Area_Go_Ahead()
+    void Create_Area_Go_Ahead()
     {
-        //
+        GoAheadDetail goAheadObj = Instantiate(goAheadObjTranPrefab, goAheadObjTran, false);
+        goAheadObj.SetUpGoAheadDetail();
     }
 
 
@@ -329,7 +339,7 @@ public class GameManager : MonoBehaviour
             Area_Limit_Destory();
 
             //→GO演出
-            Area_Go_Ahead();
+            Create_Area_Go_Ahead();
         }
     }
 

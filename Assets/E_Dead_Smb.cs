@@ -1,21 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
-public class E_ResetFlag_Smb : StateMachineBehaviour
+public class E_Dead_Smb : StateMachineBehaviour
 {
-    E_Input enemyInput;
-
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        // スクリプトを取得していない場合には取得する
-        if (enemyInput == null)
-        {
-            enemyInput = animator.gameObject.GetComponent<E_Input>();
-        }
-        enemyInput.Resetflag();
-    }
+    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    
+    //}
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -26,7 +20,7 @@ public class E_ResetFlag_Smb : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
+        animator.gameObject.transform.DOScale(new Vector3(0.1f, 0.1f), 3f);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

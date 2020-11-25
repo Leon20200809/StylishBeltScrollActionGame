@@ -143,6 +143,10 @@ public class PlayerController : MonoBehaviour
         HeavyAttack();
         Dash();
         Parry();
+
+        // コンボの時間判定
+        UpdateComboLimitTime();
+
     }
 
     /// <summary>
@@ -260,7 +264,7 @@ public class PlayerController : MonoBehaviour
     void HeavyAttackStart()
     {
         p_Waponcollider.tag = "P_HeavyAttack";
-
+        SoundManager.instance.PlayVOICE(SoundManager.VOICE_Type.U0);
         transform.DOLocalMove(transform.forward * 0.1f, 0.2f).SetRelative();
         waponcollider.enabled = true;
         weapontrail.enabled = true;
@@ -272,6 +276,7 @@ public class PlayerController : MonoBehaviour
     void ParryAction()
     {
         SoundManager.instance.PlaySE(SoundManager.SE_Type.Parry);
+        SoundManager.instance.PlayVOICE(SoundManager.VOICE_Type.U6);
         transform.DOLocalMove(transform.forward * 0.2f, 0.2f).SetRelative();
         parrycollider.enabled = true;
         parrytrail.enabled = true;
@@ -306,6 +311,7 @@ public class PlayerController : MonoBehaviour
     void KickAttackStart()
     {
         p_Waponcollider.tag = "P_KickAtk";
+        SoundManager.instance.PlayVOICE(SoundManager.VOICE_Type.U2);
         SoundManager.instance.PlaySE(SoundManager.SE_Type.Kick);
         transform.DOLocalMove(transform.forward * 0.5f, 0.2f).SetRelative();
         kickcollider.enabled = true;
@@ -318,6 +324,7 @@ public class PlayerController : MonoBehaviour
     void StunAttackStart()
     {
         p_Waponcollider.tag = "P_StunAttack";
+        SoundManager.instance.PlayVOICE(SoundManager.VOICE_Type.U7);
         transform.DOLocalMove(transform.forward * 0.1f, 0.2f).SetRelative();
         waponcollider.enabled = true;
         weapontrail.enabled = true;
@@ -389,6 +396,22 @@ public class PlayerController : MonoBehaviour
     void KumiuchiFinish()
     {
         SoundManager.instance.PlaySE(SoundManager.SE_Type.Kick);
+    }
+    void Voice_Kumiuchi()
+    {
+        SoundManager.instance.PlayVOICE(SoundManager.VOICE_Type.U5);
+    }
+    void Voice_Oiuchi()
+    {
+        SoundManager.instance.PlayVOICE(SoundManager.VOICE_Type.U7);
+    }
+    void Voice_Damage()
+    {
+        SoundManager.instance.PlayVOICE(SoundManager.VOICE_Type.U3);
+    }
+    void Voice_Down()
+    {
+        SoundManager.instance.PlayVOICE(SoundManager.VOICE_Type.U4);
     }
 
     //=========== Smb用メソッド ===================//　ここから
@@ -515,5 +538,64 @@ public class PlayerController : MonoBehaviour
         gameObject.layer = LayerMask.NameToLayer("Invincible");
         yield return new WaitForSeconds(time);
         gameObject.layer = LayerMask.NameToLayer("Player");
+    }
+
+    [Header("コンボの受付時間")]
+    public float comboLimit;
+
+    [SerializeField]
+    private int comboCount;            // 現在のコンボ数(インスペクターで確認したい場合には[SerializeField]属性をつけてください)
+    [SerializeField]
+    private float comboLimitTimer;     // コンボの受付時間用のタイマー
+    [SerializeField]
+    private bool isComboChain;         // コンボ中かどうかの判定用。true はコンボ中。false は非コンボ中(インスペクターで確認したい場合には[SerializeField]属性をつけてください)
+
+    [SerializeField]
+    private UIManager uiManager;       // UIManager 代入用。ヒエラルキーにある UIManager ゲームオブジェクトをアサインして UIManager スクリプトを取得
+
+    /// <summary>
+    /// コンボ処理の際に呼ばれる
+    /// </summary>
+    public void TriggerComboCount()
+    {
+        // 攻撃時に呼ばれる　コンボ中に設定
+        isComboChain = true;
+
+        // コンボのカウントを加算
+        comboCount++;
+
+        // タイマーをリセット
+        comboLimitTimer = 0;
+
+        // コンボ数表示を生成
+        uiManager.CreateComboDetail(comboCount);
+
+        Debug.Log("コンボ中 : " + comboCount + " Hit!");
+    }
+    private void UpdateComboLimitTime()
+    {
+
+        // コンボ中でなければタイマーは計測しない(Updateメソッド内で呼ばれているため、必要時(コンボ時)以外には処理を行わないようにする制御が必要)
+        if (!isComboChain)
+        {
+            return;
+        }
+
+        // タイマー計測
+        comboLimitTimer += Time.deltaTime;
+
+        // タイマーの計測値がコンボ持続時間の規定値を超えたら
+        if (comboLimitTimer >= comboLimit)
+        {
+            // コンボ終了
+            isComboChain = false;
+            Debug.Log("終了");
+
+            // 設定を初期化
+            comboLimitTimer = 0;
+            comboCount = 0;
+
+            Debug.Log("コンボ終了");
+        }
     }
 }

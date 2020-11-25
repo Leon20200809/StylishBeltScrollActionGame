@@ -306,15 +306,6 @@ MonoBehaviour:
   atkPow_Kumiuchi: 0
   atkPow_Oiuchi: 0
   playerController: {fileID: 7243570678247269366}
-  hitCount: 0
-  comboTime: 0
-  combCountText: {fileID: 3884813966983203034}
-  isCombo: 0
-  comboLimit: 1.5
-  comboCount: 0
-  comboLimitTimer: 0
-  isComboChain: 0
-  uiManager: {fileID: 2511525246915366505}
 --- !u!1 &2810117890720086458
 GameObject:
   m_ObjectHideFlags: 0
@@ -1410,15 +1401,6 @@ MonoBehaviour:
   atkPow_Kumiuchi: 0
   atkPow_Oiuchi: 0
   playerController: {fileID: 7243570678247269366}
-  hitCount: 0
-  comboTime: 0
-  combCountText: {fileID: 3884813966983203034}
-  isCombo: 0
-  comboLimit: 0
-  comboCount: 0
-  comboLimitTimer: 0
-  isComboChain: 0
-  uiManager: {fileID: 0}
 --- !u!1 &3884813966983203037
 GameObject:
   m_ObjectHideFlags: 0
@@ -6796,6 +6778,11 @@ MonoBehaviour:
   kumiuchiCam: {fileID: 7243570678247269362}
   invTime: 1
   gameManager: {fileID: 0}
+  comboLimit: 1.6
+  comboCount: 0
+  comboLimitTimer: 0
+  isComboChain: 0
+  uiManager: {fileID: 2511525246915366505}
 --- !u!114 &7243570678247269364
 MonoBehaviour:
   m_ObjectHideFlags: 0

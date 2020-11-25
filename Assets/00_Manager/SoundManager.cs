@@ -17,8 +17,15 @@ public class SoundManager : MonoBehaviour
     public enum BGM_Type
     {
         //BGM列挙子を登録
+        Game0,
         Game1,
         Game2,
+        Game3,
+        Game4,
+        Game5,
+        Game6,
+        Game7,
+        Game8,
 
     }
 
@@ -40,6 +47,11 @@ public class SoundManager : MonoBehaviour
         SusSAtkReady,
         BowAtk,
         Dash,
+        SE_14,
+        SE_15,
+        SE_16,
+        SE_17,
+        SE_18,
 
     }
 
@@ -47,8 +59,18 @@ public class SoundManager : MonoBehaviour
     public enum VOICE_Type
     {
         //VOICE列挙子を登録
+        U0,
         U1,
         U2,
+        U3,
+        U4,
+        U5,
+        U6,
+        U7,
+        U8,
+        U9,
+        U10,
+        U11,
 
     }
 
