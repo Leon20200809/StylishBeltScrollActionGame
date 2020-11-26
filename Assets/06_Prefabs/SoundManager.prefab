@@ -55,7 +55,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6423198ec9235714bbecaab584ce7927, type: 3}
   - {fileID: 8300000, guid: 4102b1942c268b549a05f11a00df55c4, type: 3}
   - {fileID: 8300000, guid: 9f5cb8193708fa04986e64fa162679d9, type: 3}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 7a530d4a7681d654fa64043d7203d2ca, type: 3}
   SE_Clips:
   - {fileID: 8300000, guid: 4da90b4c40841cb4fbededa09d1e7607, type: 3}
   - {fileID: 8300000, guid: 88d44a16c977ede409f90521bd3047a9, type: 3}
@@ -72,7 +72,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8abe5774a4149be478d49c1fb7766966, type: 3}
   - {fileID: 8300000, guid: d066605945a49e843ab42770832dcfdf, type: 3}
   - {fileID: 8300000, guid: 3369c6d9f49e4db438940964685926ee, type: 3}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 61c9e1dc5513a854aa8b4c2cec5e26c8, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

@@ -17,6 +17,8 @@ public class GoAheadDetail : MonoBehaviour
     [SerializeField]// コンボ数表示を徐々に見えなくする演出に利用する。ComboDetail ゲームオブジェクトの CanvasGroup コンポーネントをアサインする
     private CanvasGroup canvasGroup;
 
+    public Ease easeType;
+
     /// <summary>
     /// ComboDetailの設定。生成時に呼び出されることで Startメソッドのように機能させる
     /// </summary>
@@ -40,6 +42,7 @@ public class GoAheadDetail : MonoBehaviour
         //sequence.Join(imgGo.transform.DOScale(scale, 0.25f)).SetEase(Ease.Flash);
         //sequence.AppendInterval(0.25f);
         //sequence.Append(canvasGroup.DOFade(0f, 1.5f)).OnComplete(() => { Destroy(gameObject); });
-        canvasGroup.DOFade(0f, 1.5f).SetEase(Ease.Flash).SetLoops(5, LoopType.Yoyo);
+        canvasGroup.DOFade(0f, 1.5f).SetEase(easeType).SetLoops(5, LoopType.Yoyo).OnStepComplete(() => { SoundManager.instance.PlaySE(SoundManager.SE_Type.SE_15); }); ;
     }
+    
 }

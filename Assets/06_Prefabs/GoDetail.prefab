@@ -184,3 +184,4 @@ MonoBehaviour:
   imgGo: {fileID: 7160114794440513017}
   txtGo: {fileID: 7160114793591815288}
   canvasGroup: {fileID: 7088398045389750916}
+  easeType: 32

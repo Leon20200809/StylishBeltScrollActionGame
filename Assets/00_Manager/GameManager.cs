@@ -366,7 +366,8 @@ public class GameManager : MonoBehaviour
         {
             //
             Debug.Log("ゲームクリア");
-            EscMenu.GoTitleButton();
+            SoundManager.instance.PlayBGM(SoundManager.BGM_Type.Game7);
+            SceneManager.LoadScene("ClearScene");
         }
         else
         {
