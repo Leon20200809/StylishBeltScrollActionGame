@@ -77,6 +77,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f47c79cebc492040917aa9fb8ca3193, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyIndex: 3
+  atttackPowerBase: 0
+  atkPow_L: 0
+  atkPow_H: 0
+  atkPow_C: 0
+  atkPow_M: 0
+  atkPow_S: 0
 --- !u!1 &5260492353284227961
 GameObject:
   m_ObjectHideFlags: 0

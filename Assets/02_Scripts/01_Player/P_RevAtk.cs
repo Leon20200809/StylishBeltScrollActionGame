@@ -21,6 +21,9 @@ public class P_RevAtk : MonoBehaviour
     [SerializeField]
     Vector3 distination;
 
+    public Transform gameOver;
+    public GameObject gameoverImagePrefab;
+
     
 
     private void OnTriggerEnter(Collider other)
@@ -57,12 +60,21 @@ public class P_RevAtk : MonoBehaviour
         }
         else if (other.CompareTag("E_Magic"))
         {
-            Damage(damager.atkPow_H);
+            Damage(damager.atkPow_M);
             animator.SetTrigger("Rev-Down");
             GenerateEffect(other.gameObject);
             transform.DOLocalMove(distination * -2f, 0.5f).SetRelative();
 
             Debug.Log("ダウン");
+        }
+        else if (other.CompareTag("E_SP_Atk"))
+        {
+            Damage(damager.atkPow_S);
+            animator.SetTrigger("Rev-Down");
+            GenerateEffect(other.gameObject);
+            transform.DOLocalMove(distination * -5f, 0.5f).SetRelative();
+
+            Debug.Log("大ダウン");
         }
     }
 
@@ -81,7 +93,10 @@ public class P_RevAtk : MonoBehaviour
             hp = 0;
             isDead = true;
             animator.SetTrigger("Dead");
-            SceneManager.LoadScene("GameScene");
+            SoundManager.instance.PlayVOICE(SoundManager.VOICE_Type.U8);
+            StartCoroutine(Kankaku());
+
+            //SceneManager.LoadScene("GameScene");
         }
 
         // TODO UIに現在のHPを反映
@@ -130,6 +145,13 @@ public class P_RevAtk : MonoBehaviour
         Destroy(effect, 2f);
     }
 
+    IEnumerator Kankaku() //コルーチンメソッド変数名Kankaku
+    {
+        //(1.5秒の間を設ける)
+        yield return new WaitForSeconds(3f);
+        Debug.Log("Wait");
+        GameObject gameoverObject = Instantiate(gameoverImagePrefab, gameOver, false);
+    }
 
 
 }

@@ -10,7 +10,7 @@ public class ClearBGM : MonoBehaviour
     {
         SoundManager.instance.PlayBGM(SoundManager.BGM_Type.Game7);
     }
-    void Awake()
+    /*void Awake()
     {
         if (instance == null)
         {
@@ -21,6 +21,6 @@ public class ClearBGM : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
+    }*/
 
 }

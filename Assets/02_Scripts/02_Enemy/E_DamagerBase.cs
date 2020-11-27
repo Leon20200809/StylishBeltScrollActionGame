@@ -14,6 +14,8 @@ public class E_DamagerBase : MonoBehaviour
     public int atkPow_L;
     public int atkPow_H;
     public int atkPow_C;
+    public int atkPow_M;
+    public int atkPow_S;
 
     protected virtual void OnTriggerEnter(Collider other)
     {
@@ -36,6 +38,8 @@ public class E_DamagerBase : MonoBehaviour
         atkPow_L = atttackPowerBase;
         atkPow_H = atkPow_L * 3;
         atkPow_C = Mathf.RoundToInt(atkPow_L * 0.7f);
+        atkPow_M = atttackPowerBase;
+        atkPow_S = atttackPowerBase * 5;
     }
 
     protected virtual void Attack_Successful()

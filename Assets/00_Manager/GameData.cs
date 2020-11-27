@@ -7,13 +7,6 @@ public class GameData : MonoBehaviour
 {
     public static GameData instance;
 
-    public int hitCount;
-    public float comboTime;
-    public Text combCountText;
-
-    public int scoreCount;
-
-
     [System.Serializable]
     public class CharaData
     {

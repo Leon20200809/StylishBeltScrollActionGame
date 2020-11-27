@@ -31,6 +31,7 @@ TagManager:
   - LimitObj
   - UI_Canvas
   - UI_Manager
+  - E_SP_Atk
   layers:
   - Default
   - TransparentFX

@@ -9403,7 +9403,7 @@ GameObject:
   - component: {fileID: -4428496794477459414}
   m_Layer: 10
   m_Name: Boss_Sus_S_Atk
-  m_TagString: E_Magic
+  m_TagString: E_SP_Atk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9451,6 +9451,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fea48ac7d14e758428e7a64def57fbf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyIndex: 3
+  atttackPowerBase: 0
+  atkPow_L: 0
+  atkPow_H: 0
+  atkPow_C: 0
+  atkPow_M: 0
+  atkPow_S: 300
 --- !u!1 &8671619593708031687
 GameObject:
   m_ObjectHideFlags: 0

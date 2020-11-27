@@ -282,7 +282,7 @@ public class GameManager : MonoBehaviour
         else
         {
             //次に敵が出現するまでの時間を設定
-            appearTime = Random.Range(5, 10);
+            appearTime = Random.Range(7, 15);
         }
     }
 
