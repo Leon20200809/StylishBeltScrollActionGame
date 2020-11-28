@@ -69,6 +69,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] //ComboDetail クラスの情報をアサインする
     private GoAheadDetail goAheadObjTranPrefab;
 
+    public UIManager uiManager;
+
     //ゲーム状況
     public enum GameState
     {

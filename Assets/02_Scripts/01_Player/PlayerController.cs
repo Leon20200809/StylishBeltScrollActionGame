@@ -36,8 +36,7 @@ public class PlayerController : MonoBehaviour
     private const string HORIZONTAL = "Horizontal";
     private const string VERTICAL = "Vertical";
 
-    [SerializeField]
-    GameManager gameManager;
+    public GameManager gameManager;
 
     /// <summary>
     /// Player情報の初期設定
@@ -550,9 +549,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private bool isComboChain;         // コンボ中かどうかの判定用。true はコンボ中。false は非コンボ中(インスペクターで確認したい場合には[SerializeField]属性をつけてください)
 
-    [SerializeField]
-    private UIManager uiManager;       // UIManager 代入用。ヒエラルキーにある UIManager ゲームオブジェクトをアサインして UIManager スクリプトを取得
-
     /// <summary>
     /// コンボ処理の際に呼ばれる
     /// </summary>
@@ -568,7 +564,7 @@ public class PlayerController : MonoBehaviour
         comboLimitTimer = 0;
 
         // コンボ数表示を生成
-        uiManager.CreateComboDetail(comboCount);
+        gameManager.uiManager.CreateComboDetail(comboCount);
 
         Debug.Log("コンボ中 : " + comboCount + " Hit!");
     }

@@ -16,7 +16,6 @@ public class P_RevAtk : MonoBehaviour
     PlayerController playerController;
     PlayerUIManager playerUI;
     Animator animator;
-    GameManager gameManager;
     Rigidbody rb;
     [SerializeField]
     Vector3 distination;
@@ -125,6 +124,8 @@ public class P_RevAtk : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         playerController = GetComponent<PlayerController>();
+        hpSlider = playerController.gameManager.uiManager.hpSlider;
+        gameOver = playerController.gameManager.uiManager.transform;
         rb = GetComponent<Rigidbody>();
         maxHp = GameData.instance.charaDataList[0].hp;
         hp = maxHp;

@@ -15,6 +15,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] 
     private Text infoText;
 
+    public Slider hpSlider;
+
     float timeleft;
     int textIndex;
 
