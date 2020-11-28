@@ -362,6 +362,7 @@ public class SoundManager : MonoBehaviour
             }
             else
             {
+                Time.timeScale = 1;
                 Destroy(escMenu.gameObject);
             }
         }

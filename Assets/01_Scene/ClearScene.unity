@@ -453,7 +453,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Game Clear !!
 
-    
+
 
     THANK YOU FOR PLAYING'
 --- !u!222 &987320535
@@ -738,6 +738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   titleButton: {fileID: 1817072054}
+  titleButtonTran: {fileID: 1817072053}
 --- !u!114 &1649807989
 MonoBehaviour:
   m_ObjectHideFlags: 0

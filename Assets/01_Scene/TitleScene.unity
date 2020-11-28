@@ -603,6 +603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startButton: {fileID: 986219772}
+  startButtonTran: {fileID: 986219771}
 --- !u!1 &980548975
 GameObject:
   m_ObjectHideFlags: 0
