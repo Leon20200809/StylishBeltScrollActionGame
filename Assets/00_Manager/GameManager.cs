@@ -71,6 +71,8 @@ public class GameManager : MonoBehaviour
 
     public UIManager uiManager;
 
+    public LayerMask groundLayer;
+
     //ゲーム状況
     public enum GameState
     {

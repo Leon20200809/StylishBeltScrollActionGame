@@ -38,6 +38,8 @@ public class PlayerController : MonoBehaviour
 
     public GameManager gameManager;
 
+    public bool isGround;
+
     /// <summary>
     /// Player情報の初期設定
     /// </summary>
@@ -146,6 +148,20 @@ public class PlayerController : MonoBehaviour
         // コンボの時間判定
         UpdateComboLimitTime();
 
+        //接地判定
+        InGame();
+        if (isGround)
+        {
+            anim.SetBool("isGround", true);
+        }
+
+
+    }
+
+    void InGame()
+    {
+        //  Linecastでキャラの足元に地面があるか判定  地面があるときはTrueを返す
+        isGround = Physics.Linecast(transform.position + transform.up * 1, transform.position - transform.up * 0.3f, gameManager.groundLayer);
     }
 
     /// <summary>
@@ -412,6 +428,12 @@ public class PlayerController : MonoBehaviour
     {
         SoundManager.instance.PlayVOICE(SoundManager.VOICE_Type.U4);
     }
+    void Voice_BattleStart()
+    {
+        SoundManager.instance.PlayVOICE(SoundManager.VOICE_Type.U9);
+    }
+
+
 
     //=========== Smb用メソッド ===================//　ここから
 
